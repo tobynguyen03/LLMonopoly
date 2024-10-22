@@ -27,7 +27,7 @@ conda env create -f environment.yml
 2. Activate the newly created environment:
 
 ```
-conda activate llmonpoly
+conda activate llmonopoly
 ```
 
 ### Verify Installation

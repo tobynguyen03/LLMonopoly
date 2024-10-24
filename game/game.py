@@ -130,7 +130,7 @@ class MonopolyGame:
         dice_2 = random.randint(1, 6)
         double_rolled = True if dice_1 == dice_2 else False
 
-        return (4, 2, False)
+        return (dice_1, dice_2, double_rolled)
     
     def move_player(self, player_id: int, dice_1=None, dice_2=None, new_position=None, go_back_3_spaces=False):
         current_position = self.players[player_id]["position"]

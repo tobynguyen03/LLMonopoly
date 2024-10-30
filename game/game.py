@@ -4,6 +4,8 @@ import random
 from collections import deque
 import re
 from collections import defaultdict
+from llama_agent import Llama3_Agent
+import json
 
 @dataclass
 class Property:
@@ -95,7 +97,7 @@ MONOPOLY_BOARD = [
 ]
 
 class MonopolyGame:
-    def __init__(self, num_players: int):
+    def __init__(self, num_players: int, llm = None):
         self.num_players = num_players
         self.board = self._initialize_board()
         self.players = self._initialize_players()
@@ -104,7 +106,8 @@ class MonopolyGame:
         self.chance_cards = self._initialize_cards()
         self.community_chest_cards = self._initialize_cards()
         self.remaining_houses = 32
-        self.remaining_hotels = 12
+        self.remaining_hotels = 12 
+        self.agent = self._initialize_llm(llm)
 
     def _initialize_players(self):
         return [
@@ -124,6 +127,11 @@ class MonopolyGame:
 
     def _initialize_cards(self):
         return deque(random.sample(range(16), 16))
+    
+    def _initialize_llm(self, llm):
+        if llm == "llama3":
+            return Llama3_Agent()
+        return None
 
     def roll_dice(self):
         dice_1 = random.randint(1, 6)
@@ -620,8 +628,15 @@ class MonopolyGame:
                 if player_id == 0:
                     selected_index = -1 #Where the LLM will input actions later
                     actions = self.get_valid_actions(player_id, space)
+                    
                     while selected_index != len(actions) - 1:
-                        selected_index = self.request_action(actions)
+                        selected_index = -1
+                        if self.agent:
+                            while selected_index == -1:
+                                selected_index = self.request_llm_action(actions)
+                        else:
+                            selected_index = self.request_action(actions)
+                        print(selected_index)
                         self.select_action(player_id, actions, selected_index, space)
                         actions = self.get_valid_actions(player_id, space)
                         self.print_player_state(player_id)
@@ -656,6 +671,49 @@ class MonopolyGame:
                 print("Error: Please enter a valid number")
         return selected_index
     
+    def create_llm_context(self, actions):
+        instruction = '''You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Provide your response only with valid JSON following this specified format.\n{"reasons": explain the reasoning behind your decision and your long term strategy in less than 50 words, "selection": write your selection number here}. '''
+        #not including example since it was making the llm output 2 jsons?
+        example = '''This is one example output format. {"selection": 1, "reasons": "I choose to buy Indiana Avenue to complete the red color set, so I can start building houses for higher rent"}'''
+        strategy = "Here are some strategy considerations. Mortgaging a property prevents it from collecting rent. When you unmortgage a property, it deducts the listed amount from your balance. As such, you should mortgage properties very carefully."
+        # useful variables
+        player = self.get_current_player()
+        player_info = f"Player {player['id']} (you):\n Position: {player['position']} \n Balance: {player['money']} \n"
+        property_listings = "Properties Owned: \n"
+        for property in player["properties"]:
+            houses_desc = ""
+            color_desc = ""
+            if type(property) == Property:
+                color_desc = f"({property.color_set})"
+                if (property.number_of_hotels > 0):
+                    houses_desc = f"{property.number_of_hotels} hotel"
+                else:
+                    houses_desc = f"{property.number_of_houses} houses"
+            desc = f"{property.name} {color_desc} {houses_desc} \n"
+            property_listings += desc
+        actions_desc = "Available Actions: \n"
+        for index, action in enumerate(actions):
+            actions_desc += f"{index}: {action}\n"
+        prompt = f"{instruction} \n {strategy} \n {player_info} {property_listings} {actions_desc}"
+        return prompt
+
+    def request_llm_action(self, actions):
+        context = self.create_llm_context(actions)
+        # print(context)
+        res = self.agent.query(context)
+        try:
+            json_object = json.loads(res)
+        except json.JSONDecodeError as e:
+            print(f"Invalid JSON: {e}")
+            return -1
+        print(json_object)
+        if not "selection" in json_object:
+            return -1
+        selected_index = int(json_object["selection"])
+        if 0 <= selected_index < len(actions):
+            return selected_index
+        return -1
+    
     def print_player_state(self, player_id: int):
         player = self.players[player_id]
         properties = []
@@ -667,11 +725,11 @@ class MonopolyGame:
                 properties.append(f"{property.name} ({property.color_set}, {property.number_of_houses} houses, {property.number_of_hotels} hotels)")
             else:
                 properties.append(f"{property.name}")
-        print(f"Player {player_id} has ${player["money"]} and owns the following properties: {", ".join(properties)}")
+        print(f"Player {player_id} has ${player['money']} and owns the following properties: {', '.join(properties)}")
 
 def main():
-    game = MonopolyGame(2)
-    game.play_game(50)
+    game = MonopolyGame(2, "llama3")
+    game.play_game(20)
 
 if __name__=="__main__":
     main()

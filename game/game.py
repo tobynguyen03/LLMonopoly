@@ -509,7 +509,7 @@ class MonopolyGame:
         complete_color_sets = []
         for property in properties:
             if property.is_mortgaged and player["money"] >= property.mortgage_fee:
-                available_actions.append(f"Unmortgage {property.name} at the cost of ${property.mortgage_fee}")
+                available_actions.append(f"Unmortgage {property.name} for ${property.mortgage_fee}")
                 continue
             if isinstance(property, Property):
                 color_set = property.color_set
@@ -549,22 +549,22 @@ class MonopolyGame:
         if action_type == "Purchase":
             self.purchase_property(player_id, space)
         elif action_type == "Mortgage":
-            pattern = r'^Mortgage ([A-Za-z]+(?:\s[A-Za-z]+){0,2}) for \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Mortgage ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(1)
             self.mortgage_property(player_id, property_name)
         elif action_type == "Unmortgage":
-            pattern = r'^Unmortgage ([A-Za-z]+(?:\s[A-Za-z]+){0,2}) at the cost of \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Unmortgage ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(1)
             self.unmortgage_property(player_id, property_name)
         elif action_type == "Build":
-            pattern = r'^Build (house|hotel) on ([A-Za-z]+(?:\s[A-Za-z]+){0,2}) for \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Build (house|hotel) on Mortgage ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(2)
             self.build_house(player_id, property_name)
         elif action_type == "Sell":
-            pattern = r'^Sell (house|hotel) on ([A-Za-z]+(?:\s[A-Za-z]+){0,2}) for \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Sell (house|hotel) on Mortgage ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(2)
             self.sell_house(player_id, property_name)
@@ -739,8 +739,9 @@ class MonopolyGame:
         print(f"Player {player_id} has ${player['money']} and owns the following properties: {', '.join(properties)}")
 
 def main():
-    game = MonopolyGame(2, "llama3")
-    game.play_game(20)
+    # game = MonopolyGame(2, "llama3")
+    game = MonopolyGame(2)
+    game.play_game(100)
 
 if __name__=="__main__":
     main()

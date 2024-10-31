@@ -509,7 +509,7 @@ class MonopolyGame:
         complete_color_sets = []
         for property in properties:
             if property.is_mortgaged and player["money"] >= property.mortgage_fee:
-                available_actions.append(f"Unmortgage {property.name} for ${property.mortgage_fee}")
+                available_actions.append(f"Unmortgage {property.name} at the cost of ${property.mortgage_fee}")
                 continue
             if isinstance(property, Property):
                 color_set = property.color_set
@@ -554,7 +554,7 @@ class MonopolyGame:
             property_name = match.group(1)
             self.mortgage_property(player_id, property_name)
         elif action_type == "Unmortgage":
-            pattern = r'^Unmortgage ([A-Za-z]+(?:\s[A-Za-z]+){0,2}) for \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Unmortgage ([A-Za-z]+(?:\s[A-Za-z]+){0,2}) at the cost of \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(1)
             self.unmortgage_property(player_id, property_name)
@@ -677,28 +677,39 @@ class MonopolyGame:
         example = '''This is one example output format. {"selection": 1, "reasons": "I choose to buy Indiana Avenue to complete the red color set, so I can start building houses for higher rent"}'''
         strategy = "Here are some strategy considerations. Mortgaging a property prevents it from collecting rent. When you unmortgage a property, it deducts the listed amount from your balance. As such, you should mortgage properties very carefully."
         # useful variables
-        player = self.get_current_player()
-        player_info = f"Player {player['id']} (you):\n Position: {player['position']} \n Balance: {player['money']} \n"
-        property_listings = "Properties Owned: \n"
-        for property in player["properties"]:
-            houses_desc = ""
-            color_desc = ""
-            if type(property) == Property:
-                color_desc = f"({property.color_set})"
-                if (property.number_of_hotels > 0):
-                    houses_desc = f"{property.number_of_hotels} hotel"
-                else:
-                    houses_desc = f"{property.number_of_houses} houses"
-            desc = f"{property.name} {color_desc} {houses_desc} \n"
-            property_listings += desc
+        # player = self.get_current_player()
+        players_info = ""
+        for player in self.players:
+            self_label = ""
+            if player == self.get_current_player():
+                self_label = " (you)"
+            current_pos = self.board[player['position']].name
+            player_info = f"Player {player['id']}{self_label}:\n Position: {current_pos} \n Balance: {player['money']} \n"
+            property_listings = "Properties Owned: \n"
+            for property in player["properties"]:
+                houses_desc = ""
+                color_desc = ""
+                mortgaged = ""
+                if property.is_mortgaged:
+                    mortgaged = " (mortgaged)"
+                if type(property) == Property:
+                    color_desc = f"({property.color_set})"
+                    if (property.number_of_hotels > 0):
+                        houses_desc = f"{property.number_of_hotels} hotel"
+                    else:
+                        houses_desc = f"{property.number_of_houses} houses"
+                desc = f"{property.name} {color_desc}{mortgaged} {houses_desc} \n"
+                property_listings += desc
+            players_info += f"{player_info} {property_listings} \n"
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-        prompt = f"{instruction} \n {strategy} \n {player_info} {property_listings} {actions_desc}"
+        prompt = f"{instruction} \n {strategy} \n {players_info} {actions_desc}"
         return prompt
 
     def request_llm_action(self, actions):
         context = self.create_llm_context(actions)
+        print(context)
         # print(context)
         res = self.agent.query(context)
         try:

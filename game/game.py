@@ -651,9 +651,9 @@ class MonopolyGame:
             if self.players[player_id]["in_jail"]:
                 if player_id == 0:
                     actions = self.get_jail_actions(player_id)
-                    selected_index = self.request_action(actions)
+                    selected_index = self.request_action(actions, self.board[10])
                     dice_1, dice_2, double_rolled = self.select_jail_action(player_id, actions, selected_index)
-                    if dice_1 == -1:
+                    if dice_1 == -1: #double roll to get out of jail failed, end turn
                         break
                 else:
                     dice_1, dice_2, double_rolled = self.baseline_strategy(player_id, self.board[10])

@@ -100,6 +100,7 @@ MONOPOLY_BOARD = [
 class MonopolyGame:
     def __init__(self, num_players: int, llm = None):
         self.num_players = num_players
+        self.game_ended = False
         self.board = self._initialize_board()
         self.players = self._initialize_players()
         self.current_player = 0
@@ -107,11 +108,11 @@ class MonopolyGame:
         self.chance_cards = self._initialize_cards()
         self.community_chest_cards = self._initialize_cards()
         self.remaining_houses = 32
-        self.remaining_hotels = 12 
+        self.remaining_hotels = 12
         self.agent = self._initialize_llm(llm)
 
     def _initialize_players(self):
-        return [
+        players = [
             {
                 "id": i,
                 "position": 0,
@@ -122,6 +123,7 @@ class MonopolyGame:
                 "get_out_of_jail_cards": 0
             } for i in range(self.num_players)
         ]
+        return players
 
     def _initialize_board(self):
         return MONOPOLY_BOARD
@@ -135,7 +137,33 @@ class MonopolyGame:
         elif llm == "llama3":
             return Llama3_Agent()
         return None
+    
+    def get_net_worth(self, player_id: int):
+        player = self.players[player_id]
+        net_worth = player["money"]
 
+        for property in player["properties"]:
+            if not property.is_mortgaged:
+                net_worth += property.price
+                if isinstance(property, Property):
+                    net_worth += (property.number_of_hotels + property.number_of_houses) * property.house_price
+            else:
+                net_worth += property.price - property.mortgage_fee
+        
+        return net_worth
+
+    def get_sell_worth(self, player_id: int):
+        player = self.players[player_id]
+        sell_worth = 0
+
+        for property in player["properties"]:
+            if not property.is_mortgaged:
+                sell_worth += property.mortgage_value
+                if isinstance(property, Property):
+                    sell_worth += (property.number_of_hotels + property.number_of_houses) * (property.house_price // 2)
+        
+        return sell_worth
+    
     def roll_dice(self):
         dice_1 = random.randint(1, 6)
         dice_2 = random.randint(1, 6)
@@ -176,7 +204,6 @@ class MonopolyGame:
         if len(self.chance_cards) == 0:
             self.chance_cards = self._initialize_cards()
         card = self.chance_cards.popleft()
-        card = 4
         position = self.players[player_id]["position"]
         multiplier = False
 
@@ -344,12 +371,14 @@ class MonopolyGame:
                     self.remaining_houses -= 1
                     property.number_of_houses += 1
                     player["money"] -= property.house_price
+                    print(f"Player {player_id} built a house on {property_name}")
                 else:
                     self.remaining_houses += 4
                     self.remaining_hotels -= 1
                     property.number_of_houses = 0
                     property.number_of_hotels = 1
                     player["money"] -= property.house_price
+                    print(f"Player {player_id} built a hotel on {property_name}")
 
     def sell_house(self, player_id: int, property_name: str):
         player = self.players[player_id]
@@ -359,13 +388,15 @@ class MonopolyGame:
                 if property.number_of_houses < 4:
                     self.remaining_houses -= 1
                     property.number_of_houses += 1
-                    player["money"] -= property.house_price
+                    player["money"] += property.house_price
+                    print(f"Player {player_id} sold a house on {property_name}")
                 else:
                     self.remaining_houses += 4
                     self.remaining_hotels -= 1
                     property.number_of_houses = 0
                     property.number_of_hotels = 1
-                    player["money"] -= property.house_price
+                    player["money"] += property.house_price
+                    print(f"Player {player_id} sold a hotel on {property_name}")
 
     def get_jail_actions(self, player_id: int):
         player = self.players[player_id]
@@ -469,6 +500,15 @@ class MonopolyGame:
         player = self.players[player_id]
         if isinstance(space, PurchaseableProperty) and space.owned_by is None and space.price < player["money"]:
             self.purchase_property(player_id, space)
+        
+        actions = self.get_valid_actions(player_id, space)
+        
+        while any("Build" in action for action in actions):
+            for index, action in enumerate(actions):
+                if "Build" in action:
+                    self.select_action(player_id, actions, index, space)
+                    break
+            actions = self.get_valid_actions(player_id, space)
 
         if player["in_jail"]:
             dice_1, dice_2, double_rolled = self.roll_dice()
@@ -477,28 +517,55 @@ class MonopolyGame:
                 player["in_jail"] = False
                 player["get_out_of_jail_cards"] -= 1
                 print(f"Player {player_id} used a Get Out of Jail Free card")
-                return (dice_1, dice_2, double_rolled)
             elif player["money"] >= 50:
                 player["turns_in_jail"] = 0
                 player["in_jail"] = False
                 player["money"] -= 50
                 print(f"Player {player_id} paid $50 to leave jail")
-                return (dice_1, dice_2, double_rolled)
             else:
                 if double_rolled:
                     print(f"Player {player_id} rolled a double and got out of jail")
-                    return (dice_1, dice_2, False)
+                    double_rolled = False
                 else:
                     if player["turns_in_jail"] == 3:
                         player["turns_in_jail"] = 0
                         player["in_jail"] = False
                         player["money"] -= 50
                         print(f"Player {player_id} did not roll a double and paid $50")
-                        return (dice_1, dice_2, False)
+                        double_rolled = False
                     else:
                         print(f"Player {player_id} rolled {(dice_1, dice_2)} and stayed in jail")
                         player["turns_in_jail"] += 1
-                        return (-1, -1, False)
+                        dice_1 = -1
+                        dice_2 = -1
+                        double_rolled = False
+
+            return (dice_1, dice_2, double_rolled)
+        return (-1, -1, False)
+    
+    def is_bankrupt(self, player_id: int):
+        return (self.get_sell_worth(player_id) + self.players[player_id]["money"]) < 0
+    
+    def raise_money(self, player_id: int, space):
+        player = self.players[player_id]
+
+        if player_id == 0:
+            self.request_action(player_id, space)
+        else:
+            while player["money"] < 0:
+                actions = self.get_valid_actions(player_id, space)
+                if any("Sell" in action for action in actions):
+                    for index, action in enumerate(actions):
+                        if "Sell" in action:
+                            self.select_action(player_id, actions, index, space)
+                            break
+                elif any("Mortgage" in action for action in actions):
+                    for index, action in enumerate(actions):
+                        if "Mortgage" in action:
+                            self.select_action(player_id, actions, index, space)
+                            break
+                    
+            actions = self.get_valid_actions(player_id, space)
 
     def get_valid_actions(self, player_id: int, space):
         player = self.players[player_id]
@@ -511,8 +578,9 @@ class MonopolyGame:
         color_sets = defaultdict(list)
         complete_color_sets = []
         for property in properties:
-            if property.is_mortgaged and player["money"] >= property.mortgage_fee:
-                available_actions.append(f"Unmortgage {property.name} for ${property.mortgage_fee}")
+            if property.is_mortgaged:
+                if player["money"] >= property.mortgage_fee:
+                    available_actions.append(f"Unmortgage {property.name} for ${property.mortgage_fee}")
                 continue
             if isinstance(property, Property):
                 color_set = property.color_set
@@ -537,11 +605,12 @@ class MonopolyGame:
                 if num_houses == max_houses:
                     if player["money"] >= property.house_price:
                         if num_houses == 5:
-                            available_actions.append(f"Sell hotel on {property.name} for ${property.house_price / 2}")
+                            available_actions.append(f"Sell hotel on {property.name} for ${property.house_price // 2}")
                         elif num_houses > 0:
-                            available_actions.append(f"Sell house on {property.name} for ${property.house_price / 2}")
-        
-        available_actions.append("End turn")
+                            available_actions.append(f"Sell house on {property.name} for ${property.house_price // 2}")
+
+        if player["money"] > 0:
+            available_actions.append("End turn")
         
         return available_actions
 
@@ -562,12 +631,12 @@ class MonopolyGame:
             property_name = match.group(1)
             self.unmortgage_property(player_id, property_name)
         elif action_type == "Build":
-            pattern = r'^Build (house|hotel) on Mortgage ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Build (house|hotel) on ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(2)
             self.build_house(player_id, property_name)
         elif action_type == "Sell":
-            pattern = r'^Sell (house|hotel) on Mortgage ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
+            pattern = r'^Sell (house|hotel) on ([A-Za-z]+(?:[.\s&]+[A-Za-z]+){0,4}) for \$(\d+(?:\.\d{2})?)$'
             match = re.match(pattern, action.strip())
             property_name = match.group(2)
             self.sell_house(player_id, property_name)
@@ -591,7 +660,7 @@ class MonopolyGame:
                         break
                 else:
                     dice_1, dice_2, double_rolled = self.baseline_strategy(player_id, self.board[10])
-                    if dice_1 == -1:
+                    if dice_1 == -1: #double roll to get out of jail failed, end turn
                         break
             else:
                 dice_1, dice_2, double_rolled = self.roll_dice()
@@ -625,40 +694,62 @@ class MonopolyGame:
             new_position = player["position"]
             space = self.board[new_position]
 
+            if player["money"] < 0:
+                if self.is_bankrupt(player_id):
+                    self.game_ended = True
+                    return
+                self.raise_money(player_id, space)
+                break
+
             if isinstance(space, PurchaseableProperty) and space.owned_by is not None and space.owned_by != player_id and not space.is_mortgaged:
                 self.pay_rent(player_id, space.owned_by, space, (dice_1 + dice_2), multiplier)
+                if player["money"] < 0:
+                    if self.is_bankrupt(player_id):
+                        self.game_ended = True
+                        return
+                    self.raise_money(player_id, space)
+                    break
+            
+            if player_id == 0:
+                self.request_action(player_id, space)
             else:
-                if player_id == 0:
-                    selected_index = -1 #Where the LLM will input actions later
-                    actions = self.get_valid_actions(player_id, space)
-                    
-                    while selected_index != len(actions) - 1:
-                        selected_index = -1
-                        if self.agent:
-                            while selected_index == -1:
-                                selected_index = self.request_llm_action(actions)
-                        else:
-                            selected_index = self.request_action(actions)
-                        print(selected_index)
-                        self.select_action(player_id, actions, selected_index, space)
-                        actions = self.get_valid_actions(player_id, space)
-                        self.print_player_state(player_id)
-                else:
-                    self.baseline_strategy(player_id, space) #Where the benchmark AI will select actions later 
+                self.baseline_strategy(player_id, space)
             
             self.print_player_state(player_id)
 
         self.next_turn()
 
     def play_game(self, max_rounds: int):
-        while self.num_rounds < max_rounds:
+        while self.num_rounds < max_rounds and not self.game_ended:
             self.play_turn()
+        
+        winner_id = max(range(len(self.players)), key=lambda i: self.players[i]["money"])
 
-        print(f"Game over after {self.num_rounds} rounds")
+        print(f"Game over after {self.num_rounds + 1} round(s)")
+        print(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}")
+
         for player in self.players:
             self.print_player_state(player["id"])
 
-    def request_action(self, actions: List[str]):
+    def request_action(self, player_id: int, space):
+        selected_index = -1
+        actions = self.get_valid_actions(player_id, space)
+                
+        while selected_index == -1 or actions[selected_index] != "End turn":
+            selected_index = -1
+            if self.agent:
+                while selected_index == -1:
+                    selected_index = self.request_llm_action(actions)
+            else:
+                selected_index = self.request_user_action(actions)
+            self.select_action(player_id, actions, selected_index, space)
+            actions = self.get_valid_actions(player_id, space)
+            if actions[selected_index] != "End turn":
+                self.print_player_state(player_id)
+
+    def request_user_action(self, actions: List[str]):
+        money = self.players[0]["money"]
+        print(f"Player Money: ${money}")
         print("\nAvailable Actions: ")
         for index, action in enumerate(actions):
             print(f"{index}: {action}")
@@ -744,7 +835,7 @@ class MonopolyGame:
                 properties.append(f"{property.name} ({property.color_set}, {property.number_of_houses} houses, {property.number_of_hotels} hotels)")
             else:
                 properties.append(f"{property.name}")
-        print(f"Player {player_id} has ${player['money']} and owns the following properties: {', '.join(properties)}")
+        print(f"Player {player_id} has a total net worth of ${self.get_net_worth(player_id)}, can sell/mortgage everything for ${self.get_sell_worth(player_id)}, has ${player['money']} in cash, and owns the following properties: {', '.join(properties)}")
 
 def main():
     # game = MonopolyGame(2, "llama3")

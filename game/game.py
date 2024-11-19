@@ -5,6 +5,7 @@ from collections import deque
 import re
 from collections import defaultdict
 from llama_agent import Llama3_Agent
+from llama2_agent import Llama2_Agent
 import json
 
 @dataclass
@@ -129,7 +130,9 @@ class MonopolyGame:
         return deque(random.sample(range(16), 16))
     
     def _initialize_llm(self, llm):
-        if llm == "llama3":
+        if llm == "llama2":
+            return Llama2_Agent()
+        elif llm == "llama3":
             return Llama3_Agent()
         return None
 
@@ -672,10 +675,12 @@ class MonopolyGame:
         return selected_index
     
     def create_llm_context(self, actions):
-        instruction = '''You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Provide your response only with valid JSON following this specified format.\n{"reasons": explain the reasoning behind your decision and your long term strategy in less than 50 words, "selection": write your selection number here}. '''
+        instruction = '''You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Your response must strictly be a single JSON object containing the keys "selection" and "reasons" as shown below. Do not include any additional text. Make sure the JSON format is exactly correct, or the action will not be valid.'''
+        # Provide your response only with valid JSON following this specified format.\n{"reasons": explain the reasoning behind your decision and your long term strategy in less than 50 words, "selection": write your selection number here}. '''
         #not including example since it was making the llm output 2 jsons?
-        example = '''This is one example output format. {"selection": 1, "reasons": "I choose to buy Indiana Avenue to complete the red color set, so I can start building houses for higher rent"}'''
-        strategy = "Here are some strategy considerations. Mortgaging a property prevents it from collecting rent. When you unmortgage a property, it deducts the listed amount from your balance. As such, you should mortgage properties very carefully."
+        correct_example = '''Correct example: {"selection": selection number, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}'''
+        incorrect_example = '''Incorrect format: Do not write any text outside the JSON, and make sure to have a comma delimiter to separate selection and reasons. Example of incorrect response: "I will choose to buy Indiana Avenue." {"selection": 1, "reasons": "I choose to buy Indiana Avenue."}'''
+        strategy = "Here are some strategy considerations. Start strong in the beginning of the game, don't save money and invest as early as possible. Statistically, red and orange are landed on the most so try buying those. Try to buy railroads, and avoid utilities because railroads offer a better ROI. Also, always prioritize buying three houses of the same property for a monopoly, and overall try to create a housing shortage by having more houses than your opponent. Finally, mortgaging a property prevents it from collecting rent. When you unmortgage a property, it deducts the listed amount from your balance along with 10 percent of the mortgage value. As such, you should only mortgage properties very carefully, and do not continue to mortgage and unmortgage properties repetitively."
         # useful variables
         # player = self.get_current_player()
         players_info = ""
@@ -704,14 +709,17 @@ class MonopolyGame:
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-        prompt = f"{instruction} \n {strategy} \n {players_info} {actions_desc}"
+        prompt = f"{instruction} \n {correct_example} \n {incorrect_example} \n {strategy} \n Game State: \n {players_info} {actions_desc}"
         return prompt
 
     def request_llm_action(self, actions):
         context = self.create_llm_context(actions)
-        print(context)
+        if not self.agent:
+            return -1
+        print("context: ", context)
         # print(context)
         res = self.agent.query(context)
+        # print("res: ", res)
         try:
             json_object = json.loads(res)
         except json.JSONDecodeError as e:
@@ -740,7 +748,7 @@ class MonopolyGame:
 
 def main():
     # game = MonopolyGame(2, "llama3")
-    game = MonopolyGame(2)
+    game = MonopolyGame(num_players=2, llm="llama2")
     game.play_game(100)
 
 if __name__=="__main__":

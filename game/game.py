@@ -685,7 +685,6 @@ class MonopolyGame:
             elif double_rolled > 0:
                 roll_again = True
                 total_doubles += 1
-
             self.move_player(player_id, dice_1, dice_2)
 
             new_position = player["position"]
@@ -757,7 +756,7 @@ class MonopolyGame:
         selected_index = -1
         actions = self.get_valid_actions(player_id, space)
                 
-        while selected_index == -1 or actions[selected_index] != "End turn":
+        while True:
             selected_index = -1
             if self.agent:
                 while selected_index == -1:
@@ -765,9 +764,13 @@ class MonopolyGame:
             else:
                 selected_index = self.request_user_action(actions)
             self.select_action(player_id, actions, selected_index, space)
-            actions = self.get_valid_actions(player_id, space)
+
             if actions[selected_index] != "End turn":
                 self.print_player_state(player_id)
+            else:
+                break
+            
+            actions = self.get_valid_actions(player_id, space)
 
     def request_user_action(self, actions: List[str]):
         money = self.players[0]["money"]
@@ -793,7 +796,7 @@ class MonopolyGame:
         #not including example since it was making the llm output 2 jsons?
         correct_example = '''Correct example: {"selection": <selection_number (int)>, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}'''
         incorrect_example = '''Incorrect format: Do not write any text outside the JSON, and make sure to have a comma delimiter to separate selection and reasons. Example of incorrect response: "I will choose to buy Indiana Avenue." {"selection": 1, "reasons": "I choose to buy Indiana Avenue."}'''
-        strategy = "Here are some strategy considerations. Start strong in the beginning of the game, don't save money and invest as early as possible. Statistically, red and orange are landed on the most so try buying those. Try to buy railroads, and avoid utilities because railroads offer a better ROI. Also, always prioritize buying three houses of the same property for a monopoly, and overall try to create a housing shortage by having more houses than your opponent. Finally, mortgaging a property prevents it from collecting rent. When you unmortgage a property, it deducts the listed amount from your balance along with 10 percent of the mortgage value. As such, you should only mortgage properties very carefully, and do not continue to mortgage and unmortgage properties repetitively."
+        strategy = "Here are some strategy considerations. Start strong in the beginning of the game, don't save money and invest as early as possible. Statistically, red and orange are landed on the most so try buying those. Try to buy railroads, and avoid utilities because railroads offer a better ROI. Also, always prioritize buying three houses of the same property for a monopoly, and overall try to create a housing shortage by having more houses than your opponent. However, to buy houses you need all of the unmortgaged properties from a color set, so you cannot accomplish this with mortgaging properties. Mortgaging a property also prevents it from collecting rent. As such, you should not mortgage unless absolutely necessary. When you unmortgage a property, you lose money due to having to pay 10 percent of the mortgage value in interest. If the only thing to do is mortgage properties, you should just end your turn."
         # useful variables
         # player = self.get_current_player()
         players_info = ""
@@ -802,6 +805,12 @@ class MonopolyGame:
             if player == self.get_current_player():
                 self_label = " (you)"
             current_pos = self.board[player['position']].name
+            if player['position'] == 10:
+                if player['in_jail']:
+                    jail_status = " (In Jail)"
+                else:
+                    jail_status = " (Not in Jail)"
+                current_pos += jail_status
             player_info = f"Player {player['id']}{self_label}:\n Position: {current_pos} \n Balance: {player['money']} \n"
             property_listings = "Properties Owned: \n"
             for property in player["properties"]:
@@ -864,14 +873,13 @@ class MonopolyGame:
 def main():
     llm = "qwen"
     num_players = 2
-    max_rounds = 500
+    max_rounds = 200
     total_games = 1
     player_wins = [0 for i in range(num_players)]
 
-    results_dir = os.path.join('game', 'game_results')
-    os.makedirs(results_dir, exist_ok=True)
-    results_file = os.path.join(results_dir, f'{llm}_results.txt') if llm else os.path.join(results_dir, 'manual_results.txt')
-    # results_file = os.path.join('game\\game_results', f'{llm}_results.txt') if llm else os.path.join('game\\game_results', f'manual_results.txt')
+    os.makedirs('game/game_results', exist_ok=True)
+    results_folder = os.path.join('game', 'game_results')
+    results_file = os.path.join(results_folder, f'{llm}_results.txt') if llm else os.path.join(results_folder, f'manual_results.txt')
 
     with open(results_file, 'w') as file:
         for i in range(1, total_games + 1): # LLM going first

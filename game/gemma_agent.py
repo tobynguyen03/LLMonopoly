@@ -3,7 +3,7 @@ import json
 
 class GEMMA_Agent():
     def __init__(self):
-        self.url = "http://localhost:11434/completions"
+        self.url = "http://localhost:11434/api/chat"
         self.model = "gemma2:9b"
 
     def query(self, prompt):

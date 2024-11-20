@@ -9,6 +9,7 @@ from llama_agent import Llama3_Agent
 from llama2_agent import Llama2_Agent
 from qwen_agent import Qwen_Agent
 from phi3_agent import Phi3_Agent
+from gemma_agent import GEMMA_Agent
 import json
 import os
 
@@ -145,6 +146,8 @@ class MonopolyGame:
             return Qwen_Agent()
         elif llm == "phi3":
             return Phi3_Agent()
+        elif llm == "gemma2":
+            return GEMMA_Agent()
         return None
     
     def get_net_worth(self, player_id: int):

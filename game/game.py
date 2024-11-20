@@ -660,7 +660,12 @@ class MonopolyGame:
             if self.players[player_id]["in_jail"]:
                 if player_id == self.llm_player_id:
                     actions = self.get_jail_actions(player_id)
-                    selected_index = self.request_action(actions, self.board[10])
+                    selected_index = -1
+                    if self.agent:
+                        while selected_index == -1:
+                            selected_index = self.request_llm_action(actions)
+                    else:
+                        selected_index = self.request_user_action(actions)
                     dice_1, dice_2, double_rolled = self.select_jail_action(player_id, actions, selected_index)
                     if dice_1 == -1: #double roll to get out of jail failed, end turn
                         break
@@ -861,7 +866,7 @@ def main():
     total_games = 1
     player_wins = [0 for i in range(num_players)]
 
-    results_file = os.path.join('game\\game_results', f'{llm}_results.txt')
+    results_file = os.path.join('game\\game_results', f'{llm}_results.txt') if llm else os.path.join('game\\game_results', f'manual_results.txt')
 
     with open(results_file, 'w') as file:
         for i in range(1, total_games + 1): # LLM going first

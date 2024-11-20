@@ -862,13 +862,16 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "phi3"
+    llm = "qwen"
     num_players = 2
     max_rounds = 500
     total_games = 1
     player_wins = [0 for i in range(num_players)]
 
-    results_file = os.path.join('game\\game_results', f'{llm}_results.txt') if llm else os.path.join('game\\game_results', f'manual_results.txt')
+    results_dir = os.path.join('game', 'game_results')
+    os.makedirs(results_dir, exist_ok=True)
+    results_file = os.path.join(results_dir, f'{llm}_results.txt') if llm else os.path.join(results_dir, 'manual_results.txt')
+    # results_file = os.path.join('game\\game_results', f'{llm}_results.txt') if llm else os.path.join('game\\game_results', f'manual_results.txt')
 
     with open(results_file, 'w') as file:
         for i in range(1, total_games + 1): # LLM going first

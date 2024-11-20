@@ -1,15 +1,14 @@
 import requests
 import json
 
-class Llama2_Agent():
+class Phi3_Agent():
     def __init__(self):
-        # Uses LLama2 via ollama, need to have ollama running for API to work
         self.url = "http://localhost:11434/api/chat"
-        self.name = "Llama-2"
-
+        self.name = "Phi-3"
+        
     def query(self, prompt):
         data = {
-            "model": "llama2",
+            "model": "phi3:medium",
             "messages": [
                 {
                 "role": "user",

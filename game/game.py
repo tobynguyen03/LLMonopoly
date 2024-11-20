@@ -2,12 +2,15 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional
 import random
 from collections import deque
+from copy import deepcopy
 import re
 from collections import defaultdict
 from llama_agent import Llama3_Agent
 from llama2_agent import Llama2_Agent
 from qwen_agent import Qwen_Agent
+from phi3_agent import Phi3_Agent
 import json
+import os
 
 @dataclass
 class Property:
@@ -57,53 +60,54 @@ PurchaseableProperty = Property | Railroad | Utility
 
 MONOPOLY_BOARD = [
     SpecialSpace("Go"),
-    Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33),
+    Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33, False, 0, 0, None),
     SpecialSpace("Community Chest"),
-    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33),
+    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, False, 0, 0, None),
     Tax("Income Tax", "tax", 200),
-    Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110),
-    Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55),
+    Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
+    Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, False, 0, 0, None),
     SpecialSpace("Chance"),
-    Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55),
-    Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66),
+    Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, False, 0, 0, None),
+    Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66, False, 0, 0, None),
     SpecialSpace("Jail/Just Visiting"),
-    Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77),
-    Utility("Electric Company", 150, 75, 83),
-    Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77),
-    Property("Virginia Avenue", 160, [12, 60, 180, 500, 700, 900], 100, "pink", 3, 80, 88),
-    Railroad("Pennsylvania Railroad", 200, [25, 50, 100, 200], 100, 110),
-    Property("St. James Place", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99),
+    Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, False, 0, 0, None),
+    Utility("Electric Company", 150, 75, 83, False, None),
+    Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, False, 0, 0, None),
+    Property("Virginia Avenue", 160, [12, 60, 180, 500, 700, 900], 100, "pink", 3, 80, 88, False, 0, 0, None),
+    Railroad("Pennsylvania Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
+    Property("St. James Place", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, False, 0, 0, None),
     SpecialSpace("Community Chest"),
-    Property("Tennessee Avenue", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99),
-    Property("New York Avenue", 200, [16, 80, 220, 600, 800, 1000], 100, "orange", 3, 100, 110),
+    Property("Tennessee Avenue", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, False, 0, 0, None),
+    Property("New York Avenue", 200, [16, 80, 220, 600, 800, 1000], 100, "orange", 3, 100, 110, False, 0, 0, None),
     SpecialSpace("Free Parking"),
-    Property("Kentucky Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121),
+    Property("Kentucky Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121, False, 0, 0, None),
     SpecialSpace("Chance"),
-    Property("Indiana Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121),
-    Property("Illinois Avenue", 240, [20, 100, 300, 750, 925, 1100], 150, "red", 3, 120, 132),
-    Railroad("B. & O. Railroad", 200, [25, 50, 100, 200], 100, 110),
-    Property("Atlantic Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143),
-    Property("Ventnor Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143),
-    Utility("Water Works", 150, 75, 83),
-    Property("Marvin Gardens", 280, [24, 120, 360, 850, 1025, 1200], 150, "yellow", 3, 140, 154),
+    Property("Indiana Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121, False, 0, 0, None),
+    Property("Illinois Avenue", 240, [20, 100, 300, 750, 925, 1100], 150, "red", 3, 120, 132, False, 0, 0, None),
+    Railroad("B. & O. Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
+    Property("Atlantic Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, False, 0, 0, None),
+    Property("Ventnor Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, False, 0, 0, None),
+    Utility("Water Works", 150, 75, 83, False, None),
+    Property("Marvin Gardens", 280, [24, 120, 360, 850, 1025, 1200], 150, "yellow", 3, 140, 154, False, 0, 0, None),
     SpecialSpace("Go To Jail"),
-    Property("Pacific Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165),
-    Property("North Carolina Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165),
+    Property("Pacific Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, False, 0, 0, None),
+    Property("North Carolina Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, False, 0, 0, None),
     SpecialSpace("Community Chest"),
-    Property("Pennsylvania Avenue", 320, [28, 150, 450, 1000, 1200, 1400], 200, "green", 3, 160, 176),
-    Railroad("Short Line", 200, [25, 50, 100, 200], 100, 110),
+    Property("Pennsylvania Avenue", 320, [28, 150, 450, 1000, 1200, 1400], 200, "green", 3, 160, 176, False, 0, 0, None),
+    Railroad("Short Line", 200, [25, 50, 100, 200], 100, 110, False, None),
     SpecialSpace("Chance"),
-    Property("Park Place", 350, [35, 175, 500, 1100, 1300, 1500], 200, "dark_blue", 2, 175, 193),
+    Property("Park Place", 350, [35, 175, 500, 1100, 1300, 1500], 200, "dark_blue", 2, 175, 193, False, 0, 0, None),
     Tax("Luxury Tax", "tax", 100),
-    Property("Boardwalk", 400, [50, 200, 600, 1400, 1700, 2000], 200, "dark_blue", 2, 200, 220),
+    Property("Boardwalk", 400, [50, 200, 600, 1400, 1700, 2000], 200, "dark_blue", 2, 200, 220, False, 0, 0, None),
 ]
 
 class MonopolyGame:
-    def __init__(self, num_players: int, llm = None):
+    def __init__(self, num_players: int, llm_player_id: int, llm = None):
         self.num_players = num_players
         self.game_ended = False
         self.board = self._initialize_board()
         self.players = self._initialize_players()
+        self.llm_player_id = llm_player_id
         self.current_player = 0
         self.num_rounds = 0
         self.chance_cards = self._initialize_cards()
@@ -127,7 +131,7 @@ class MonopolyGame:
         return players
 
     def _initialize_board(self):
-        return MONOPOLY_BOARD
+        return deepcopy(MONOPOLY_BOARD)
 
     def _initialize_cards(self):
         return deque(random.sample(range(16), 16))
@@ -139,6 +143,8 @@ class MonopolyGame:
             return Llama3_Agent()
         elif llm == "qwen":
             return Qwen_Agent()
+        elif llm == "phi3":
+            return Phi3_Agent()
         return None
     
     def get_net_worth(self, player_id: int):
@@ -388,18 +394,18 @@ class MonopolyGame:
         properties = player["properties"]
         for property in properties:
             if property.name == property_name:
-                if property.number_of_houses < 4:
-                    self.remaining_houses -= 1
-                    property.number_of_houses += 1
-                    player["money"] += property.house_price
-                    print(f"Player {player_id} sold a house on {property_name}")
-                else:
-                    self.remaining_houses += 4
-                    self.remaining_hotels -= 1
-                    property.number_of_houses = 0
-                    property.number_of_hotels = 1
+                if property.number_of_hotels == 1:
+                    self.remaining_houses -= 4
+                    self.remaining_hotels += 1
+                    property.number_of_houses = 4
+                    property.number_of_hotels = 0
                     player["money"] += property.house_price
                     print(f"Player {player_id} sold a hotel on {property_name}")
+                else:
+                    self.remaining_houses += 1
+                    property.number_of_houses -= 1
+                    player["money"] += property.house_price
+                    print(f"Player {player_id} sold a house on {property_name}")
 
     def get_jail_actions(self, player_id: int):
         player = self.players[player_id]
@@ -454,6 +460,7 @@ class MonopolyGame:
                 property.is_mortgaged = True
                 player["money"] += property.mortgage_value
                 print(f"Player {player_id} mortgaged {property.name} for ${property.mortgage_value}")
+                self.print_player_state(player_id)
 
     def unmortgage_property(self, player_id: int, property_name: str):
         player = self.players[player_id]
@@ -552,7 +559,7 @@ class MonopolyGame:
     def raise_money(self, player_id: int, space):
         player = self.players[player_id]
 
-        if player_id == 0:
+        if player_id == self.llm_player_id:
             self.request_action(player_id, space)
         else:
             while player["money"] < 0:
@@ -606,11 +613,10 @@ class MonopolyGame:
                         elif num_houses == 4 and self.remaining_hotels > 0:
                             available_actions.append(f"Build hotel on {property.name} for ${property.house_price}")
                 if num_houses == max_houses:
-                    if player["money"] >= property.house_price:
-                        if num_houses == 5:
-                            available_actions.append(f"Sell hotel on {property.name} for ${property.house_price // 2}")
-                        elif num_houses > 0:
-                            available_actions.append(f"Sell house on {property.name} for ${property.house_price // 2}")
+                    if num_houses == 5 and self.remaining_houses >= 4:
+                        available_actions.append(f"Sell hotel on {property.name} for ${property.house_price // 2}")
+                    elif num_houses > 0:
+                        available_actions.append(f"Sell house on {property.name} for ${property.house_price // 2}")
 
         if player["money"] > 0:
             available_actions.append("End turn")
@@ -655,11 +661,16 @@ class MonopolyGame:
         while roll_again:
             roll_again = False
             if self.players[player_id]["in_jail"]:
-                if player_id == 0:
+                if player_id == self.llm_player_id:
                     actions = self.get_jail_actions(player_id)
-                    selected_index = self.request_action(actions)
+                    selected_index = -1
+                    if self.agent:
+                        while selected_index == -1:
+                            selected_index = self.request_llm_action(actions)
+                    else:
+                        selected_index = self.request_user_action(actions)
                     dice_1, dice_2, double_rolled = self.select_jail_action(player_id, actions, selected_index)
-                    if dice_1 == -1:
+                    if dice_1 == -1: #double roll to get out of jail failed, end turn
                         break
                 else:
                     dice_1, dice_2, double_rolled = self.baseline_strategy(player_id, self.board[10])
@@ -713,7 +724,7 @@ class MonopolyGame:
                     self.raise_money(player_id, space)
                     break
             
-            if player_id == 0:
+            if player_id == self.llm_player_id:
                 self.request_action(player_id, space)
             else:
                 self.baseline_strategy(player_id, space)
@@ -722,17 +733,25 @@ class MonopolyGame:
 
         self.next_turn()
 
-    def play_game(self, max_rounds: int):
+    def play_game(self, max_rounds: int, game_num: int, file):
+        print(f"\nGame {game_num} Start")
         while self.num_rounds < max_rounds and not self.game_ended:
             self.play_turn()
         
         winner_id = max(range(len(self.players)), key=lambda i: self.players[i]["money"])
 
-        print(f"Game over after {self.num_rounds + 1} round(s)")
+        print(f"\nGame {game_num} Results")
+        print(f"Game over after {self.num_rounds} round(s)")
         print(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}")
 
+        file.write(f"\nGame {game_num} Results\n")
+        file.write(f"Game over after {self.num_rounds} round(s)\n")
+        file.write(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}\n")
+
         for player in self.players:
-            self.print_player_state(player["id"])
+            file.write(self.print_player_state(player["id"]) + "\n")
+        
+        return winner_id
 
     def request_action(self, player_id: int, space):
         selected_index = -1
@@ -772,7 +791,7 @@ class MonopolyGame:
         instruction = '''You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Your response must strictly be a single JSON object containing the keys "selection" and "reasons" as shown below. Do not include any additional text. Make sure the JSON format is exactly correct, or the action will not be valid.'''
         # Provide your response only with valid JSON following this specified format.\n{"reasons": explain the reasoning behind your decision and your long term strategy in less than 50 words, "selection": write your selection number here}. '''
         #not including example since it was making the llm output 2 jsons?
-        correct_example = '''Correct example: {"selection": selection number, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}'''
+        correct_example = '''Correct example: {"selection": <selection_number (int)>, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}'''
         incorrect_example = '''Incorrect format: Do not write any text outside the JSON, and make sure to have a comma delimiter to separate selection and reasons. Example of incorrect response: "I will choose to buy Indiana Avenue." {"selection": 1, "reasons": "I choose to buy Indiana Avenue."}'''
         strategy = "Here are some strategy considerations. Start strong in the beginning of the game, don't save money and invest as early as possible. Statistically, red and orange are landed on the most so try buying those. Try to buy railroads, and avoid utilities because railroads offer a better ROI. Also, always prioritize buying three houses of the same property for a monopoly, and overall try to create a housing shortage by having more houses than your opponent. Finally, mortgaging a property prevents it from collecting rent. When you unmortgage a property, it deducts the listed amount from your balance along with 10 percent of the mortgage value. As such, you should only mortgage properties very carefully, and do not continue to mortgage and unmortgage properties repetitively."
         # useful variables
@@ -837,14 +856,36 @@ class MonopolyGame:
                 properties.append(f"{property.name} ({property.color_set}, {property.number_of_houses} houses, {property.number_of_hotels} hotels)")
             else:
                 properties.append(f"{property.name}")
-        print(f"Player {player_id} has a total net worth of ${self.get_net_worth(player_id)}, can sell/mortgage everything for ${self.get_sell_worth(player_id)}, has ${player['money']} in cash, and owns the following properties: {', '.join(properties)}")
+        summary = f"Player {player_id} has a total net worth of ${self.get_net_worth(player_id)}, can sell/mortgage everything for ${self.get_sell_worth(player_id)}, has ${player['money']} in cash, and owns the following properties: {', '.join(properties)}"
+        print(summary)
+
+        return summary
 
 def main():
-    # game = MonopolyGame(2, "llama3")
-    game = MonopolyGame(num_players=2, llm="qwen")
-    # game.play_game(100)
-    # game = MonopolyGame(2)
-    game.play_game(100)
+    llm = "phi3"
+    num_players = 2
+    max_rounds = 500
+    total_games = 1
+    player_wins = [0 for i in range(num_players)]
+
+    results_file = os.path.join('game\\game_results', f'{llm}_results.txt') if llm else os.path.join('game\\game_results', f'manual_results.txt')
+
+    with open(results_file, 'w') as file:
+        for i in range(1, total_games + 1): # LLM going first
+            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+            winner_id = game.play_game(max_rounds, i, file)
+            player_wins[winner_id] += 1
+        
+        for i in range(len(player_wins)):
+            file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
+        
+        for i in range(1, total_games + 1):  # LLM going second
+            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+            winner_id = game.play_game(max_rounds, i, file)
+            player_wins[winner_id] += 1
+        
+        for i in range(len(player_wins)):
+            file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

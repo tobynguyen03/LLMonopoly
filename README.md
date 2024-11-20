@@ -92,7 +92,7 @@ Dowload ollama models:
 ```bash
 ollama pull llama3.2
 ollama pull phi3:medium
-ollama pull <YOUR_MODEL>
+ollama pull qwen2.5:7b
 ```
 
 ### Example

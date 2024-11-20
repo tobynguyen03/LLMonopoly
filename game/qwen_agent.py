@@ -22,4 +22,4 @@ class Qwen_Agent():
         
         response = requests.post(self.url, headers=headers, json=data)
         # return (response.json())
-        return(response.json()['message']['content'])
+        return (response.json()['message']['content'])

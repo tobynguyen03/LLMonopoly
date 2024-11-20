@@ -801,12 +801,9 @@ class MonopolyGame:
         return selected_index
     
     def create_llm_context(self, actions):
-        instruction = '''You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Your response must strictly be a single JSON object containing the keys "selection" and "reasons" as shown below. Do not include any additional text. Make sure the JSON format is exactly correct, or the action will not be valid.'''
-        # Provide your response only with valid JSON following this specified format.\n{"reasons": explain the reasoning behind your decision and your long term strategy in less than 50 words, "selection": write your selection number here}. '''
-        #not including example since it was making the llm output 2 jsons?
-        correct_example = '''Correct example: {"selection": <selection_number (int)>, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}'''
-        incorrect_example = '''Incorrect format: Do not write any text outside the JSON, and make sure to have a comma delimiter to separate selection and reasons. Example of incorrect response: "I will choose to buy Indiana Avenue." {"selection": 1, "reasons": "I choose to buy Indiana Avenue."}'''
-        strategy = "Here are some strategy considerations. Start strong in the beginning of the game, don't save money and invest as early as possible. Statistically, red and orange are landed on the most so try buying those. Try to buy railroads, and avoid utilities because railroads offer a better ROI. Also, always prioritize buying three houses of the same property for a monopoly, and overall try to create a housing shortage by having more houses than your opponent. However, to buy houses you need all of the unmortgaged properties from a color set, so you cannot accomplish this with mortgaging properties. Mortgaging a property also prevents it from collecting rent. As such, you should not mortgage unless absolutely necessary. When you unmortgage a property, you lose money due to having to pay 10 percent of the mortgage value in interest. If the only thing to do is mortgage properties, you should just end your turn."
+        context = ""
+        with open('context.txt', 'r') as file:
+            context = file.read()
         # useful variables
         # player = self.get_current_player()
         players_info = ""
@@ -841,7 +838,7 @@ class MonopolyGame:
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-        prompt = f"{instruction} \n {correct_example} \n {incorrect_example} \n {strategy} \n Game State: \n {players_info} {actions_desc}"
+        prompt = f"{context} \n Game State: \n {players_info} {actions_desc}"
         return prompt
 
     def request_llm_action(self, actions):
@@ -881,7 +878,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "qwen"
+    llm = "phi3"
     num_players = 2
     max_rounds = 200
     total_games = 1

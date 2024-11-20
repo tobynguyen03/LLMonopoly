@@ -6,6 +6,7 @@ import re
 from collections import defaultdict
 from llama_agent import Llama3_Agent
 from llama2_agent import Llama2_Agent
+from qwen_agent import Qwen_Agent
 import json
 
 @dataclass
@@ -136,6 +137,8 @@ class MonopolyGame:
             return Llama2_Agent()
         elif llm == "llama3":
             return Llama3_Agent()
+        elif llm == "qwen":
+            return Qwen_Agent()
         return None
     
     def get_net_worth(self, player_id: int):
@@ -810,7 +813,6 @@ class MonopolyGame:
         print("context: ", context)
         # print(context)
         res = self.agent.query(context)
-        # print("res: ", res)
         try:
             json_object = json.loads(res)
         except json.JSONDecodeError as e:
@@ -839,7 +841,9 @@ class MonopolyGame:
 
 def main():
     # game = MonopolyGame(2, "llama3")
-    game = MonopolyGame(num_players=2, llm="llama2")
+    game = MonopolyGame(num_players=2, llm="qwen")
+    # game.play_game(100)
+    # game = MonopolyGame(2)
     game.play_game(100)
 
 if __name__=="__main__":

@@ -761,9 +761,10 @@ class MonopolyGame:
             else:
                 selected_index = self.request_user_action(actions)
             self.select_action(player_id, actions, selected_index, space)
-            actions = self.get_valid_actions(player_id, space)
             if actions[selected_index] != "End turn":
                 self.print_player_state(player_id)
+            
+            actions = self.get_valid_actions(player_id, space)
 
     def request_user_action(self, actions: List[str]):
         money = self.players[0]["money"]
@@ -871,7 +872,9 @@ def main():
     total_games = 1
     player_wins = [0 for i in range(num_players)]
 
-    results_file = os.path.join('game/game_results', f'{llm}_results.txt') if llm else os.path.join('game/game_results', f'manual_results.txt')
+    os.makedirs('game/game_results', exist_ok=True)
+    results_folder = os.path.join('game', 'game_results')
+    results_file = os.path.join(results_folder, f'{llm}_results.txt') if llm else os.path.join(results_folder, f'manual_results.txt')
 
     with open(results_file, 'w') as file:
         for i in range(1, total_games + 1): # LLM going first

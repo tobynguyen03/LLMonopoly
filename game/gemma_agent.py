@@ -19,12 +19,23 @@ class GEMMA_Agent():
             'Content-Type': 'application/json'
         }
 
-        response = requests.post(self.url, headers=headers, json=data)
-        if response.status_code == 200:
-            res_json = response.json()
-            return res_json['choices'][0]['text']
-        else:
-            print(f"Error: {response.status_code}, {response.text}")
+        try:
+            response = requests.post(self.url, headers=headers, json=data)
+
+            if response.status_code == 200:
+                res_json = response.json()
+
+                if 'message' in res_json and 'content' in res_json['message']:
+                    return res_json['message']['content']
+                else:
+                    print("Error: Unexpected response format")
+                    print("Response JSON:", res_json)
+                    return ''
+            else:
+                print(f"Error: {response.status_code}, {response.text}")
+                return ''
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {e}")
             return ''
 
 if __name__ == "__main__":

@@ -516,6 +516,13 @@ class MonopolyGame:
         
         actions = self.get_valid_actions(player_id, space)
         
+        while any("Unmortgage" in action for action in actions):
+            for index, action in enumerate(actions):
+                if "Unmortgage" in action:
+                    self.select_action(player_id, actions, index, space)
+                    break
+            actions = self.get_valid_actions(player_id, space)
+
         while any("Build" in action for action in actions):
             for index, action in enumerate(actions):
                 if "Build" in action:
@@ -878,13 +885,12 @@ def main():
     num_players = 2
     max_rounds = 200
     total_games = 1
-    player_wins = [0 for i in range(num_players)]
 
-    os.makedirs('game/game_results', exist_ok=True)
-    results_folder = os.path.join('game', 'game_results')
-    results_file = os.path.join(results_folder, f'{llm}_results.txt') if llm else os.path.join(results_folder, f'manual_results.txt')
+    os.makedirs('game_results', exist_ok=True)
+    results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')
 
     with open(results_file, 'w') as file:
+        player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
             game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
             winner_id = game.play_game(max_rounds, i, file)
@@ -893,6 +899,7 @@ def main():
         for i in range(len(player_wins)):
             file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
         
+        player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1):  # LLM going second
             game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
             winner_id = game.play_game(max_rounds, i, file)

@@ -5,6 +5,8 @@ This project implements a Monopoly simulation designed for Large Language Models
 ## Setup
 
 ### Cloning the Repository
+Before logging into PACE, make sure to join Georgia Tech's VPN first
+
 Login to PACE:
 ```bash
 ssh <GT_USERNAME>@login-ice.pace.gatech.edu

@@ -8,7 +8,7 @@ class Phi3_Agent():
         
     def query(self, prompt):
         data = {
-            "model": "phi3:medium",
+            "model": "phi3:medium-128k",
             "messages": [
                 {
                 "role": "user",
@@ -23,4 +23,4 @@ class Phi3_Agent():
         }
         
         response = requests.post(self.url, headers=headers, json=data)
-        return response.json().get('message', {}).get('content', '')
+        return (response.json()['message']['content'])

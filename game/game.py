@@ -10,6 +10,7 @@ from llama2_agent import Llama2_Agent
 from phi3_agent import Phi3_Agent
 import json
 import os
+import builtins
 
 @dataclass
 class Property:
@@ -114,6 +115,17 @@ class MonopolyGame:
         self.remaining_houses = 32
         self.remaining_hotels = 12
         self.agent = self._initialize_llm(llm)
+        self.stats = {
+            player["id"]: {
+                "properties_bought": 0,
+                "mortgages": 0,
+                "unmortgages": 0,
+                "houses_built": 0,
+                "rent_paid": 0,
+                "rent_received": 0,
+                "actions_taken": 0,
+            } for player in self.players
+        }
 
     def _initialize_players(self):
         players = [
@@ -365,12 +377,14 @@ class MonopolyGame:
         self.players[player_id]["properties"].append(property)
         self.players[player_id]["money"] -= property.price
         property.owned_by = player_id
+        self.stats[player_id]["properties_bought"] += 1
 
         print(f"Player {player_id} bought {property.name} for ${property.price}")
     
     def build_house(self, player_id: int, property_name: str):
         player = self.players[player_id]
         properties = player["properties"]
+        self.stats[player_id]["houses_built"] += 1
         for property in properties:
             if property.name == property_name:
                 if property.number_of_houses < 4:
@@ -418,6 +432,7 @@ class MonopolyGame:
     def select_jail_action(self, player_id: int, actions: List[str], selected_index: int):
         player = self.players[player_id]
         action = actions[selected_index]
+        self.stats[player_id]["actions_taken"] += 1
         action_type = action.split(" ")[0]
         dice_1, dice_2, double_rolled = self.roll_dice()
 
@@ -452,6 +467,7 @@ class MonopolyGame:
     def mortgage_property(self, player_id: int, property_name: str):
         player = self.players[player_id]
         properties = player["properties"]
+        self.stats[player_id]["mortgages"] += 1
         for property in properties:
             if property.name == property_name:
                 property.is_mortgaged = True
@@ -462,6 +478,7 @@ class MonopolyGame:
     def unmortgage_property(self, player_id: int, property_name: str):
         player = self.players[player_id]
         properties = player["properties"]
+        self.stats[player_id]["unmortgages"] += 1
         for property in properties:
             if property.name == property_name:
                 property.is_mortgaged = False
@@ -501,6 +518,8 @@ class MonopolyGame:
 
         self.players[player_1_id]["money"] -= rent
         self.players[player_2_id]["money"] += rent     
+        self.stats[player_1_id]["rent_paid"] += rent
+        self.stats[player_2_id]["rent_received"] += rent
         print(f"Player {player_1_id} paid ${rent} in rent to player {player_2_id}")
     
     def baseline_strategy(self, player_id: int, space):
@@ -623,6 +642,7 @@ class MonopolyGame:
     def select_action(self, player_id: int, actions: List[str], selected_index: int, space):
         action = actions[selected_index]
         action_type = action.split(" ")[0]
+        self.stats[player_id]["actions_taken"] += 1
 
         if action_type == "Purchase":
             self.purchase_property(player_id, space)
@@ -743,7 +763,10 @@ class MonopolyGame:
         file.write(f"\nGame {game_num} Results\n")
         file.write(f"Game over after {self.num_rounds} round(s)\n")
         file.write(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}\n")
-
+        for player_id, player_stats in self.stats.items():
+            file.write(f"\nPlayer {player_id} Stats:\n")
+            for action, count in player_stats.items():
+                file.write(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
         for player in self.players:
             file.write(self.print_player_state(player["id"]) + "\n")
         
@@ -869,9 +892,9 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "phi3"
+    llm = "llama3"
     num_players = 2
-    max_rounds = 200
+    max_rounds = 5
     total_games = 1
     player_wins = [0 for i in range(num_players)]
 
@@ -880,6 +903,7 @@ def main():
     results_file = os.path.join(results_folder, f'{llm}_results.txt') if llm else os.path.join(results_folder, f'manual_results.txt')
 
     with open(results_file, 'w') as file:
+        #builtins.print = lambda *args, **kwargs: None
         for i in range(1, total_games + 1): # LLM going first
             game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
             winner_id = game.play_game(max_rounds, i, file)
@@ -895,6 +919,7 @@ def main():
         
         for i in range(len(player_wins)):
             file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
+        #builtins.print = print
 
 if __name__=="__main__":
     main()

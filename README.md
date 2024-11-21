@@ -5,6 +5,8 @@ This project implements a Monopoly simulation designed for Large Language Models
 ## Setup
 
 ### Cloning the Repository
+Before logging into PACE, make sure to join Georgia Tech's VPN first
+
 Login to PACE:
 ```bash
 ssh <GT_USERNAME>@login-ice.pace.gatech.edu
@@ -90,7 +92,7 @@ Dowload ollama models:
 ```bash
 ollama pull llama3.2
 ollama pull phi3:medium
-ollama pull <YOUR_MODEL>
+ollama pull qwen2.5:7b
 ```
 
 ### Example

@@ -7,7 +7,9 @@ import re
 from collections import defaultdict
 from llama_agent import Llama3_Agent
 from llama2_agent import Llama2_Agent
+from qwen_agent import Qwen_Agent
 from phi3_agent import Phi3_Agent
+from gemma_agent import GEMMA_Agent
 import json
 import os
 import builtins
@@ -152,8 +154,12 @@ class MonopolyGame:
             return Llama2_Agent()
         elif llm == "llama3":
             return Llama3_Agent()
+        elif llm == "qwen":
+            return Qwen_Agent()
         elif llm == "phi3":
             return Phi3_Agent()
+        elif llm == "gemma2":
+            return GEMMA_Agent()
         return None
     
     def get_net_worth(self, player_id: int):
@@ -529,6 +535,13 @@ class MonopolyGame:
         
         actions = self.get_valid_actions(player_id, space)
         
+        while any("Unmortgage" in action for action in actions):
+            for index, action in enumerate(actions):
+                if "Unmortgage" in action:
+                    self.select_action(player_id, actions, index, space)
+                    break
+            actions = self.get_valid_actions(player_id, space)
+
         while any("Build" in action for action in actions):
             for index, action in enumerate(actions):
                 if "Build" in action:
@@ -811,12 +824,9 @@ class MonopolyGame:
         return selected_index
     
     def create_llm_context(self, actions):
-        instruction = '''You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Your response must strictly be a single JSON object containing the keys "selection" and "reasons" as shown below. Do not include any additional text. Make sure the JSON format is exactly correct, or the action will not be valid.'''
-        # Provide your response only with valid JSON following this specified format.\n{"reasons": explain the reasoning behind your decision and your long term strategy in less than 50 words, "selection": write your selection number here}. '''
-        #not including example since it was making the llm output 2 jsons?
-        correct_example = '''Correct example: {"selection": <selection_number (int)>, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}'''
-        incorrect_example = '''Incorrect format: Do not write any text outside the JSON, and make sure to have a comma delimiter to separate selection and reasons. Example of incorrect response: "I will choose to buy Indiana Avenue." {"selection": 1, "reasons": "I choose to buy Indiana Avenue."}'''
-        strategy = "Here are some strategy considerations. Start strong in the beginning of the game, don't save money and invest as early as possible. Statistically, red and orange are landed on the most so try buying those. Try to buy railroads, and avoid utilities because railroads offer a better ROI. Also, always prioritize buying three houses of the same property for a monopoly, and overall try to create a housing shortage by having more houses than your opponent. However, to buy houses you need all of the unmortgaged properties from a color set, so you cannot accomplish this with mortgaging properties. Mortgaging a property also prevents it from collecting rent. As such, you should not mortgage unless absolutely necessary. When you unmortgage a property, you lose money due to having to pay 10 percent of the mortgage value in interest. If the only thing to do is mortgage properties, you should just end your turn."
+        context = ""
+        with open('context.txt', 'r') as file:
+            context = file.read()
         # useful variables
         # player = self.get_current_player()
         players_info = ""
@@ -851,7 +861,7 @@ class MonopolyGame:
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-        prompt = f"{instruction} \n {correct_example} \n {incorrect_example} \n {strategy} \n Game State: \n {players_info} {actions_desc}"
+        prompt = f"{context} \n Game State: \n {players_info} {actions_desc}"
         return prompt
 
     def request_llm_action(self, actions):
@@ -861,7 +871,6 @@ class MonopolyGame:
         print("context: ", context)
         # print(context)
         res = self.agent.query(context)
-        # print("res: ", res)
         try:
             json_object = json.loads(res)
         except json.JSONDecodeError as e:
@@ -896,14 +905,13 @@ def main():
     num_players = 2
     max_rounds = 5
     total_games = 1
-    player_wins = [0 for i in range(num_players)]
 
-    os.makedirs('game/game_results', exist_ok=True)
-    results_folder = os.path.join('game', 'game_results')
-    results_file = os.path.join(results_folder, f'{llm}_results.txt') if llm else os.path.join(results_folder, f'manual_results.txt')
+    os.makedirs('game_results', exist_ok=True)
+    results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')
 
     with open(results_file, 'w') as file:
         #builtins.print = lambda *args, **kwargs: None
+        player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
             game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
             winner_id = game.play_game(max_rounds, i, file)
@@ -912,6 +920,7 @@ def main():
         for i in range(len(player_wins)):
             file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
         
+        player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1):  # LLM going second
             game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
             winner_id = game.play_game(max_rounds, i, file)

@@ -8,7 +8,7 @@ class Llama3_Agent():
 
     def query(self, prompt):
         data = {
-            "model": "llama3.2",
+            "model": "llama3",
             "prompt": prompt,
             "stream": False
         }

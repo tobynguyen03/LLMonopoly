@@ -901,9 +901,9 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "llama3"
+    llm = "qwen"
     num_players = 2
-    max_rounds = 5
+    max_rounds = 100
     total_games = 1
 
     os.makedirs('game_results', exist_ok=True)

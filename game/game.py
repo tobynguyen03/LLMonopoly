@@ -961,7 +961,7 @@ def main():
     llm = "ensemble"
     num_players = 2
     max_rounds = 100
-    total_games = 1
+    total_games = 50
 
     os.makedirs('game_results', exist_ok=True)
     results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')

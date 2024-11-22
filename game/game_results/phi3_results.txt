@@ -1,52 +1,24 @@
 
 Game 1 Results
-Game over after 62 round(s)
-Player 1 won with a net worth of $4613
+Game over after 83 round(s)
+Player 0 won with a net worth of $5560
 
 Player 0 Stats:
-  Properties bought: 13
-  Mortgages: 21
-  Unmortgages: 21
-  Houses built: 7
-  Rent paid: 2763
-  Rent received: 415
-  Actions taken: 135
+  Properties bought: 19
+  Mortgages: 68
+  Unmortgages: 68
+  Houses built: 19
+  Rent paid: 285
+  Rent received: 2391
+  Actions taken: 279
 
 Player 1 Stats:
-  Properties bought: 10
-  Mortgages: 0
-  Unmortgages: 0
-  Houses built: 11
-  Rent paid: 415
-  Rent received: 2763
-  Actions taken: 12
-Player 0 has a total net worth of $1202, can sell/mortgage everything for $1300, has $-1398 in cash, and owns the following properties: Baltic Avenue (brown, 0 houses, 0 hotels), Oriental Avenue (light_blue, 1 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Short Line, Electric Company, Pennsylvania Avenue (green, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 2 houses, 0 hotels), Vermont Avenue (light_blue, 2 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels)
-Player 1 has a total net worth of $4613, can sell/mortgage everything for $1300, has $2013 in cash, and owns the following properties: Pennsylvania Railroad, Illinois Avenue (red, 0 houses, 0 hotels), Water Works, Reading Railroad, B. & O. Railroad, Boardwalk (dark_blue, 0 houses, 1 hotels), States Avenue (pink, 0 houses, 0 hotels), Park Place (dark_blue, 0 houses, 1 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels)
-Player 0 won 0/1 games 
-Player 1 won 1/1 games 
-
-Game 1 Results
-Game over after 65 round(s)
-Player 1 won with a net worth of $4139
-
-Player 0 Stats:
-  Properties bought: 12
-  Mortgages: 25
-  Unmortgages: 17
+  Properties bought: 8
+  Mortgages: 20
+  Unmortgages: 14
   Houses built: 0
-  Rent paid: 3285
-  Rent received: 321
-  Actions taken: 42
-
-Player 1 Stats:
-  Properties bought: 12
-  Mortgages: 34
-  Unmortgages: 34
-  Houses built: 27
-  Rent paid: 321
-  Rent received: 3285
-  Actions taken: 196
-Player 0 has a total net worth of $216, can sell/mortgage everything for $225, has $-1075 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), Electric Company, New York Avenue (mortgaged), Ventnor Avenue (mortgaged), Reading Railroad (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), Water Works (mortgaged), Pennsylvania Avenue (mortgaged), Tennessee Avenue (mortgaged), North Carolina Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 0 hotels), Atlantic Avenue (mortgaged)
-Player 1 has a total net worth of $4139, can sell/mortgage everything for $1385, has $1369 in cash, and owns the following properties: St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, Marvin Gardens (yellow, 0 houses, 0 hotels), Short Line, Baltic Avenue (brown, 0 houses, 0 hotels), Pennsylvania Railroad, Illinois Avenue (red, 0 houses, 1 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 1 hotels), Kentucky Avenue (red, 0 houses, 1 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels)
-Player 0 won 0/1 games 
-Player 1 won 1/1 games 
+  Rent paid: 2391
+  Rent received: 285
+  Actions taken: 34
+Player 0 has a total net worth of $5560, can sell/mortgage everything for $2315, has $930 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 0 hotels), B. & O. Railroad, Mediterranean Avenue (brown, 0 houses, 1 hotels), Water Works, Baltic Avenue (brown, 0 houses, 1 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Pennsylvania Railroad, North Carolina Avenue (green, 0 houses, 0 hotels), Park Place (dark_blue, 2 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Electric Company, Tennessee Avenue (orange, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Short Line, Boardwalk (dark_blue, 2 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels)
+Player 1 has a total net worth of $563, can sell/mortgage everything for $140, has $-365 in cash, and owns the following properties: Reading Railroad (mortgaged), States Avenue (mortgaged), Kentucky Avenue (mortgaged), Atlantic Avenue (mortgaged), Pacific Avenue (mortgaged), Pennsylvania Avenue (mortgaged), Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels)

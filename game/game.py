@@ -874,7 +874,8 @@ class MonopolyGame:
                     property_name = f"{property.name}"
                     if property.is_mortgaged:
                         property_name += " (mortgaged)"
-                    property_name += f": ({property.number_of_houses} houses, {property.number_of_hotels} hotels)"
+                    else:
+                        property_name += f": ({property.number_of_houses} houses, {property.number_of_hotels} hotels)"
                     properties.append(property_name)
                     color_owned += 1
                     color_sets[color] = (properties, color_owned, total_in_set)
@@ -888,8 +889,8 @@ class MonopolyGame:
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-        prompt = f"{context} \nProperties Owned: \n{players_info}{actions_desc}"
-        game_state = f"\nGame State: \n{players_info}{actions_desc}"
+        prompt = context.replace("<INPUT>", f"\n{players_info}{actions_desc}")
+        game_state = f"\n{players_info}{actions_desc}"
         return prompt, game_state
 
     def request_llm_action(self, actions):
@@ -902,9 +903,12 @@ class MonopolyGame:
         try:
             json_object = json.loads(res)
         except json.JSONDecodeError as e:
+            print(res)
             print(f"Invalid JSON: {e}")
             return -1
+        print("LLM Response")
         print(json_object)
+        print("-------------------------")
         if not "selection" in json_object or not isinstance(json_object["selection"], int):
             return -1
         selected_index = int(json_object["selection"])
@@ -924,15 +928,15 @@ class MonopolyGame:
             else:
                 properties.append(f"{property.name}")
         summary = f"Player {player_id} has a total net worth of ${self.get_net_worth(player_id)}, can sell/mortgage everything for ${self.get_sell_worth(player_id)}, has ${player['money']} in cash, and owns the following properties: {', '.join(properties)}"
-        print(summary)
+        #print(summary)
 
         return summary
 
 def main():
-    llm = "qwen"
+    llm = "phi3"
     num_players = 2
     max_rounds = 100
-    total_games = 50
+    total_games = 1
 
     os.makedirs('game_results', exist_ok=True)
     results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')
@@ -946,7 +950,10 @@ def main():
             player_wins[winner_id] += 1
         
         for i in range(len(player_wins)):
-            file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
+            if i == 0:
+                file.write(f"LLM won {player_wins[i]}/{total_games} games \n")
+            else:
+                file.write(f"Bot won {player_wins[i]}/{total_games} games \n")
         
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1):  # LLM going second
@@ -955,7 +962,10 @@ def main():
             player_wins[winner_id] += 1
         
         for i in range(len(player_wins)):
-            file.write(f"Player {i} won {player_wins[i]}/{total_games} games \n")
+            if i == 1:
+                file.write(f"LLM won {player_wins[i]}/{total_games} games \n")
+            else:
+                file.write(f"Bot won {player_wins[i]}/{total_games} games \n")
         #builtins.print = print
 
 if __name__=="__main__":

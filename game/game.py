@@ -118,6 +118,7 @@ class MonopolyGame:
         self.remaining_hotels = 12
         self.llm = llm
         self.agent = self._initialize_llm(llm)
+        self.llm_memory = deque(maxlen=3)
         self.stats = {
             player["id"]: {
                 "properties_bought": 0,
@@ -658,6 +659,14 @@ class MonopolyGame:
         action_type = action.split(" ")[0]
         self.stats[player_id]["actions_taken"] += 1
 
+        if player_id == self.llm_player_id:
+            prev_net_worth = self.get_net_worth(player_id)
+            self.llm_memory.append({
+                "action": action,
+                "prev_net_worth": prev_net_worth,
+                "new_net_worth": None,
+            })
+
         if action_type == "Purchase":
             self.purchase_property(player_id, space)
         elif action_type == "Mortgage":
@@ -682,6 +691,9 @@ class MonopolyGame:
             self.sell_house(player_id, property_name)
         else:
             return
+
+        if player_id == self.llm_player_id:
+            self.llm_memory[-1]["new_net_worth"] = self.get_net_worth(player_id)
 
     def play_turn(self):
         player = self.get_current_player()
@@ -828,6 +840,13 @@ class MonopolyGame:
         context = ""
         with open(f'{self.llm}_context.txt', 'r') as file:
             context = file.read()
+
+        memory_summary = "Past 3 Actions:\n"
+        for memory in self.llm_memory:
+            new_net_worth = memory["new_net_worth"] if memory["new_net_worth"] is not None else memory["prev_net_worth"]
+            effect = new_net_worth - memory["prev_net_worth"]
+            memory_summary += f"Action: {memory['action']} | Effect on net worth: {effect:+} (${memory['new_net_worth']})\n"
+
         # useful variables
         # player = self.get_current_player()
         players_info = ""
@@ -889,14 +908,21 @@ class MonopolyGame:
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
+<<<<<<< HEAD
         prompt = context.replace("<INPUT>", f"\n{players_info}{actions_desc}")
         game_state = f"\n{players_info}{actions_desc}"
+=======
+        prompt = f"{context} \n{memory_summary} \nProperties Owned: \n{players_info}{actions_desc}"
+        game_state = f"\nGame State: \n{players_info}{actions_desc}"
+>>>>>>> 4f376ee (added memory component and flush line to update result file every game)
         return prompt, game_state
 
     def request_llm_action(self, actions):
         context, game_state = self.create_llm_context(actions)
         if not self.agent:
             return -1
+        print("LLM Context:")  # Debugging
+        print(context)  # Debugging
         # print(context)
         print('Game State: ' + game_state)
         res = self.agent.query(context)
@@ -936,7 +962,11 @@ def main():
     llm = "phi3"
     num_players = 2
     max_rounds = 100
+<<<<<<< HEAD
     total_games = 1
+=======
+    total_games = 5
+>>>>>>> 4f376ee (added memory component and flush line to update result file every game)
 
     os.makedirs('game_results', exist_ok=True)
     results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')
@@ -948,6 +978,7 @@ def main():
             game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
             winner_id = game.play_game(max_rounds, i, file)
             player_wins[winner_id] += 1
+            file.flush()
         
         for i in range(len(player_wins)):
             if i == 0:

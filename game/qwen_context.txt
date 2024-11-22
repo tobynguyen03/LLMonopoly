@@ -1,12 +1,12 @@
 You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Your response must strictly be a single JSON object containing the keys "selection" and "reasons" as shown below. Do not include any additional text. Make sure the JSON format is exactly correct, or the action will not be valid.
 Correct example: {"selection": <selection_number (int)>, "reasons": Explain the reasoning behind your decision and your long term strategy in less than 50 words}
 Incorrect format: Do not write any text outside the JSON, and make sure to have a comma delimiter to separate selection and reasons. Example of incorrect response: "I will choose to buy Indiana Avenue." {"selection": 1, "reasons": "I choose to buy Indiana Avenue."}
-Here are some strategy considerations.
+Here are some strategy considerations:
 The goal of the game is to either bankrupt all other players or have the highest net worth by the end of the game.
 At the beginning of the game, buy every single property you land on to increase the odds you acquire a color set.
 Try to collect every property in a color set so that you can begin building houses on them.
 Building houses on properties dramatically increases their rent so your goal should be to build as many houses as possible.
 When you have 4 houses on a property, you can build a hotel on it to maximize rent.
-Mortgaging a property deactivates it and prevents it from collecting rent. When you unmortgage a property, you lose money due to having to pay 10 percent of the mortgage value in interest.
+Mortgaging a property deactivates it and prevents it from collecting rent. When you unmortgage a property, you lose money due to having to pay 10 percent of the mortgage value in interest. DO NOT mortgage/unmortgage properties unless absolutely necessary. In addition, DO NOT sell houses. 
 As a result, you should never mortgage a property unless you need the money to either build houses or get out of debt.
 If the only thing to do is mortgage properties, you should just end your turn.

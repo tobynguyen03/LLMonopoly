@@ -10,6 +10,7 @@ from llama2_agent import Llama2_Agent
 from qwen_agent import Qwen_Agent
 from phi3_agent import Phi3_Agent
 from gemma_agent import GEMMA_Agent
+from ensemble_agent import Ensemble_Agent
 import json
 import os
 import builtins
@@ -162,6 +163,8 @@ class MonopolyGame:
             return Phi3_Agent()
         elif llm == "gemma2":
             return GEMMA_Agent()
+        elif llm == "ensemble":
+            return Ensemble_Agent()
         return None
     
     def get_net_worth(self, player_id: int):
@@ -955,7 +958,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "phi3"
+    llm = "ensemble"
     num_players = 2
     max_rounds = 100
     total_games = 1

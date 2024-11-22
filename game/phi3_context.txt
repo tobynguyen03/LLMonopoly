@@ -1,0 +1,55 @@
+You are a professional monopoly player. Analyze the current game state below. Also discuss your plans for future turns and your strategy. Think about the pros and cons of each move, and use them to choose the most optimal action. Your response must strictly be a single JSON object containing the keys "selection" and "reasons" as shown below. Do not include any additional text. Make sure the JSON format is exactly correct, or the action will not be valid.
+Here are some strategy considerations.
+The goal of the game is to either bankrupt all other players or have the highest net worth by the end of the game.
+Buy every single property you land on to increase odds of acquiring a full color set.
+After acquiring all the properties in a color set, you should build as many houses and hotels as possible to maximize rent other players will pay.
+Mortgaging a property deactivates it and prevents it from collecting rent. When you unmortgage a property, you lose money due to having to pay 10 percent of the mortgage value in interest.
+As a result, you should never mortgage a property unless you need the money to either build houses or get out of debt.
+If the only thing to do is mortgage properties, you should end your turn.
+
+----- Example start -----
+
+Player 0 (you):
+Position: Atlantic Avenue 
+Balance: 186 
+Properties Owned: 
+light_blue (1/3 owned): (Vermont Avenue: (0 houses, 0 hotels)) 
+orange (2/3 owned): (St. James Place: (0 houses, 0 hotels), New York Avenue (mortgaged): (0 houses, 0 hotels)) 
+yellow (1/3 owned): (Atlantic Avenue: (0 houses, 0 hotels)) 
+green (1/3 owned): (Pennsylvania Avenue (mortgaged): (0 houses, 0 hotels)) 
+pink (3/3 owned): (States Avenue: (0 houses, 0 hotels), St. Charles Place: (0 houses, 0 hotels), Virginia Avenue (0 houses, 0 hotels)) 
+brown (1/2 owned): (Baltic Avenue: (0 houses, 0 hotels)) 
+railroad (1/4 owned): (Pennsylvania Railroad) 
+
+Player 1:
+Position: States Avenue 
+Balance: 696 
+Properties Owned: 
+light_blue (1/3 owned): (Oriental Avenue: (0 houses, 0 hotels)) 
+utilities (1/2 owned): (Electric Company) 
+red (1/3 owned): (Kentucky Avenue: (0 houses, 0 hotels)) 
+yellow (1/3 owned): (Ventnor Avenue: (0 houses, 0 hotels)) 
+green (1/3 owned): (Pacific Avenue: (0 houses, 0 hotels)) 
+orange (1/3 owned): (Tennessee Avenue: (0 houses, 0 hotels)) 
+railroad (1/4 owned): (B. & O. Railroad) 
+
+Available Actions: 
+0: Mortgage Vermont Avenue for $50
+1: Mortgage St. James Place for $90
+2: Mortgage Atlantic Avenue for $130
+3: Unmortgage Pennsylvania Avenue for $176
+4: Mortgage States Avenue for $70
+5: Mortgage Baltic Avenue for $30
+6: Mortgage St. Charles Place for $70
+7: Mortgage Pennsylvania Railroad for $100
+8: Unmortgage New York Avenue for $110
+9: Build house on States Avenue for $100
+10: Build house on Virginia Avenue for $100
+11: Build house on St. Charles Place Avenue for $100
+12: End turn
+
+Output: {"selection": 9, "reasons": "Building a house on States Avenue will increase the rent and make it more likely I will bankrupt someone if they land on it."}
+
+----- Example ends -----
+
+Here is the current game state:

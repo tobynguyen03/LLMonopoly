@@ -3,18 +3,13 @@ import json
 
 class Phi3_Agent():
     def __init__(self):
-        self.url = "http://localhost:11434/api/chat"
+        self.url = "http://localhost:11434/api/generate"
         self.name = "Phi-3"
         
     def query(self, prompt):
         data = {
             "model": "phi3:medium-128k",
-            "messages": [
-                {
-                "role": "user",
-                "content": prompt
-                }
-            ],
+            "prompt": prompt,
             "stream": False
         }
         
@@ -23,4 +18,4 @@ class Phi3_Agent():
         }
         
         response = requests.post(self.url, headers=headers, json=data)
-        return (response.json()['message']['content'])
+        return (response.json()['response'])

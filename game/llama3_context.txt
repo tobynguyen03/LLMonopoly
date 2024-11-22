@@ -1,0 +1,5 @@
+[INST] <<SYS>> You are a Monopoly player and the goal is to be the richest player by the end of the game. Select the best action out of the available actions listed by selecting the number of the action. You should always purchase properties, purchase houses, and never mortgage or sell houses unless absolutely necessary. Mortgaging a property will ALWAYS lead to a loss in your net worth, so DO NOT DO IT unless you need to raise money for houses or get out of debt. If there are no properties or houses to purchase, end your turn. Your output must be a json in the format: {"selection": 1, "reasons": "<REASON>"}. No additional text or output is allowed. <<SYS>>
+
+Here is the current game state: <INPUT>
+
+[/INST] Output:

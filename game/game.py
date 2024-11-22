@@ -418,12 +418,12 @@ class MonopolyGame:
                     self.remaining_hotels += 1
                     property.number_of_houses = 4
                     property.number_of_hotels = 0
-                    player["money"] += property.house_price
+                    player["money"] += (property.house_price // 2)
                     print(f"Player {player_id} sold a hotel on {property_name}")
                 else:
                     self.remaining_houses += 1
                     property.number_of_houses -= 1
-                    player["money"] += property.house_price
+                    player["money"] += (property.house_price // 2)
                     print(f"Player {player_id} sold a house on {property_name}")
 
     def get_jail_actions(self, player_id: int):
@@ -908,13 +908,9 @@ class MonopolyGame:
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-<<<<<<< HEAD
         prompt = context.replace("<INPUT>", f"\n{players_info}{actions_desc}")
+        # prompt = f"{context} \n{memory_summary} \nProperties Owned: \n{players_info}{actions_desc}"
         game_state = f"\n{players_info}{actions_desc}"
-=======
-        prompt = f"{context} \n{memory_summary} \nProperties Owned: \n{players_info}{actions_desc}"
-        game_state = f"\nGame State: \n{players_info}{actions_desc}"
->>>>>>> 4f376ee (added memory component and flush line to update result file every game)
         return prompt, game_state
 
     def request_llm_action(self, actions):
@@ -962,11 +958,7 @@ def main():
     llm = "phi3"
     num_players = 2
     max_rounds = 100
-<<<<<<< HEAD
     total_games = 1
-=======
-    total_games = 5
->>>>>>> 4f376ee (added memory component and flush line to update result file every game)
 
     os.makedirs('game_results', exist_ok=True)
     results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')

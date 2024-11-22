@@ -5,6 +5,8 @@ from collections import deque
 import re
 from collections import defaultdict
 from llama_agent import Llama3_Agent
+from mistral_agent import MistralAgent
+import requests
 import json
 
 @dataclass
@@ -97,7 +99,7 @@ MONOPOLY_BOARD = [
 ]
 
 class MonopolyGame:
-    def __init__(self, num_players: int, llm = None):
+    def __init__(self, num_players: int, llm=None):
         self.num_players = num_players
         self.board = self._initialize_board()
         self.players = self._initialize_players()
@@ -108,6 +110,9 @@ class MonopolyGame:
         self.remaining_houses = 32
         self.remaining_hotels = 12 
         self.agent = self._initialize_llm(llm)
+
+        # data log for RL
+        self.game_data = []
 
     def _initialize_players(self):
         return [
@@ -131,6 +136,9 @@ class MonopolyGame:
     def _initialize_llm(self, llm):
         if llm == "llama3":
             return Llama3_Agent()
+        if llm == "Mistral":
+            return MistralAgent()
+        print("player: ", llm)
         return None
 
     def roll_dice(self):
@@ -632,9 +640,11 @@ class MonopolyGame:
                     while selected_index != len(actions) - 1:
                         selected_index = -1
                         if self.agent:
+                            print("true")
                             while selected_index == -1:
                                 selected_index = self.request_llm_action(actions)
                         else:
+                            print("false")
                             selected_index = self.request_action(actions)
                         print(selected_index)
                         self.select_action(player_id, actions, selected_index, space)
@@ -645,6 +655,18 @@ class MonopolyGame:
             
             self.print_player_state(player_id)
 
+        state = {
+            "player_position": player["position"],
+            "player_money": player["money"],
+            "properties_owned": [p.name for p in player["properties"]],
+            "in_jail": player["in_jail"],
+            "remaining_houses": self.remaining_houses,
+            "remaining_hotels": self.remaining_hotels
+        }
+        selected_action = "End turn"
+        turn_data = {"state": state, "action": selected_action}
+        self.game_data.append(turn_data)
+        
         self.next_turn()
 
     def play_game(self, max_rounds: int):
@@ -654,6 +676,11 @@ class MonopolyGame:
         print(f"Game over after {self.num_rounds} rounds")
         for player in self.players:
             self.print_player_state(player["id"])
+        
+        # when the game is over save the data for learning
+        with open('monopoly_data.json', 'w') as f:
+            json.dump(self.game_data, f, indent=4)
+        print("Game data saved to monopoly_data.json")
 
     def request_action(self, actions: List[str]):
         print("\nAvailable Actions: ")
@@ -709,11 +736,17 @@ class MonopolyGame:
 
     def request_llm_action(self, actions):
         context = self.create_llm_context(actions)
+        
         print(context)
-        # print(context)
         res = self.agent.query(context)
         try:
             json_object = json.loads(res)
+            if "selection" in json_object:
+                selected_index = int(json_object["selection"])
+            if 0 <= selected_index < len(actions):
+                return selected_index
+            print("Invalid selection received")
+            return -1
         except json.JSONDecodeError as e:
             print(f"Invalid JSON: {e}")
             return -1
@@ -740,8 +773,8 @@ class MonopolyGame:
 
 def main():
     # game = MonopolyGame(2, "llama3")
-    game = MonopolyGame(2)
-    game.play_game(100)
+    game = MonopolyGame(num_players=2, llm="Mistral")
+    game.play_game(max_rounds=1)
 
 if __name__=="__main__":
     main()

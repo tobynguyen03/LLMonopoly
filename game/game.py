@@ -116,6 +116,7 @@ class MonopolyGame:
         self.community_chest_cards = self._initialize_cards()
         self.remaining_houses = 32
         self.remaining_hotels = 12
+        self.llm = llm
         self.agent = self._initialize_llm(llm)
         self.stats = {
             player["id"]: {
@@ -377,7 +378,7 @@ class MonopolyGame:
         self.current_player = (self.current_player + 1) % self.num_players
         if self.current_player == 0:
             self.num_rounds += 1
-        print()
+            print(f"\nRound {self.num_rounds}")
     
     def purchase_property(self, player_id: int, property: PurchaseableProperty):
         self.players[player_id]["properties"].append(property)
@@ -767,7 +768,7 @@ class MonopolyGame:
         while self.num_rounds < max_rounds and not self.game_ended:
             self.play_turn()
         
-        winner_id = max(range(len(self.players)), key=lambda i: self.players[i]["money"])
+        winner_id = max(range(len(self.players)), key=lambda i: self.get_net_worth(i))
 
         print(f"\nGame {game_num} Results")
         print(f"Game over after {self.num_rounds} round(s)")
@@ -825,7 +826,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open('context.txt', 'r') as file:
+        with open(f'{self.llm}_context.txt', 'r') as file:
             context = file.read()
         # useful variables
         # player = self.get_current_player()
@@ -841,35 +842,62 @@ class MonopolyGame:
                 else:
                     jail_status = " (Not in Jail)"
                 current_pos += jail_status
-            player_info = f"Player {player['id']}{self_label}:\n Position: {current_pos} \n Balance: {player['money']} \n"
-            property_listings = "Properties Owned: \n"
+            player_info = f"Player {player['id']}{self_label}:\nPosition: {current_pos} \nBalance: {player['money']} \nProperties Owned: \n"
+            color_sets = {}
+
             for property in player["properties"]:
-                houses_desc = ""
-                color_desc = ""
-                mortgaged = ""
-                if property.is_mortgaged:
-                    mortgaged = " (mortgaged)"
-                if type(property) == Property:
-                    color_desc = f"({property.color_set})"
-                    if (property.number_of_hotels > 0):
-                        houses_desc = f"{property.number_of_hotels} hotel"
-                    else:
-                        houses_desc = f"{property.number_of_houses} houses"
-                desc = f"{property.name} {color_desc}{mortgaged} {houses_desc} \n"
-                property_listings += desc
-            players_info += f"{player_info} {property_listings} \n"
+                if isinstance(property, Railroad):
+                    if "railroad" not in color_sets:
+                        color_sets["railroad"] = ([], 0, 4)
+                    properties, color_owned, total_in_set = color_sets["railroad"]
+                    property_name = property.name
+                    if property.is_mortgaged:
+                        property_name += " (mortgaged)"
+                    properties.append(property.name)
+                    color_owned += 1
+                    color_sets["railroad"] = (properties, color_owned, total_in_set)
+                elif isinstance(property, Utility):
+                    if "utilities" not in color_sets:
+                        color_sets["utilities"] = ([], 0, 2)
+                    properties, color_owned, total_in_set = color_sets["utilities"]
+                    property_name = property.name
+                    if property.is_mortgaged:
+                        property_name += " (mortgaged)"
+                    properties.append(property.name)
+                    color_owned += 1
+                    color_sets["utilities"] = (properties, color_owned, total_in_set)
+                else:
+                    color = property.color_set
+                    if color not in color_sets:
+                        color_sets[color] = ([], 0, property.number_in_set)
+                    properties, color_owned, total_in_set = color_sets[color]
+                    property_name = f"{property.name}"
+                    if property.is_mortgaged:
+                        property_name += " (mortgaged)"
+                    property_name += f": ({property.number_of_houses} houses, {property.number_of_hotels} hotels)"
+                    properties.append(property_name)
+                    color_owned += 1
+                    color_sets[color] = (properties, color_owned, total_in_set)
+            
+            for color_set in color_sets:
+                properties, color_owned, total_in_set = color_sets[color_set]
+                player_info += f"{color_set} ({color_owned}/{total_in_set} owned): ({', '.join(properties)}) \n"
+
+            players_info += player_info + "\n "
+
         actions_desc = "Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
-        prompt = f"{context} \n Game State: \n {players_info} {actions_desc}"
-        return prompt
+        prompt = f"{context} \nProperties Owned: \n{players_info}{actions_desc}"
+        game_state = f"\nGame State: \n{players_info}{actions_desc}"
+        return prompt, game_state
 
     def request_llm_action(self, actions):
-        context = self.create_llm_context(actions)
+        context, game_state = self.create_llm_context(actions)
         if not self.agent:
             return -1
-        print("context: ", context)
         # print(context)
+        print('Game State: ' + game_state)
         res = self.agent.query(context)
         try:
             json_object = json.loads(res)
@@ -877,7 +905,7 @@ class MonopolyGame:
             print(f"Invalid JSON: {e}")
             return -1
         print(json_object)
-        if not "selection" in json_object:
+        if not "selection" in json_object or not isinstance(json_object["selection"], int):
             return -1
         selected_index = int(json_object["selection"])
         if 0 <= selected_index < len(actions):
@@ -904,7 +932,7 @@ def main():
     llm = "qwen"
     num_players = 2
     max_rounds = 100
-    total_games = 1
+    total_games = 50
 
     os.makedirs('game_results', exist_ok=True)
     results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')

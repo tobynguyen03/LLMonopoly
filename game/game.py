@@ -13,7 +13,7 @@ from gemma_agent import GEMMA_Agent
 from ensemble_agent import Ensemble_Agent
 import json
 import os
-import builtins
+import logging
 import time
 
 @dataclass
@@ -106,7 +106,7 @@ MONOPOLY_BOARD = [
 ]
 
 class MonopolyGame:
-    def __init__(self, num_players: int, llm_player_id: int, llm = None):
+    def __init__(self, num_players: int, llm_player_id: int, llm = 'manual'):
         self.num_players = num_players
         self.game_ended = False
         self.board = self._initialize_board()
@@ -794,11 +794,14 @@ class MonopolyGame:
 
         self.next_turn()
 
-    def play_game(self, max_rounds: int, game_num: int, file):
+    def play_game(self, max_rounds: int, game_num: int):
         print(f"\nGame {game_num} Start")
         start_time = time.time()
         while self.num_rounds < max_rounds and not self.game_ended:
-            self.play_turn()
+            try:
+                self.play_turn()
+            except Exception as e:
+                logging.error(e, exc_info=True)
         
         winner_id = max(range(len(self.players)), key=lambda i: self.get_net_worth(i))
         end_time = time.time()
@@ -809,16 +812,16 @@ class MonopolyGame:
         print(f"Game duration: {duration:.2f} seconds")
         print(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}")
 
-        file.write(f"\nGame {game_num} Results\n")
-        file.write(f"Game over after {self.num_rounds} round(s)\n")
-        file.write(f"Game duration: {duration:.2f} seconds\n")
-        file.write(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}\n")
+        logging.info(f"\nGame {game_num} Results\n")
+        logging.info(f"Game over after {self.num_rounds} round(s)\n")
+        logging.info(f"Game duration: {duration:.2f} seconds\n")
+        logging.info(f"Player {winner_id} ({'LLM' if winner_id == self.llm_player_id else 'Bot'}) won with a net worth of ${self.get_net_worth(winner_id)}\n")
         for player_id, player_stats in self.stats.items():
-            file.write(f"\nPlayer {player_id} Stats:\n")
+            logging.info(f"\nPlayer {player_id} ({'LLM' if player_id == self.llm_player_id else 'Bot'}) Stats:\n")
             for action, count in player_stats.items():
-                file.write(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
+                logging.info(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
         for player in self.players:
-            file.write(self.print_player_state(player["id"]) + "\n")
+            logging.info(self.print_player_state(player["id"]) + "\n")
         
         return winner_id
 
@@ -990,41 +993,48 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "llama3"
+    llm = "phi3"
     num_players = 2
     max_rounds = 100
-    total_games = 50
+    total_games = 50 #total games ran is actually 2x this since it runs total_games for each side
 
     os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')
+    results_file = os.path.join('game_results', f'{llm}_results.txt')
 
-    with open(results_file, 'w') as file:
-        #builtins.print = lambda *args, **kwargs: None
+    logging.basicConfig(
+        filename=results_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(message)s'
+    )
+
+    logger = logging.getLogger()
+    for handler in logger.handlers:
+        handler.flush = lambda: True
+
+    with open(results_file, 'a') as file:
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
             game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-            winner_id = game.play_game(max_rounds, i, file)
+            winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
-            file.flush()
         
         for i in range(len(player_wins)):
             if i == 0:
-                file.write(f"LLM won {player_wins[i]}/{total_games} games \n")
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
             else:
-                file.write(f"Bot won {player_wins[i]}/{total_games} games \n")
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1):  # LLM going second
             game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-            winner_id = game.play_game(max_rounds, i, file)
+            winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
         
         for i in range(len(player_wins)):
             if i == 1:
-                file.write(f"LLM won {player_wins[i]}/{total_games} games \n")
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
             else:
-                file.write(f"Bot won {player_wins[i]}/{total_games} games \n")
-        #builtins.print = print
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

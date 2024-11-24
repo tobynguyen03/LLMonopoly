@@ -135,6 +135,7 @@ class MonopolyGame:
         }
         self.stats[self.llm_player_id]["invalid_json"] = 0
         self.stats[self.llm_player_id]["invalid_move"] = 0
+        self.stats[self.llm_player_id]["defaulted_move"] = 0
 
     def _initialize_players(self):
         players = [
@@ -718,7 +719,15 @@ class MonopolyGame:
                     actions = self.get_jail_actions(player_id)
                     selected_index = -1
                     if self.agent:
+                        attempts = 0
                         while selected_index == -1:
+                            #default behavior if LLM keeps giving invalid moves
+                            if attempts >= 5: 
+                                #default to end turn or mortgage
+                                selected_index = len(actions)-1
+                                self.stats[self.llm_player_id]["defaulted_move"] += 1
+                                break
+                            attempts += 1
                             selected_index = self.request_llm_action(actions)
                     else:
                         selected_index = self.request_user_action(actions)
@@ -820,7 +829,15 @@ class MonopolyGame:
         while True:
             selected_index = -1
             if self.agent:
+                attempts = 0
                 while selected_index == -1:
+                    #default behavior if LLM keeps giving invalid moves
+                    if attempts >= 5: 
+                        #default to end turn or mortgage
+                        selected_index = len(actions)-1 
+                        self.stats[self.llm_player_id]["defaulted_move"] += 1
+                        break
+                    attempts += 1
                     selected_index = self.request_llm_action(actions)
             else:
                 selected_index = self.request_user_action(actions)

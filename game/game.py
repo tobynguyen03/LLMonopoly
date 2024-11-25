@@ -10,9 +10,11 @@ from llama2_agent import Llama2_Agent
 from qwen_agent import Qwen_Agent
 from phi3_agent import Phi3_Agent
 from gemma_agent import GEMMA_Agent
+from ensemble_agent import Ensemble_Agent
 import json
 import os
-import builtins
+import logging
+import time
 
 @dataclass
 class Property:
@@ -104,7 +106,7 @@ MONOPOLY_BOARD = [
 ]
 
 class MonopolyGame:
-    def __init__(self, num_players: int, llm_player_id: int, llm = None):
+    def __init__(self, num_players: int, llm_player_id: int, llm = 'manual'):
         self.num_players = num_players
         self.game_ended = False
         self.board = self._initialize_board()
@@ -125,11 +127,15 @@ class MonopolyGame:
                 "mortgages": 0,
                 "unmortgages": 0,
                 "houses_built": 0,
+                "houses_sold": 0,
                 "rent_paid": 0,
                 "rent_received": 0,
                 "actions_taken": 0,
             } for player in self.players
         }
+        self.stats[self.llm_player_id]["invalid_json"] = 0
+        self.stats[self.llm_player_id]["invalid_move"] = 0
+        self.stats[self.llm_player_id]["defaulted_move"] = 0
 
     def _initialize_players(self):
         players = [
@@ -162,6 +168,8 @@ class MonopolyGame:
             return Phi3_Agent()
         elif llm == "gemma2":
             return GEMMA_Agent()
+        elif llm == "ensemble":
+            return Ensemble_Agent()
         return None
     
     def get_net_worth(self, player_id: int):
@@ -411,6 +419,7 @@ class MonopolyGame:
     def sell_house(self, player_id: int, property_name: str):
         player = self.players[player_id]
         properties = player["properties"]
+        self.stats[player_id]["houses_sold"] += 1
         for property in properties:
             if property.name == property_name:
                 if property.number_of_hotels == 1:
@@ -533,6 +542,7 @@ class MonopolyGame:
     def baseline_strategy(self, player_id: int, space):
         player = self.players[player_id]
         if isinstance(space, PurchaseableProperty) and space.owned_by is None and space.price < player["money"]:
+            self.stats[player_id]["actions_taken"] += 1
             self.purchase_property(player_id, space)
         
         actions = self.get_valid_actions(player_id, space)
@@ -552,6 +562,7 @@ class MonopolyGame:
             actions = self.get_valid_actions(player_id, space)
 
         if player["in_jail"]:
+            self.stats[player_id]["actions_taken"] += 1
             dice_1, dice_2, double_rolled = self.roll_dice()
             if player["get_out_of_jail_cards"] > 0:
                 player["turns_in_jail"] = 0
@@ -649,7 +660,7 @@ class MonopolyGame:
                     elif num_houses > 0:
                         available_actions.append(f"Sell house on {property.name} for ${property.house_price // 2}")
 
-        if player["money"] > 0:
+        if player["money"] >= 0:
             available_actions.append("End turn")
         
         return available_actions
@@ -708,7 +719,15 @@ class MonopolyGame:
                     actions = self.get_jail_actions(player_id)
                     selected_index = -1
                     if self.agent:
+                        attempts = 0
                         while selected_index == -1:
+                            #default behavior if LLM keeps giving invalid moves
+                            if attempts >= 5: 
+                                #default to end turn or mortgage
+                                selected_index = len(actions)-1
+                                self.stats[self.llm_player_id]["defaulted_move"] += 1
+                                break
+                            attempts += 1
                             selected_index = self.request_llm_action(actions)
                     else:
                         selected_index = self.request_user_action(actions)
@@ -775,26 +794,34 @@ class MonopolyGame:
 
         self.next_turn()
 
-    def play_game(self, max_rounds: int, game_num: int, file):
+    def play_game(self, max_rounds: int, game_num: int):
         print(f"\nGame {game_num} Start")
+        start_time = time.time()
         while self.num_rounds < max_rounds and not self.game_ended:
-            self.play_turn()
+            try:
+                self.play_turn()
+            except Exception as e:
+                logging.error(e, exc_info=True)
         
         winner_id = max(range(len(self.players)), key=lambda i: self.get_net_worth(i))
+        end_time = time.time()
+        duration = end_time-start_time
 
         print(f"\nGame {game_num} Results")
         print(f"Game over after {self.num_rounds} round(s)")
+        print(f"Game duration: {duration:.2f} seconds")
         print(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}")
 
-        file.write(f"\nGame {game_num} Results\n")
-        file.write(f"Game over after {self.num_rounds} round(s)\n")
-        file.write(f"Player {winner_id} won with a net worth of ${self.get_net_worth(winner_id)}\n")
+        logging.info(f"\nGame {game_num} Results\n")
+        logging.info(f"Game over after {self.num_rounds} round(s)\n")
+        logging.info(f"Game duration: {duration:.2f} seconds\n")
+        logging.info(f"Player {winner_id} ({'LLM' if winner_id == self.llm_player_id else 'Bot'}) won with a net worth of ${self.get_net_worth(winner_id)}\n")
         for player_id, player_stats in self.stats.items():
-            file.write(f"\nPlayer {player_id} Stats:\n")
+            logging.info(f"\nPlayer {player_id} ({'LLM' if player_id == self.llm_player_id else 'Bot'}) Stats:\n")
             for action, count in player_stats.items():
-                file.write(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
+                logging.info(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
         for player in self.players:
-            file.write(self.print_player_state(player["id"]) + "\n")
+            logging.info(self.print_player_state(player["id"]) + "\n")
         
         return winner_id
 
@@ -805,7 +832,15 @@ class MonopolyGame:
         while True:
             selected_index = -1
             if self.agent:
+                attempts = 0
                 while selected_index == -1:
+                    #default behavior if LLM keeps giving invalid moves
+                    if attempts >= 5: 
+                        #default to end turn or mortgage
+                        selected_index = len(actions)-1 
+                        self.stats[self.llm_player_id]["defaulted_move"] += 1
+                        break
+                    attempts += 1
                     selected_index = self.request_llm_action(actions)
             else:
                 selected_index = self.request_user_action(actions)
@@ -905,7 +940,7 @@ class MonopolyGame:
 
             players_info += player_info + "\n "
 
-        actions_desc = "Available Actions: \n"
+        actions_desc = "Your selection MUST be a number from the list below. \n Available Actions: \n"
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
         # prompt = context.replace("<INPUT>", f"\n{players_info}{actions_desc}")
@@ -920,22 +955,25 @@ class MonopolyGame:
         print("LLM Context:")  # Debugging
         print(context)  # Debugging
         # print(context)
-        print('Game State: ' + game_state)
+        # print('Game State: ' + game_state)
         res = self.agent.query(context)
         try:
             json_object = json.loads(res)
         except json.JSONDecodeError as e:
             print(res)
             print(f"Invalid JSON: {e}")
+            self.stats[self.llm_player_id]["invalid_json"] += 1
             return -1
         print("LLM Response")
         print(json_object)
         print("-------------------------")
         if not "selection" in json_object or not isinstance(json_object["selection"], int):
+            self.stats[self.llm_player_id]["invalid_json"] += 1
             return -1
         selected_index = int(json_object["selection"])
         if 0 <= selected_index < len(actions):
             return selected_index
+        self.stats[self.llm_player_id]["invalid_move"] += 1
         return -1
     
     def print_player_state(self, player_id: int):
@@ -961,35 +999,42 @@ def main():
     total_games = 25
 
     os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results.txt') if llm else os.path.join('game_results', f'manual_results.txt')
+    results_file = os.path.join('game_results', f'{llm}_results.txt')
 
-    with open(results_file, 'w') as file:
-        #builtins.print = lambda *args, **kwargs: None
+    logging.basicConfig(
+        filename=results_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(message)s'
+    )
+
+    logger = logging.getLogger()
+    for handler in logger.handlers:
+        handler.flush = lambda: True
+
+    with open(results_file, 'a') as file:
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
             game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-            winner_id = game.play_game(max_rounds, i, file)
+            winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
-            file.flush()
         
         for i in range(len(player_wins)):
             if i == 0:
-                file.write(f"LLM won {player_wins[i]}/{total_games} games \n")
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
             else:
-                file.write(f"Bot won {player_wins[i]}/{total_games} games \n")
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1):  # LLM going second
             game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-            winner_id = game.play_game(max_rounds, i, file)
+            winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
         
         for i in range(len(player_wins)):
             if i == 1:
-                file.write(f"LLM won {player_wins[i]}/{total_games} games \n")
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
             else:
-                file.write(f"Bot won {player_wins[i]}/{total_games} games \n")
-        #builtins.print = print
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

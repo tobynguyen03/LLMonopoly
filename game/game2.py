@@ -623,10 +623,7 @@ class MonopolyGame:
         player = self.players[player_id]
         properties = player["properties"]
         available_actions = []
-
-        if player["money"] >= 0:
-            available_actions.append("End turn")
-
+        
         if isinstance(space, PurchaseableProperty) and space.owned_by is None and space.price < player["money"]:
             available_actions.append(f"Purchase {space.name} for ${space.price}")
         
@@ -662,6 +659,9 @@ class MonopolyGame:
                         available_actions.append(f"Sell hotel on {property.name} for ${property.house_price // 2}")
                     elif num_houses > 0:
                         available_actions.append(f"Sell house on {property.name} for ${property.house_price // 2}")
+
+        if player["money"] >= 0:
+            available_actions.append("End turn")
         
         return available_actions
 
@@ -820,8 +820,6 @@ class MonopolyGame:
             logging.info(f"\nPlayer {player_id} ({'LLM' if player_id == self.llm_player_id else 'Bot'}) Stats:\n")
             for action, count in player_stats.items():
                 logging.info(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
-        if self.llm == "ensemble":
-            logging.info(f"Ensemble selection stats {dict(self.agent.selection_count)}")
         for player in self.players:
             logging.info(self.print_player_state(player["id"]) + "\n")
         
@@ -875,7 +873,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'{self.llm}_context.txt', 'r') as file:
+        with open(f'{self.llm}_context2.txt', 'r') as file:
             context = file.read()
 
         # memory_summary = "Past 3 Actions:\n"
@@ -999,10 +997,10 @@ def main():
     llm = "qwen"
     num_players = 2
     max_rounds = 100
-    total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
+    total_games = 10
 
     os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results.txt')
+    results_file = os.path.join('game_results', f'{llm}_results_no_mem_1.txt')
 
     logging.basicConfig(
         filename=results_file,
@@ -1017,7 +1015,7 @@ def main():
     with open(results_file, 'a') as file:
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
-            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
             winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
         

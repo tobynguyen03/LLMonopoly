@@ -1017,7 +1017,7 @@ def main():
     with open(results_file, 'a') as file:
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
-            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
             winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
         

@@ -820,6 +820,8 @@ class MonopolyGame:
             logging.info(f"\nPlayer {player_id} ({'LLM' if player_id == self.llm_player_id else 'Bot'}) Stats:\n")
             for action, count in player_stats.items():
                 logging.info(f"  {action.replace('_', ' ').capitalize()}: {count}\n")
+        if self.llm == "ensemble":
+            logging.info(f"Ensemble selection stats {dict(self.agent.selection_count)}")
         for player in self.players:
             logging.info(self.print_player_state(player["id"]) + "\n")
         
@@ -993,7 +995,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "llama3"
+    llm = "ensemble"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
@@ -1014,7 +1016,7 @@ def main():
     with open(results_file, 'a') as file:
         player_wins = [0 for i in range(num_players)]
         for i in range(1, total_games + 1): # LLM going first
-            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
             winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1
         

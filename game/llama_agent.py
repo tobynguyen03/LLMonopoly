@@ -3,8 +3,9 @@ import json
 
 class Llama3_Agent():
     def __init__(self):
-        # Uses LLama3.2 via ollama, need to have ollama running for API to work
+        # Uses LLama3 via ollama, need to have ollama running for API to work
         self.url = "http://localhost:11434/api/generate"
+        self.name = "Llama3.1"
 
     def query(self, prompt):
         data = {

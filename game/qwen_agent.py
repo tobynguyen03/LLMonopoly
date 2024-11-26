@@ -4,6 +4,7 @@ class Qwen_Agent():
     def __init__(self):
         # Uses LLama3.2 via ollama, need to have ollama running for API to work
         self.url = "http://localhost:11434/api/generate"
+        self.name = "Qwen"
     def query(self, prompt):
         data = {
             "model": "qwen2.5:7b",

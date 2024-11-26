@@ -873,7 +873,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'{self.llm}_context.txt', 'r') as file:
+        with open(f'{self.llm}_context2.txt', 'r') as file:
             context = file.read()
 
         # memory_summary = "Past 3 Actions:\n"
@@ -1000,7 +1000,7 @@ def main():
     total_games = 10
 
     os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results.txt')
+    results_file = os.path.join('game_results', f'{llm}_results_no_mem_1.txt')
 
     logging.basicConfig(
         filename=results_file,

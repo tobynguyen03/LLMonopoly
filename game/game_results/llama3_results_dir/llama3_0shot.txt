@@ -1,0 +1,285 @@
+2024-11-25 16:14:10,002 - 
+Game 1 Results
+
+2024-11-25 16:14:10,002 - Game over after 77 round(s)
+
+2024-11-25 16:14:10,002 - Game duration: 289.85 seconds
+
+2024-11-25 16:14:10,002 - Player 1 (Bot) won with a net worth of $4230
+
+2024-11-25 16:14:10,003 - 
+Player 0 (LLM) Stats:
+
+2024-11-25 16:14:10,003 -   Properties bought: 9
+
+2024-11-25 16:14:10,003 -   Mortgages: 90
+
+2024-11-25 16:14:10,003 -   Unmortgages: 84
+
+2024-11-25 16:14:10,003 -   Houses built: 0
+
+2024-11-25 16:14:10,003 -   Houses sold: 0
+
+2024-11-25 16:14:10,003 -   Rent paid: 1987
+
+2024-11-25 16:14:10,003 -   Rent received: 297
+
+2024-11-25 16:14:10,003 -   Actions taken: 266
+
+2024-11-25 16:14:10,003 -   Invalid json: 0
+
+2024-11-25 16:14:10,003 -   Invalid move: 6
+
+2024-11-25 16:14:10,003 -   Defaulted move: 0
+
+2024-11-25 16:14:10,003 - 
+Player 1 (Bot) Stats:
+
+2024-11-25 16:14:10,003 -   Properties bought: 16
+
+2024-11-25 16:14:10,003 -   Mortgages: 0
+
+2024-11-25 16:14:10,003 -   Unmortgages: 0
+
+2024-11-25 16:14:10,003 -   Houses built: 31
+
+2024-11-25 16:14:10,003 -   Houses sold: 6
+
+2024-11-25 16:14:10,003 -   Rent paid: 297
+
+2024-11-25 16:14:10,003 -   Rent received: 1987
+
+2024-11-25 16:14:10,003 -   Actions taken: 54
+
+2024-11-25 16:14:10,003 - Player 0 has a total net worth of $544, can sell/mortgage everything for $295, has $-757 in cash, and owns the following properties: Reading Railroad, Electric Company, Pennsylvania Avenue (mortgaged), Kentucky Avenue (mortgaged), Marvin Gardens (mortgaged), Boardwalk (mortgaged), Illinois Avenue (red, 0 houses, 0 hotels), Ventnor Avenue (mortgaged), Oriental Avenue (mortgaged)
+
+2024-11-25 16:14:10,003 - Player 1 has a total net worth of $4230, can sell/mortgage everything for $1630, has $970 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, Indiana Avenue (red, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 1 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 1 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), B. & O. Railroad, Water Works, Mediterranean Avenue (brown, 0 houses, 1 hotels), Park Place (dark_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 1 hotels)
+
+2024-11-25 16:19:32,992 - 
+Game 2 Results
+
+2024-11-25 16:19:32,992 - Game over after 70 round(s)
+
+2024-11-25 16:19:32,993 - Game duration: 322.99 seconds
+
+2024-11-25 16:19:32,993 - Player 1 (Bot) won with a net worth of $6478
+
+2024-11-25 16:19:32,993 - 
+Player 0 (LLM) Stats:
+
+2024-11-25 16:19:32,993 -   Properties bought: 11
+
+2024-11-25 16:19:32,993 -   Mortgages: 183
+
+2024-11-25 16:19:32,993 -   Unmortgages: 175
+
+2024-11-25 16:19:32,993 -   Houses built: 0
+
+2024-11-25 16:19:32,993 -   Houses sold: 0
+
+2024-11-25 16:19:32,993 -   Rent paid: 2978
+
+2024-11-25 16:19:32,993 -   Rent received: 325
+
+2024-11-25 16:19:32,993 -   Actions taken: 452
+
+2024-11-25 16:19:32,993 -   Invalid json: 1
+
+2024-11-25 16:19:32,993 -   Invalid move: 0
+
+2024-11-25 16:19:32,993 -   Defaulted move: 0
+
+2024-11-25 16:19:32,993 - 
+Player 1 (Bot) Stats:
+
+2024-11-25 16:19:32,993 -   Properties bought: 15
+
+2024-11-25 16:19:32,993 -   Mortgages: 0
+
+2024-11-25 16:19:32,993 -   Unmortgages: 0
+
+2024-11-25 16:19:32,993 -   Houses built: 8
+
+2024-11-25 16:19:32,993 -   Houses sold: 0
+
+2024-11-25 16:19:32,993 -   Rent paid: 325
+
+2024-11-25 16:19:32,993 -   Rent received: 2978
+
+2024-11-25 16:19:32,993 -   Actions taken: 26
+
+2024-11-25 16:19:32,993 - Player 0 has a total net worth of $-427, can sell/mortgage everything for $280, has $-1698 in cash, and owns the following properties: Vermont Avenue (mortgaged), Pennsylvania Railroad (mortgaged), Kentucky Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 0 hotels), St. James Place (mortgaged), Indiana Avenue (red, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), North Carolina Avenue (mortgaged), Ventnor Avenue (mortgaged), Connecticut Avenue (mortgaged), Reading Railroad (mortgaged)
+
+2024-11-25 16:19:32,993 - Player 1 has a total net worth of $6478, can sell/mortgage everything for $2345, has $1788 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), B. & O. Railroad, Pennsylvania Avenue (green, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Water Works, Boardwalk (dark_blue, 4 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Electric Company, Short Line, Park Place (dark_blue, 4 houses, 0 hotels)
+
+2024-11-25 16:27:32,139 - 
+Game 3 Results
+
+2024-11-25 16:27:32,139 - Game over after 85 round(s)
+
+2024-11-25 16:27:32,139 - Game duration: 479.15 seconds
+
+2024-11-25 16:27:32,140 - Player 1 (Bot) won with a net worth of $6138
+
+2024-11-25 16:27:32,140 - 
+Player 0 (LLM) Stats:
+
+2024-11-25 16:27:32,140 -   Properties bought: 11
+
+2024-11-25 16:27:32,140 -   Mortgages: 243
+
+2024-11-25 16:27:32,140 -   Unmortgages: 238
+
+2024-11-25 16:27:32,140 -   Houses built: 0
+
+2024-11-25 16:27:32,140 -   Houses sold: 0
+
+2024-11-25 16:27:32,140 -   Rent paid: 2092
+
+2024-11-25 16:27:32,140 -   Rent received: 264
+
+2024-11-25 16:27:32,140 -   Actions taken: 590
+
+2024-11-25 16:27:32,140 -   Invalid json: 0
+
+2024-11-25 16:27:32,140 -   Invalid move: 2
+
+2024-11-25 16:27:32,140 -   Defaulted move: 0
+
+2024-11-25 16:27:32,140 - 
+Player 1 (Bot) Stats:
+
+2024-11-25 16:27:32,140 -   Properties bought: 15
+
+2024-11-25 16:27:32,140 -   Mortgages: 0
+
+2024-11-25 16:27:32,140 -   Unmortgages: 0
+
+2024-11-25 16:27:32,140 -   Houses built: 12
+
+2024-11-25 16:27:32,140 -   Houses sold: 3
+
+2024-11-25 16:27:32,140 -   Rent paid: 264
+
+2024-11-25 16:27:32,140 -   Rent received: 2092
+
+2024-11-25 16:27:32,140 -   Actions taken: 38
+
+2024-11-25 16:27:32,140 - Player 0 has a total net worth of $524, can sell/mortgage everything for $520, has $-853 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (mortgaged), Indiana Avenue (mortgaged), States Avenue (mortgaged), Tennessee Avenue (orange, 0 houses, 0 hotels), B. & O. Railroad, Electric Company (mortgaged), Short Line, Oriental Avenue (light_blue, 0 houses, 0 hotels), Baltic Avenue (mortgaged), Atlantic Avenue (yellow, 0 houses, 0 hotels)
+
+2024-11-25 16:27:32,140 - Player 1 has a total net worth of $6138, can sell/mortgage everything for $2535, has $1068 in cash, and owns the following properties: Virginia Avenue (pink, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Water Works, Reading Railroad, Connecticut Avenue (light_blue, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Pacific Avenue (green, 3 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Pennsylvania Railroad, Ventnor Avenue (yellow, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), North Carolina Avenue (green, 3 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), Pennsylvania Avenue (green, 3 houses, 0 hotels)
+
+2024-11-25 16:29:54,224 - 
+Game 4 Results
+
+2024-11-25 16:29:54,224 - Game over after 42 round(s)
+
+2024-11-25 16:29:54,224 - Game duration: 142.08 seconds
+
+2024-11-25 16:29:54,224 - Player 1 (Bot) won with a net worth of $4520
+
+2024-11-25 16:29:54,224 - 
+Player 0 (LLM) Stats:
+
+2024-11-25 16:29:54,224 -   Properties bought: 8
+
+2024-11-25 16:29:54,224 -   Mortgages: 64
+
+2024-11-25 16:29:54,224 -   Unmortgages: 60
+
+2024-11-25 16:29:54,224 -   Houses built: 0
+
+2024-11-25 16:29:54,224 -   Houses sold: 0
+
+2024-11-25 16:29:54,224 -   Rent paid: 1606
+
+2024-11-25 16:29:54,224 -   Rent received: 36
+
+2024-11-25 16:29:54,224 -   Actions taken: 183
+
+2024-11-25 16:29:54,224 -   Invalid json: 1
+
+2024-11-25 16:29:54,224 -   Invalid move: 0
+
+2024-11-25 16:29:54,224 -   Defaulted move: 0
+
+2024-11-25 16:29:54,224 - 
+Player 1 (Bot) Stats:
+
+2024-11-25 16:29:54,224 -   Properties bought: 12
+
+2024-11-25 16:29:54,224 -   Mortgages: 0
+
+2024-11-25 16:29:54,224 -   Unmortgages: 0
+
+2024-11-25 16:29:54,224 -   Houses built: 10
+
+2024-11-25 16:29:54,224 -   Houses sold: 0
+
+2024-11-25 16:29:54,224 -   Rent paid: 36
+
+2024-11-25 16:29:54,224 -   Rent received: 1606
+
+2024-11-25 16:29:54,224 -   Actions taken: 23
+
+2024-11-25 16:29:54,224 - Player 0 has a total net worth of $666, can sell/mortgage everything for $440, has $-614 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, North Carolina Avenue (green, 0 houses, 0 hotels), Park Place (mortgaged), Virginia Avenue (mortgaged), Tennessee Avenue (mortgaged), Ventnor Avenue (yellow, 0 houses, 0 hotels), Reading Railroad (mortgaged)
+
+2024-11-25 16:29:54,224 - Player 1 has a total net worth of $4520, can sell/mortgage everything for $1885, has $750 in cash, and owns the following properties: States Avenue (pink, 0 houses, 0 hotels), Water Works, Boardwalk (dark_blue, 0 houses, 0 hotels), Illinois Avenue (red, 4 houses, 0 hotels), Indiana Avenue (red, 3 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), B. & O. Railroad, Kentucky Avenue (red, 3 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels)
+
+2024-11-25 16:40:03,424 - 
+Game 5 Results
+
+2024-11-25 16:40:03,424 - Game over after 100 round(s)
+
+2024-11-25 16:40:03,424 - Game duration: 609.20 seconds
+
+2024-11-25 16:40:03,424 - Player 1 (Bot) won with a net worth of $2879
+
+2024-11-25 16:40:03,424 - 
+Player 0 (LLM) Stats:
+
+2024-11-25 16:40:03,424 -   Properties bought: 12
+
+2024-11-25 16:40:03,424 -   Mortgages: 301
+
+2024-11-25 16:40:03,424 -   Unmortgages: 299
+
+2024-11-25 16:40:03,424 -   Houses built: 0
+
+2024-11-25 16:40:03,424 -   Houses sold: 0
+
+2024-11-25 16:40:03,424 -   Rent paid: 562
+
+2024-11-25 16:40:03,424 -   Rent received: 1100
+
+2024-11-25 16:40:03,424 -   Actions taken: 728
+
+2024-11-25 16:40:03,424 -   Invalid json: 1
+
+2024-11-25 16:40:03,424 -   Invalid move: 0
+
+2024-11-25 16:40:03,424 -   Defaulted move: 0
+
+2024-11-25 16:40:03,424 - 
+Player 1 (Bot) Stats:
+
+2024-11-25 16:40:03,424 -   Properties bought: 13
+
+2024-11-25 16:40:03,424 -   Mortgages: 8
+
+2024-11-25 16:40:03,424 -   Unmortgages: 8
+
+2024-11-25 16:40:03,424 -   Houses built: 26
+
+2024-11-25 16:40:03,424 -   Houses sold: 17
+
+2024-11-25 16:40:03,424 -   Rent paid: 1100
+
+2024-11-25 16:40:03,424 -   Rent received: 562
+
+2024-11-25 16:40:03,424 -   Actions taken: 89
+
+2024-11-25 16:40:03,424 - Player 0 has a total net worth of $2495, can sell/mortgage everything for $1085, has $33 in cash, and owns the following properties: Reading Railroad, Electric Company, St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, North Carolina Avenue (mortgaged), Park Place (mortgaged), Baltic Avenue (brown, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), Short Line, New York Avenue (orange, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels)
+
+2024-11-25 16:40:03,424 - Player 1 has a total net worth of $2879, can sell/mortgage everything for $1430, has $19 in cash, and owns the following properties: Connecticut Avenue (light_blue, 3 houses, 0 hotels), Kentucky Avenue (red, 1 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Indiana Avenue (red, 1 houses, 0 hotels), Vermont Avenue (light_blue, 2 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Water Works, Illinois Avenue (red, 0 houses, 0 hotels), Oriental Avenue (light_blue, 2 houses, 0 hotels)
+

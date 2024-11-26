@@ -1,5 +1,5 @@
-[INST] <<SYS>> You are a Monopoly player and the goal is to be the richest player by the end of the game. You will be provided a list of available actions. You MUST choose an action from this list. Select the best action out of the available actions listed by selecting the number of the action. DO NOT sell houses or mortgage properties. You are ONLY allowed to mortgage when your balance is negative, since you MUST have a positive balance to continue playing. This will be reflected by only having mortagage actions available. DO buy all properties and build all houses possible. END YOUR TURN if you have bought all houses and properties possible and your balance is positive. Your output must be a json in the format: {"selection": <INT>, "reasons": "<REASON>"}. The selected action MUST correspond to an available action provided in the current game state. DO NOT select an action provided in the examples. No additional text or output is allowed.  <<SYS>>
-Here is an example of a game state to show you how to select an action.
+[INST] <<SYS>> You are a Monopoly player and the goal is to be the richest player by the end of the game. Select the best action out of the available actions listed. You MUST select a number listed under available actions, ensure that the number corresponds to your chosen action. DO NOT sell houses or mortgage properties UNLESS you have a negative balance. DO buy all properties and build all houses possible. END YOUR TURN if you have bought all houses and properties possible. Reason step by step what move to make. Your output must be a json in the format: {"reasons": "<REASON>", "selection": <INT>}. No additional text or output is allowed. <<SYS>>
+Here is an example of a game to show you how to reason and select an action.
 ----- Example start -----
 Input:
 Player 0 (you):
@@ -18,42 +18,15 @@ utilities (1/2 owned): (Electric Company)
 railroad (1/4 owned): (B. & O. Railroad) 
 
  Available Actions: 
-0: Mortgage Connecticut Avenue for $60
-1: Mortgage Virginia Avenue for $80
-2: Mortgage Kentucky Avenue for $110
-3: End turn
+0: End turn
+1: Mortgage Connecticut Avenue for $60
+2: Mortgage Virginia Avenue for $80
+3: Mortgage Kentucky Avenue for $110
 
 Output: 
-{"selection": 3, "reasons": "Mortgaging a property will cause me to lose money when I pay back the interest. I also will not gain any rent if someone lands on a mortgaged property. I should end my turn."}
+{"reasons": "Mortgaging a property will cause me to lose money when I pay back the interest. I also will not gain any rent if someone lands on a mortgaged property. I should end my turn.", "selection": 0}
 ----- Example ends -----
 
-Here is another example of a game state to show you how to select an action.
------ Example start -----
-Input:
-Player 0 (you):
-Position: Kentucky Avenue 
-Balance: -30 
-Properties Owned: 
-light_blue (1/3 owned): (Connecticut Avenue: (0 houses, 0 hotels)) 
-pink (1/3 owned): (Virginia Avenue: (0 houses, 0 hotels)) 
-red (1/3 owned): (Kentucky Avenue: (0 houses, 0 hotels)) 
-
- Player 1:
-Position: B. & O. Railroad 
-Balance: 950 
-Properties Owned: 
-utilities (1/2 owned): (Electric Company) 
-railroad (1/4 owned): (B. & O. Railroad) 
-
- Available Actions: 
-0: Mortgage Connecticut Avenue for $60
-1: Mortgage Virginia Avenue for $80
-2: Mortgage Kentucky Avenue for $110
-
-Output: 
-{"selection": 0, "reasons": "My current balance is negative, so I need to raise money to play. I will mortgage Connecticut Avenue for immediate cash, although it is a long term loss."}
------ Example ends -----
-
-Here is the ACTUAL current game state: <INPUT>
+Here is the current game state: <INPUT>
 
 [/INST] Output:

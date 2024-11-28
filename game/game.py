@@ -10,6 +10,7 @@ from llama2_agent import Llama2_Agent
 from qwen_agent import Qwen_Agent
 from phi3_agent import Phi3_Agent
 from gemma_agent import GEMMA_Agent
+from mistral_agent import Mistral_Agent
 from ensemble_agent import Ensemble_Agent
 import json
 import os
@@ -168,6 +169,8 @@ class MonopolyGame:
             return Phi3_Agent()
         elif llm == "gemma2":
             return GEMMA_Agent()
+        elif llm == "mistral":
+            return Mistral_Agent()            
         elif llm == "ensemble":
             return Ensemble_Agent()
         return None
@@ -724,7 +727,7 @@ class MonopolyGame:
                             #default behavior if LLM keeps giving invalid moves
                             if attempts >= 5: 
                                 #default to end turn or mortgage
-                                selected_index = len(actions)-1
+                                selected_index = 0
                                 self.stats[self.llm_player_id]["defaulted_move"] += 1
                                 break
                             attempts += 1
@@ -839,7 +842,7 @@ class MonopolyGame:
                     #default behavior if LLM keeps giving invalid moves
                     if attempts >= 5: 
                         #default to end turn or mortgage
-                        selected_index = len(actions)-1 
+                        selected_index = 0 
                         self.stats[self.llm_player_id]["defaulted_move"] += 1
                         break
                     attempts += 1
@@ -996,7 +999,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "qwen"
+    llm = "llama3"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side

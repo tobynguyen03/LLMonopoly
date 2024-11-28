@@ -7,16 +7,22 @@ from llama2_agent import Llama2_Agent
 from phi3_agent import Phi3_Agent
 from qwen_agent import Qwen_Agent
 from gemma_agent import GEMMA_Agent
+from mistral_agent import Mistral_Agent
 from util import naive_json_from_text
 from collections import defaultdict
 
 #may need to set ollama params
-#OLLAMA_NUM_PARALLEL=4 OLLAMA_MAX_LOADED_MODELS=4 ./ollama serve
+#OLLAMA_NUM_PARALLEL=5 OLLAMA_MAX_LOADED_MODELS=5 ./ollama serve
 
 #commands to preload models
-#curl http://localhost:11434/api/generate -d '{ "model": "llama3.1:8b-instruct-q5_K_M" }'
-#curl http://localhost:11434/api/generate -d '{ "model": "phi3:medium-128k" }'
-#curl http://localhost:11434/api/generate -d '{ "model": "qwen2.5:7b" }'
+#curl http://localhost:11434/api/generate -d '{ "model": "llama3.1:8b-instruct-q5_K_M", "keep_alive": -1 }'
+#curl http://localhost:11434/api/generate -d '{ "model": "phi3:medium-128k", "keep_alive": -1 }'
+#curl http://localhost:11434/api/generate -d '{ "model": "qwen2.5:7b", "keep_alive": -1 }'
+#curl http://localhost:11434/api/generate -d '{ "model": "gemma2:9b", "keep_alive": -1 }'
+#curl http://localhost:11434/api/generate -d '{ "model": "mistral:7b-instruct", "keep_alive": -1 }'
+
+#can unload a model by running the command with keep_alive set to 0
+
 class Ensemble_Agent():
     def __init__(self):
         self.name = "ensemble"
@@ -25,7 +31,8 @@ class Ensemble_Agent():
         self.agents.append(Llama3_Agent())
         self.agents.append(Phi3_Agent())
         self.agents.append(Qwen_Agent())
-        # self.agents.append(GEMMA_Agent())
+        self.agents.append(GEMMA_Agent())
+        self.agents.append(Mistral_Agent())
         self.selection_count = defaultdict(int)
 
     def query(self, prompt):
@@ -42,7 +49,7 @@ class Ensemble_Agent():
 
         with ThreadPoolExecutor() as executor:
             futures = [executor.submit(get_response, agent) for agent in self.agents]
-            for future in as_completed(futures, timeout=1000):
+            for future in as_completed(futures, timeout=20):
                 try:
                     result = future.result()
                     if result is not None:

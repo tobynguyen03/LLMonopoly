@@ -1,955 +1,1993 @@
-2024-11-27 16:15:07,942 - 
+2024-11-27 14:41:29,973 - 
 Game 1 Results
 
-2024-11-27 16:15:07,942 - Game over after 50 round(s)
+2024-11-27 14:41:29,973 - Game over after 66 round(s)
 
-2024-11-27 16:15:07,942 - Game duration: 464.81 seconds
+2024-11-27 14:41:29,973 - Game duration: 1630.26 seconds
 
-2024-11-27 16:15:07,942 - Player 1 (Bot) won with a net worth of $4318
+2024-11-27 14:41:29,973 - Player 0 (LLM) won with a net worth of $4902
 
-2024-11-27 16:15:07,942 - 
+2024-11-27 14:41:29,973 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 16:15:07,942 -   Properties bought: 11
+2024-11-27 14:41:29,973 -   Properties bought: 15
 
-2024-11-27 16:15:07,942 -   Mortgages: 22
+2024-11-27 14:41:29,973 -   Mortgages: 6
 
-2024-11-27 16:15:07,942 -   Unmortgages: 14
+2024-11-27 14:41:29,973 -   Unmortgages: 3
 
-2024-11-27 16:15:07,942 -   Houses built: 22
+2024-11-27 14:41:29,973 -   Houses built: 31
 
-2024-11-27 16:15:07,942 -   Houses sold: 12
+2024-11-27 14:41:29,973 -   Houses sold: 6
 
-2024-11-27 16:15:07,942 -   Rent paid: 2722
+2024-11-27 14:41:29,973 -   Rent paid: 382
 
-2024-11-27 16:15:07,942 -   Rent received: 529
+2024-11-27 14:41:29,973 -   Rent received: 3326
 
-2024-11-27 16:15:07,942 -   Actions taken: 140
+2024-11-27 14:41:29,973 -   Actions taken: 142
 
-2024-11-27 16:15:07,942 -   Invalid json: 40
+2024-11-27 14:41:29,973 -   Invalid json: 0
 
-2024-11-27 16:15:07,942 -   Invalid move: 3
+2024-11-27 14:41:29,973 -   Invalid move: 2
 
-2024-11-27 16:15:07,942 -   Defaulted move: 1
+2024-11-27 14:41:29,973 -   Defaulted move: 0
 
-2024-11-27 16:15:07,942 - 
+2024-11-27 14:41:29,973 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 16:15:07,942 -   Properties bought: 12
+2024-11-27 14:41:29,973 -   Properties bought: 12
 
-2024-11-27 16:15:07,942 -   Mortgages: 0
+2024-11-27 14:41:29,973 -   Mortgages: 11
 
-2024-11-27 16:15:07,942 -   Unmortgages: 0
+2024-11-27 14:41:29,973 -   Unmortgages: 6
 
-2024-11-27 16:15:07,942 -   Houses built: 16
+2024-11-27 14:41:29,973 -   Houses built: 0
 
-2024-11-27 16:15:07,942 -   Houses sold: 1
+2024-11-27 14:41:29,973 -   Houses sold: 0
 
-2024-11-27 16:15:07,942 -   Rent paid: 529
+2024-11-27 14:41:29,973 -   Rent paid: 3326
 
-2024-11-27 16:15:07,942 -   Rent received: 2722
+2024-11-27 14:41:29,973 -   Rent received: 382
 
-2024-11-27 16:15:07,942 -   Actions taken: 30
+2024-11-27 14:41:29,973 -   Actions taken: 30
 
-2024-11-27 16:15:07,942 - Player 0 has a total net worth of $38, can sell/mortgage everything for $190, has $-1115 in cash, and owns the following properties: Baltic Avenue (brown, 0 houses, 1 hotels), New York Avenue (mortgaged), Water Works (mortgaged), Boardwalk (mortgaged), St. James Place (mortgaged), Short Line (mortgaged), Pacific Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 1 hotels), St. Charles Place (mortgaged), Electric Company (mortgaged), Virginia Avenue (pink, 0 houses, 0 hotels)
+2024-11-27 14:41:29,974 - Player 0 has a total net worth of $4902, can sell/mortgage everything for $1335, has $1944 in cash, and owns the following properties: St. James Place (orange, 0 houses, 1 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), Reading Railroad, Vermont Avenue (mortgaged), Illinois Avenue (mortgaged), Pacific Avenue (mortgaged), Virginia Avenue (pink, 0 houses, 0 hotels), Water Works, Mediterranean Avenue (brown, 0 houses, 1 hotels), New York Avenue (orange, 0 houses, 1 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Electric Company, Park Place (dark_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 1 hotels)
 
-2024-11-27 16:15:07,942 - Player 1 has a total net worth of $4318, can sell/mortgage everything for $1475, has $1368 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 1 hotels), Reading Railroad, States Avenue (pink, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Pennsylvania Railroad, Kentucky Avenue (red, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 1 hotels), Atlantic Avenue (yellow, 0 houses, 1 hotels)
+2024-11-27 14:41:29,974 - Player 1 has a total net worth of $933, can sell/mortgage everything for $690, has $-951 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Ventnor Avenue (mortgaged), Connecticut Avenue (mortgaged), States Avenue (mortgaged), Short Line (mortgaged), Boardwalk (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), B. & O. Railroad, Pennsylvania Railroad, North Carolina Avenue (green, 0 houses, 0 hotels)
 
-2024-11-27 16:26:14,618 - list index out of range
-Traceback (most recent call last):
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 805, in play_game
-    self.play_turn()
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 788, in play_turn
-    self.raise_money(player_id, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 608, in raise_money
-    self.request_action(player_id, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 852, in request_action
-    self.select_action(player_id, actions, selected_index, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 672, in select_action
-    action = actions[selected_index]
-IndexError: list index out of range
-2024-11-27 16:26:27,728 - list index out of range
-Traceback (most recent call last):
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 805, in play_game
-    self.play_turn()
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 779, in play_turn
-    self.raise_money(player_id, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 608, in raise_money
-    self.request_action(player_id, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 852, in request_action
-    self.select_action(player_id, actions, selected_index, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 672, in select_action
-    action = actions[selected_index]
-IndexError: list index out of range
-2024-11-27 16:26:37,522 - list index out of range
-Traceback (most recent call last):
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 805, in play_game
-    self.play_turn()
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 779, in play_turn
-    self.raise_money(player_id, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 608, in raise_money
-    self.request_action(player_id, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 852, in request_action
-    self.select_action(player_id, actions, selected_index, space)
-  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 672, in select_action
-    action = actions[selected_index]
-IndexError: list index out of range
-2024-11-27 16:26:45,227 - 
+2024-11-27 15:19:17,639 - 
 Game 2 Results
 
-2024-11-27 16:26:45,227 - Game over after 77 round(s)
+2024-11-27 15:19:17,640 - Game over after 100 round(s)
 
-2024-11-27 16:26:45,227 - Game duration: 697.28 seconds
+2024-11-27 15:19:17,640 - Game duration: 2267.66 seconds
 
-2024-11-27 16:26:45,227 - Player 1 (Bot) won with a net worth of $5205
+2024-11-27 15:19:17,640 - Player 1 (Bot) won with a net worth of $4848
 
-2024-11-27 16:26:45,227 - 
+2024-11-27 15:19:17,640 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 16:26:45,227 -   Properties bought: 11
+2024-11-27 15:19:17,640 -   Properties bought: 13
 
-2024-11-27 16:26:45,227 -   Mortgages: 44
+2024-11-27 15:19:17,640 -   Mortgages: 23
 
-2024-11-27 16:26:45,227 -   Unmortgages: 34
+2024-11-27 15:19:17,640 -   Unmortgages: 12
 
-2024-11-27 16:26:45,227 -   Houses built: 11
+2024-11-27 15:19:17,640 -   Houses built: 17
 
-2024-11-27 16:26:45,227 -   Houses sold: 10
+2024-11-27 15:19:17,640 -   Houses sold: 7
 
-2024-11-27 16:26:45,227 -   Rent paid: 2784
+2024-11-27 15:19:17,640 -   Rent paid: 3715
 
-2024-11-27 16:26:45,227 -   Rent received: 433
+2024-11-27 15:19:17,640 -   Rent received: 1242
 
-2024-11-27 16:26:45,227 -   Actions taken: 204
+2024-11-27 15:19:17,640 -   Actions taken: 185
 
-2024-11-27 16:26:45,227 -   Invalid json: 48
+2024-11-27 15:19:17,640 -   Invalid json: 3
 
-2024-11-27 16:26:45,227 -   Invalid move: 13
+2024-11-27 15:19:17,640 -   Invalid move: 0
 
-2024-11-27 16:26:45,227 -   Defaulted move: 4
+2024-11-27 15:19:17,640 -   Defaulted move: 0
 
-2024-11-27 16:26:45,227 - 
+2024-11-27 15:19:17,640 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 16:26:45,227 -   Properties bought: 16
+2024-11-27 15:19:17,640 -   Properties bought: 14
 
-2024-11-27 16:26:45,227 -   Mortgages: 1
+2024-11-27 15:19:17,640 -   Mortgages: 0
 
-2024-11-27 16:26:45,227 -   Unmortgages: 1
+2024-11-27 15:19:17,640 -   Unmortgages: 0
 
-2024-11-27 16:26:45,227 -   Houses built: 21
+2024-11-27 15:19:17,640 -   Houses built: 16
 
-2024-11-27 16:26:45,227 -   Houses sold: 5
+2024-11-27 15:19:17,640 -   Houses sold: 1
 
-2024-11-27 16:26:45,227 -   Rent paid: 433
+2024-11-27 15:19:17,640 -   Rent paid: 1242
 
-2024-11-27 16:26:45,227 -   Rent received: 2784
+2024-11-27 15:19:17,640 -   Rent received: 3715
 
-2024-11-27 16:26:45,227 -   Actions taken: 47
+2024-11-27 15:19:17,640 -   Actions taken: 39
 
-2024-11-27 16:26:45,227 - Player 0 has a total net worth of $560, can sell/mortgage everything for $260, has $-846 in cash, and owns the following properties: Electric Company (mortgaged), Tennessee Avenue (mortgaged), North Carolina Avenue (mortgaged), Reading Railroad (mortgaged), Illinois Avenue (mortgaged), Indiana Avenue (mortgaged), Pacific Avenue (mortgaged), Pennsylvania Avenue (green, 1 houses, 0 hotels), Vermont Avenue (mortgaged), Baltic Avenue (mortgaged), Kentucky Avenue (mortgaged)
+2024-11-27 15:19:17,640 - Player 0 has a total net worth of $1284, can sell/mortgage everything for $110, has $39 in cash, and owns the following properties: Connecticut Avenue (mortgaged), St. James Place (mortgaged), Water Works (mortgaged), Baltic Avenue (brown, 0 houses, 1 hotels), States Avenue (mortgaged), Marvin Gardens (mortgaged), Pennsylvania Railroad (mortgaged), B. & O. Railroad (mortgaged), Pacific Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 1 hotels), Virginia Avenue (mortgaged), Park Place (mortgaged), Short Line (mortgaged)
 
-2024-11-27 16:26:45,227 - Player 1 has a total net worth of $5205, can sell/mortgage everything for $1750, has $1705 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Water Works, Short Line, Boardwalk (dark_blue, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 1 hotels), Pennsylvania Railroad, Mediterranean Avenue (brown, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Ventnor Avenue (yellow, 1 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 1 hotels), States Avenue (pink, 0 houses, 1 hotels), B. & O. Railroad, Atlantic Avenue (yellow, 0 houses, 0 hotels)
+2024-11-27 15:19:17,640 - Player 1 has a total net worth of $4848, can sell/mortgage everything for $1670, has $1508 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 1 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Electric Company, Tennessee Avenue (orange, 0 houses, 0 hotels), Reading Railroad, Ventnor Avenue (yellow, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 1 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 1 hotels)
 
-2024-11-27 16:32:21,283 - 
+2024-11-27 15:35:10,658 - 
 Game 3 Results
 
-2024-11-27 16:32:21,283 - Game over after 35 round(s)
+2024-11-27 15:35:10,658 - Game over after 40 round(s)
 
-2024-11-27 16:32:21,283 - Game duration: 336.06 seconds
+2024-11-27 15:35:10,658 - Game duration: 953.01 seconds
 
-2024-11-27 16:32:21,284 - Player 1 (Bot) won with a net worth of $4843
+2024-11-27 15:35:10,659 - Player 0 (LLM) won with a net worth of $4867
 
-2024-11-27 16:32:21,284 - 
+2024-11-27 15:35:10,659 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 16:32:21,284 -   Properties bought: 13
+2024-11-27 15:35:10,659 -   Properties bought: 11
 
-2024-11-27 16:32:21,284 -   Mortgages: 21
+2024-11-27 15:35:10,659 -   Mortgages: 3
 
-2024-11-27 16:32:21,284 -   Unmortgages: 17
+2024-11-27 15:35:10,659 -   Unmortgages: 2
 
-2024-11-27 16:32:21,284 -   Houses built: 0
+2024-11-27 15:35:10,659 -   Houses built: 7
 
-2024-11-27 16:32:21,284 -   Houses sold: 0
+2024-11-27 15:35:10,659 -   Houses sold: 0
 
-2024-11-27 16:32:21,284 -   Rent paid: 2632
+2024-11-27 15:35:10,659 -   Rent paid: 268
 
-2024-11-27 16:32:21,284 -   Rent received: 189
+2024-11-27 15:35:10,659 -   Rent received: 2170
 
-2024-11-27 16:32:21,284 -   Actions taken: 94
+2024-11-27 15:35:10,659 -   Actions taken: 72
 
-2024-11-27 16:32:21,284 -   Invalid json: 21
+2024-11-27 15:35:10,659 -   Invalid json: 0
 
-2024-11-27 16:32:21,284 -   Invalid move: 0
+2024-11-27 15:35:10,659 -   Invalid move: 0
 
-2024-11-27 16:32:21,284 -   Defaulted move: 0
+2024-11-27 15:35:10,659 -   Defaulted move: 0
 
-2024-11-27 16:32:21,284 - 
+2024-11-27 15:35:10,659 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 16:32:21,284 -   Properties bought: 7
+2024-11-27 15:35:10,659 -   Properties bought: 11
 
-2024-11-27 16:32:21,284 -   Mortgages: 0
+2024-11-27 15:35:10,659 -   Mortgages: 8
 
-2024-11-27 16:32:21,284 -   Unmortgages: 0
+2024-11-27 15:35:10,659 -   Unmortgages: 4
 
-2024-11-27 16:32:21,284 -   Houses built: 10
+2024-11-27 15:35:10,659 -   Houses built: 0
 
-2024-11-27 16:32:21,284 -   Houses sold: 1
+2024-11-27 15:35:10,659 -   Houses sold: 0
 
-2024-11-27 16:32:21,284 -   Rent paid: 189
+2024-11-27 15:35:10,659 -   Rent paid: 2170
 
-2024-11-27 16:32:21,284 -   Rent received: 2632
+2024-11-27 15:35:10,659 -   Rent received: 268
 
-2024-11-27 16:32:21,284 -   Actions taken: 19
+2024-11-27 15:35:10,659 -   Actions taken: 24
 
-2024-11-27 16:32:21,284 - Player 0 has a total net worth of $-29, can sell/mortgage everything for $815, has $-1942 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Indiana Avenue (mortgaged), Water Works (mortgaged), Short Line (mortgaged), Mediterranean Avenue (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), Electric Company, States Avenue (pink, 0 houses, 0 hotels)
+2024-11-27 15:35:10,659 - Player 0 has a total net worth of $4867, can sell/mortgage everything for $1700, has $1377 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad (mortgaged), B. & O. Railroad, Boardwalk (dark_blue, 4 houses, 0 hotels), Electric Company, Marvin Gardens (yellow, 0 houses, 0 hotels), Park Place (dark_blue, 3 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels)
 
-2024-11-27 16:32:21,284 - Player 1 has a total net worth of $4843, can sell/mortgage everything for $1385, has $2073 in cash, and owns the following properties: Pennsylvania Railroad, Kentucky Avenue (red, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 1 hotels), Park Place (dark_blue, 4 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Reading Railroad
+2024-11-27 15:35:10,659 - Player 1 has a total net worth of $734, can sell/mortgage everything for $670, has $-1056 in cash, and owns the following properties: Reading Railroad, St. Charles Place (pink, 0 houses, 0 hotels), New York Avenue (mortgaged), Illinois Avenue (mortgaged), North Carolina Avenue (mortgaged), Ventnor Avenue (mortgaged), Short Line, Indiana Avenue (red, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels)
 
-2024-11-27 16:45:26,427 - 
+2024-11-27 15:58:51,669 - 
 Game 4 Results
 
-2024-11-27 16:45:26,427 - Game over after 94 round(s)
+2024-11-27 15:58:51,669 - Game over after 64 round(s)
 
-2024-11-27 16:45:26,427 - Game duration: 785.14 seconds
+2024-11-27 15:58:51,669 - Game duration: 1421.01 seconds
 
-2024-11-27 16:45:26,427 - Player 0 (LLM) won with a net worth of $4715
+2024-11-27 15:58:51,669 - Player 1 (Bot) won with a net worth of $4178
 
-2024-11-27 16:45:26,427 - 
+2024-11-27 15:58:51,669 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 16:45:26,427 -   Properties bought: 11
+2024-11-27 15:58:51,669 -   Properties bought: 11
 
-2024-11-27 16:45:26,427 -   Mortgages: 31
+2024-11-27 15:58:51,669 -   Mortgages: 10
 
-2024-11-27 16:45:26,427 -   Unmortgages: 31
+2024-11-27 15:58:51,669 -   Unmortgages: 4
 
-2024-11-27 16:45:26,427 -   Houses built: 13
+2024-11-27 15:58:51,669 -   Houses built: 19
 
-2024-11-27 16:45:26,427 -   Houses sold: 3
+2024-11-27 15:58:51,669 -   Houses sold: 4
 
-2024-11-27 16:45:26,427 -   Rent paid: 1648
+2024-11-27 15:58:51,669 -   Rent paid: 1295
 
-2024-11-27 16:45:26,427 -   Rent received: 3654
+2024-11-27 15:58:51,669 -   Rent received: 437
 
-2024-11-27 16:45:26,427 -   Actions taken: 203
+2024-11-27 15:58:51,669 -   Actions taken: 122
 
-2024-11-27 16:45:26,427 -   Invalid json: 40
+2024-11-27 15:58:51,669 -   Invalid json: 0
 
-2024-11-27 16:45:26,427 -   Invalid move: 2
+2024-11-27 15:58:51,670 -   Invalid move: 1
 
-2024-11-27 16:45:26,427 -   Defaulted move: 0
+2024-11-27 15:58:51,670 -   Defaulted move: 0
 
-2024-11-27 16:45:26,427 - 
+2024-11-27 15:58:51,670 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 16:45:26,427 -   Properties bought: 16
+2024-11-27 15:58:51,670 -   Properties bought: 12
 
-2024-11-27 16:45:26,427 -   Mortgages: 11
+2024-11-27 15:58:51,670 -   Mortgages: 0
 
-2024-11-27 16:45:26,427 -   Unmortgages: 10
+2024-11-27 15:58:51,670 -   Unmortgages: 0
 
-2024-11-27 16:45:26,427 -   Houses built: 44
+2024-11-27 15:58:51,670 -   Houses built: 13
 
-2024-11-27 16:45:26,427 -   Houses sold: 40
+2024-11-27 15:58:51,670 -   Houses sold: 2
 
-2024-11-27 16:45:26,427 -   Rent paid: 3654
+2024-11-27 15:58:51,670 -   Rent paid: 437
 
-2024-11-27 16:45:26,428 -   Rent received: 1648
+2024-11-27 15:58:51,670 -   Rent received: 1295
 
-2024-11-27 16:45:26,428 -   Actions taken: 126
+2024-11-27 15:58:51,670 -   Actions taken: 30
 
-2024-11-27 16:45:26,428 - Player 0 has a total net worth of $4715, can sell/mortgage everything for $1555, has $1605 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, Atlantic Avenue (yellow, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 1 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Park Place (dark_blue, 0 houses, 1 hotels)
+2024-11-27 15:58:51,670 - Player 0 has a total net worth of $1007, can sell/mortgage everything for $450, has $-590 in cash, and owns the following properties: B. & O. Railroad (mortgaged), North Carolina Avenue (mortgaged), Short Line (mortgaged), States Avenue (pink, 0 houses, 1 hotels), Pacific Avenue (mortgaged), Park Place (mortgaged), Reading Railroad (mortgaged), Virginia Avenue (pink, 0 houses, 1 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 1 hotels)
 
-2024-11-27 16:45:26,428 - Player 1 has a total net worth of $1298, can sell/mortgage everything for $1310, has $-1466 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, Mediterranean Avenue (brown, 2 houses, 0 hotels), Electric Company, Tennessee Avenue (orange, 0 houses, 0 hotels), Reading Railroad, Indiana Avenue (red, 0 houses, 0 hotels), Water Works, Pennsylvania Avenue (mortgaged), Marvin Gardens (yellow, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Short Line, Baltic Avenue (brown, 2 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels)
+2024-11-27 15:58:51,670 - Player 1 has a total net worth of $4178, can sell/mortgage everything for $1675, has $828 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 4 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Electric Company, Tennessee Avenue (orange, 4 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Pennsylvania Railroad, Oriental Avenue (light_blue, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), New York Avenue (orange, 3 houses, 0 hotels)
 
-2024-11-27 16:58:29,630 - 
+2024-11-27 16:05:24,643 - 
 Game 5 Results
 
-2024-11-27 16:58:29,630 - Game over after 100 round(s)
+2024-11-27 16:05:24,643 - Game over after 21 round(s)
 
-2024-11-27 16:58:29,630 - Game duration: 783.20 seconds
+2024-11-27 16:05:24,643 - Game duration: 392.97 seconds
 
-2024-11-27 16:58:29,630 - Player 0 (LLM) won with a net worth of $2849
+2024-11-27 16:05:24,643 - Player 1 (Bot) won with a net worth of $2764
 
-2024-11-27 16:58:29,630 - 
+2024-11-27 16:05:24,643 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 16:58:29,630 -   Properties bought: 12
+2024-11-27 16:05:24,643 -   Properties bought: 9
 
-2024-11-27 16:58:29,630 -   Mortgages: 27
+2024-11-27 16:05:24,643 -   Mortgages: 6
 
-2024-11-27 16:58:29,630 -   Unmortgages: 23
+2024-11-27 16:05:24,643 -   Unmortgages: 1
 
-2024-11-27 16:58:29,630 -   Houses built: 16
+2024-11-27 16:05:24,643 -   Houses built: 0
 
-2024-11-27 16:58:29,630 -   Houses sold: 8
+2024-11-27 16:05:24,643 -   Houses sold: 0
 
-2024-11-27 16:58:29,630 -   Rent paid: 1238
+2024-11-27 16:05:24,643 -   Rent paid: 1742
 
-2024-11-27 16:58:29,630 -   Rent received: 698
+2024-11-27 16:05:24,643 -   Rent received: 78
 
-2024-11-27 16:58:29,630 -   Actions taken: 205
+2024-11-27 16:05:24,643 -   Actions taken: 38
 
-2024-11-27 16:58:29,630 -   Invalid json: 45
+2024-11-27 16:05:24,643 -   Invalid json: 0
 
-2024-11-27 16:58:29,630 -   Invalid move: 1
+2024-11-27 16:05:24,643 -   Invalid move: 0
 
-2024-11-27 16:58:29,630 -   Defaulted move: 0
+2024-11-27 16:05:24,643 -   Defaulted move: 0
 
-2024-11-27 16:58:29,630 - 
+2024-11-27 16:05:24,643 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 16:58:29,630 -   Properties bought: 8
+2024-11-27 16:05:24,643 -   Properties bought: 9
 
-2024-11-27 16:58:29,630 -   Mortgages: 0
+2024-11-27 16:05:24,643 -   Mortgages: 0
 
-2024-11-27 16:58:29,630 -   Unmortgages: 0
+2024-11-27 16:05:24,643 -   Unmortgages: 0
 
-2024-11-27 16:58:29,630 -   Houses built: 51
+2024-11-27 16:05:24,643 -   Houses built: 15
 
-2024-11-27 16:58:29,630 -   Houses sold: 39
+2024-11-27 16:05:24,644 -   Houses sold: 0
 
-2024-11-27 16:58:29,630 -   Rent paid: 698
+2024-11-27 16:05:24,644 -   Rent paid: 78
 
-2024-11-27 16:58:29,630 -   Rent received: 1238
+2024-11-27 16:05:24,644 -   Rent received: 1742
 
-2024-11-27 16:58:29,630 -   Actions taken: 111
+2024-11-27 16:05:24,644 -   Actions taken: 24
 
-2024-11-27 16:58:29,631 - Player 0 has a total net worth of $2849, can sell/mortgage everything for $1165, has $119 in cash, and owns the following properties: Electric Company, Tennessee Avenue (orange, 2 houses, 0 hotels), St. Charles Place (mortgaged), Ventnor Avenue (yellow, 0 houses, 0 hotels), Short Line, Virginia Avenue (pink, 0 houses, 0 hotels), Park Place (mortgaged), North Carolina Avenue (mortgaged), Vermont Avenue (mortgaged), St. James Place (orange, 3 houses, 0 hotels), New York Avenue (orange, 3 houses, 0 hotels), Reading Railroad
+2024-11-27 16:05:24,644 - Player 0 has a total net worth of $540, can sell/mortgage everything for $485, has $-884 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), States Avenue (mortgaged), Water Works (mortgaged), Short Line (mortgaged), Electric Company, Marvin Gardens (mortgaged), Illinois Avenue (mortgaged), Pennsylvania Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels)
 
-2024-11-27 16:58:29,631 - Player 1 has a total net worth of $1740, can sell/mortgage everything for $810, has $120 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, Kentucky Avenue (red, 1 houses, 0 hotels), Indiana Avenue (red, 1 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels)
+2024-11-27 16:05:24,644 - Player 1 has a total net worth of $2764, can sell/mortgage everything for $890, has $984 in cash, and owns the following properties: Tennessee Avenue (orange, 0 houses, 1 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 1 hotels), New York Avenue (orange, 0 houses, 1 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Pennsylvania Railroad, B. & O. Railroad
 
-2024-11-27 17:17:13,073 - 
+2024-11-27 16:20:51,412 - 
 Game 6 Results
 
-2024-11-27 17:17:13,073 - Game over after 85 round(s)
+2024-11-27 16:20:51,412 - Game over after 42 round(s)
 
-2024-11-27 17:17:13,073 - Game duration: 1123.44 seconds
+2024-11-27 16:20:51,412 - Game duration: 926.76 seconds
 
-2024-11-27 17:17:13,073 - Player 0 (LLM) won with a net worth of $5282
+2024-11-27 16:20:51,412 - Player 1 (Bot) won with a net worth of $3783
 
-2024-11-27 17:17:13,073 - 
+2024-11-27 16:20:51,412 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 17:17:13,073 -   Properties bought: 17
+2024-11-27 16:20:51,412 -   Properties bought: 11
 
-2024-11-27 17:17:13,073 -   Mortgages: 53
+2024-11-27 16:20:51,412 -   Mortgages: 13
 
-2024-11-27 17:17:13,073 -   Unmortgages: 49
+2024-11-27 16:20:51,412 -   Unmortgages: 4
 
-2024-11-27 17:17:13,073 -   Houses built: 17
+2024-11-27 16:20:51,412 -   Houses built: 8
 
-2024-11-27 17:17:13,073 -   Houses sold: 2
+2024-11-27 16:20:51,412 -   Houses sold: 4
 
-2024-11-27 17:17:13,073 -   Rent paid: 412
+2024-11-27 16:20:51,412 -   Rent paid: 1338
 
-2024-11-27 17:17:13,073 -   Rent received: 2917
+2024-11-27 16:20:51,412 -   Rent received: 190
 
-2024-11-27 17:17:13,073 -   Actions taken: 245
+2024-11-27 16:20:51,412 -   Actions taken: 89
 
-2024-11-27 17:17:13,073 -   Invalid json: 52
+2024-11-27 16:20:51,412 -   Invalid json: 1
 
-2024-11-27 17:17:13,073 -   Invalid move: 6
+2024-11-27 16:20:51,412 -   Invalid move: 0
 
-2024-11-27 17:17:13,073 -   Defaulted move: 0
+2024-11-27 16:20:51,412 -   Defaulted move: 0
 
-2024-11-27 17:17:13,073 - 
+2024-11-27 16:20:51,412 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 17:17:13,073 -   Properties bought: 8
+2024-11-27 16:20:51,412 -   Properties bought: 14
 
-2024-11-27 17:17:13,073 -   Mortgages: 16
+2024-11-27 16:20:51,412 -   Mortgages: 0
 
-2024-11-27 17:17:13,073 -   Unmortgages: 10
+2024-11-27 16:20:51,412 -   Unmortgages: 0
 
-2024-11-27 17:17:13,073 -   Houses built: 0
+2024-11-27 16:20:51,412 -   Houses built: 0
 
-2024-11-27 17:17:13,073 -   Houses sold: 0
+2024-11-27 16:20:51,413 -   Houses sold: 0
 
-2024-11-27 17:17:13,073 -   Rent paid: 2917
+2024-11-27 16:20:51,413 -   Rent paid: 190
 
-2024-11-27 17:17:13,073 -   Rent received: 412
+2024-11-27 16:20:51,413 -   Rent received: 1338
 
-2024-11-27 17:17:13,073 -   Actions taken: 42
+2024-11-27 16:20:51,413 -   Actions taken: 14
 
-2024-11-27 17:17:13,073 - Player 0 has a total net worth of $5282, can sell/mortgage everything for $1475, has $2008 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Kentucky Avenue (mortgaged), B. & O. Railroad, Pacific Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), Oriental Avenue (mortgaged), St. Charles Place (pink, 0 houses, 1 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Short Line (mortgaged), States Avenue (pink, 0 houses, 1 hotels), St. James Place (orange, 0 houses, 0 hotels), Water Works, Indiana Avenue (red, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 1 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), New York Avenue (mortgaged), Pennsylvania Avenue (green, 0 houses, 0 hotels)
+2024-11-27 16:20:51,413 - Player 0 has a total net worth of $938, can sell/mortgage everything for $160, has $-178 in cash, and owns the following properties: Connecticut Avenue (mortgaged), St. James Place (mortgaged), Boardwalk (mortgaged), Mediterranean Avenue (brown, 2 houses, 0 hotels), Marvin Gardens (mortgaged), Baltic Avenue (brown, 2 houses, 0 hotels), Vermont Avenue (mortgaged), Virginia Avenue (mortgaged), Water Works (mortgaged), New York Avenue (mortgaged), Tennessee Avenue (mortgaged)
 
-2024-11-27 17:17:13,073 - Player 1 has a total net worth of $5, can sell/mortgage everything for $105, has $-893 in cash, and owns the following properties: Tennessee Avenue (mortgaged), Illinois Avenue (mortgaged), North Carolina Avenue (mortgaged), Park Place (mortgaged), Electric Company, Reading Railroad (mortgaged), Atlantic Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 0 hotels)
+2024-11-27 16:20:51,413 - Player 1 has a total net worth of $3783, can sell/mortgage everything for $1455, has $873 in cash, and owns the following properties: Electric Company, Kentucky Avenue (red, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Reading Railroad, States Avenue (pink, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), B. & O. Railroad, Short Line, St. Charles Place (pink, 0 houses, 0 hotels), Pennsylvania Railroad, Ventnor Avenue (yellow, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels)
 
-2024-11-27 17:30:46,802 - 
+2024-11-27 16:48:56,541 - 
 Game 7 Results
 
-2024-11-27 17:30:46,802 - Game over after 71 round(s)
+2024-11-27 16:48:56,541 - Game over after 84 round(s)
 
-2024-11-27 17:30:46,802 - Game duration: 813.73 seconds
+2024-11-27 16:48:56,541 - Game duration: 1685.12 seconds
 
-2024-11-27 17:30:46,802 - Player 0 (LLM) won with a net worth of $4077
+2024-11-27 16:48:56,541 - Player 0 (LLM) won with a net worth of $6015
 
-2024-11-27 17:30:46,802 - 
+2024-11-27 16:48:56,541 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 17:30:46,802 -   Properties bought: 14
+2024-11-27 16:48:56,541 -   Properties bought: 14
 
-2024-11-27 17:30:46,802 -   Mortgages: 28
+2024-11-27 16:48:56,541 -   Mortgages: 3
 
-2024-11-27 17:30:46,802 -   Unmortgages: 23
+2024-11-27 16:48:56,541 -   Unmortgages: 3
 
-2024-11-27 17:30:46,802 -   Houses built: 19
+2024-11-27 16:48:56,541 -   Houses built: 17
 
-2024-11-27 17:30:46,802 -   Houses sold: 5
+2024-11-27 16:48:56,541 -   Houses sold: 2
 
-2024-11-27 17:30:46,802 -   Rent paid: 996
+2024-11-27 16:48:56,541 -   Rent paid: 646
 
-2024-11-27 17:30:46,802 -   Rent received: 2815
+2024-11-27 16:48:56,541 -   Rent received: 3918
 
-2024-11-27 17:30:46,802 -   Actions taken: 170
+2024-11-27 16:48:56,541 -   Actions taken: 134
 
-2024-11-27 17:30:46,802 -   Invalid json: 44
+2024-11-27 16:48:56,541 -   Invalid json: 3
 
-2024-11-27 17:30:46,802 -   Invalid move: 1
+2024-11-27 16:48:56,541 -   Invalid move: 1
 
-2024-11-27 17:30:46,802 -   Defaulted move: 1
+2024-11-27 16:48:56,541 -   Defaulted move: 0
 
-2024-11-27 17:30:46,802 - 
+2024-11-27 16:48:56,541 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 17:30:46,802 -   Properties bought: 13
+2024-11-27 16:48:56,541 -   Properties bought: 13
 
-2024-11-27 17:30:46,802 -   Mortgages: 8
+2024-11-27 16:48:56,541 -   Mortgages: 19
 
-2024-11-27 17:30:46,802 -   Unmortgages: 1
+2024-11-27 16:48:56,541 -   Unmortgages: 13
 
-2024-11-27 17:30:46,802 -   Houses built: 10
+2024-11-27 16:48:56,541 -   Houses built: 0
 
-2024-11-27 17:30:46,802 -   Houses sold: 10
+2024-11-27 16:48:56,541 -   Houses sold: 0
 
-2024-11-27 17:30:46,802 -   Rent paid: 2815
+2024-11-27 16:48:56,541 -   Rent paid: 3918
 
-2024-11-27 17:30:46,803 -   Rent received: 996
+2024-11-27 16:48:56,541 -   Rent received: 646
 
-2024-11-27 17:30:46,803 -   Actions taken: 46
+2024-11-27 16:48:56,541 -   Actions taken: 51
 
-2024-11-27 17:30:46,803 - Player 0 has a total net worth of $4077, can sell/mortgage everything for $1080, has $1395 in cash, and owns the following properties: St. James Place (orange, 0 houses, 0 hotels), Illinois Avenue (mortgaged), Reading Railroad, St. Charles Place (pink, 4 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Pacific Avenue (mortgaged), Pennsylvania Railroad (mortgaged), Virginia Avenue (pink, 0 houses, 1 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Pennsylvania Avenue (mortgaged), States Avenue (pink, 0 houses, 1 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), Oriental Avenue (mortgaged), New York Avenue (orange, 0 houses, 0 hotels)
+2024-11-27 16:48:56,541 - Player 0 has a total net worth of $6015, can sell/mortgage everything for $1605, has $2805 in cash, and owns the following properties: Baltic Avenue (brown, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 1 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Short Line, Indiana Avenue (red, 0 houses, 1 hotels), Water Works, Electric Company, Illinois Avenue (red, 0 houses, 1 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Pennsylvania Railroad, St. James Place (orange, 0 houses, 0 hotels)
 
-2024-11-27 17:30:46,803 - Player 1 has a total net worth of $1188, can sell/mortgage everything for $785, has $-894 in cash, and owns the following properties: B. & O. Railroad, Water Works (mortgaged), Electric Company (mortgaged), Tennessee Avenue (mortgaged), Short Line (mortgaged), Baltic Avenue (mortgaged), Connecticut Avenue (mortgaged), Marvin Gardens (mortgaged), Park Place (dark_blue, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels)
+2024-11-27 16:48:56,544 - Player 1 has a total net worth of $580, can sell/mortgage everything for $460, has $-1087 in cash, and owns the following properties: Reading Railroad (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), New York Avenue (mortgaged), B. & O. Railroad, Pacific Avenue (mortgaged), States Avenue (pink, 0 houses, 0 hotels), North Carolina Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Atlantic Avenue (mortgaged), Boardwalk (mortgaged), Vermont Avenue (light_blue, 0 houses, 0 hotels)
 
-2024-11-27 17:49:47,366 - 
+2024-11-27 17:34:37,215 - 
 Game 8 Results
 
-2024-11-27 17:49:47,366 - Game over after 100 round(s)
+2024-11-27 17:34:37,215 - Game over after 80 round(s)
 
-2024-11-27 17:49:47,366 - Game duration: 1140.56 seconds
+2024-11-27 17:34:37,215 - Game duration: 2740.67 seconds
 
-2024-11-27 17:49:47,366 - Player 1 (Bot) won with a net worth of $4712
+2024-11-27 17:34:37,215 - Player 1 (Bot) won with a net worth of $5375
 
-2024-11-27 17:49:47,366 - 
+2024-11-27 17:34:37,215 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 17:49:47,366 -   Properties bought: 12
+2024-11-27 17:34:37,215 -   Properties bought: 11
 
-2024-11-27 17:49:47,366 -   Mortgages: 30
+2024-11-27 17:34:37,215 -   Mortgages: 15
 
-2024-11-27 17:49:47,366 -   Unmortgages: 25
+2024-11-27 17:34:37,215 -   Unmortgages: 8
 
-2024-11-27 17:49:47,366 -   Houses built: 26
+2024-11-27 17:34:37,215 -   Houses built: 17
 
-2024-11-27 17:49:47,366 -   Houses sold: 25
+2024-11-27 17:34:37,215 -   Houses sold: 12
 
-2024-11-27 17:49:47,366 -   Rent paid: 1238
+2024-11-27 17:34:37,215 -   Rent paid: 1874
 
-2024-11-27 17:49:47,366 -   Rent received: 1001
+2024-11-27 17:34:37,215 -   Rent received: 504
 
-2024-11-27 17:49:47,366 -   Actions taken: 230
+2024-11-27 17:34:37,215 -   Actions taken: 152
 
-2024-11-27 17:49:47,366 -   Invalid json: 74
+2024-11-27 17:34:37,215 -   Invalid json: 2
 
-2024-11-27 17:49:47,366 -   Invalid move: 3
+2024-11-27 17:34:37,215 -   Invalid move: 0
 
-2024-11-27 17:49:47,366 -   Defaulted move: 0
+2024-11-27 17:34:37,215 -   Defaulted move: 0
 
-2024-11-27 17:49:47,366 - 
+2024-11-27 17:34:37,215 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 17:49:47,366 -   Properties bought: 16
+2024-11-27 17:34:37,215 -   Properties bought: 14
 
-2024-11-27 17:49:47,366 -   Mortgages: 1
+2024-11-27 17:34:37,215 -   Mortgages: 0
 
-2024-11-27 17:49:47,366 -   Unmortgages: 1
+2024-11-27 17:34:37,215 -   Unmortgages: 0
 
-2024-11-27 17:49:47,366 -   Houses built: 10
+2024-11-27 17:34:37,215 -   Houses built: 10
 
-2024-11-27 17:49:47,366 -   Houses sold: 0
+2024-11-27 17:34:37,215 -   Houses sold: 3
 
-2024-11-27 17:49:47,366 -   Rent paid: 1001
+2024-11-27 17:34:37,215 -   Rent paid: 504
 
-2024-11-27 17:49:47,366 -   Rent received: 1238
+2024-11-27 17:34:37,216 -   Rent received: 1874
 
-2024-11-27 17:49:47,366 -   Actions taken: 34
+2024-11-27 17:34:37,216 -   Actions taken: 30
 
-2024-11-27 17:49:47,366 - Player 0 has a total net worth of $2084, can sell/mortgage everything for $715, has $106 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), Electric Company (mortgaged), Ventnor Avenue (yellow, 0 houses, 0 hotels), Short Line, Indiana Avenue (mortgaged), New York Avenue (mortgaged), Illinois Avenue (red, 1 houses, 0 hotels), Pacific Avenue (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Park Place (mortgaged)
+2024-11-27 17:34:37,216 - Player 0 has a total net worth of $686, can sell/mortgage everything for $500, has $-858 in cash, and owns the following properties: St. Charles Place (pink, 2 houses, 0 hotels), St. James Place (mortgaged), Vermont Avenue (mortgaged), Virginia Avenue (pink, 2 houses, 0 hotels), Kentucky Avenue (mortgaged), Water Works (mortgaged), Short Line (mortgaged), Illinois Avenue (mortgaged), States Avenue (pink, 1 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), Connecticut Avenue (mortgaged)
 
-2024-11-27 17:49:47,366 - Player 1 has a total net worth of $4712, can sell/mortgage everything for $1645, has $1422 in cash, and owns the following properties: Reading Railroad, States Avenue (pink, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, Marvin Gardens (yellow, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Pennsylvania Railroad, Water Works, Pennsylvania Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), Virginia Avenue (pink, 0 houses, 0 hotels)
+2024-11-27 17:34:37,216 - Player 1 has a total net worth of $5375, can sell/mortgage everything for $2220, has $935 in cash, and owns the following properties: Electric Company, B. & O. Railroad, North Carolina Avenue (green, 3 houses, 0 hotels), Park Place (dark_blue, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Pacific Avenue (green, 2 houses, 0 hotels), Pennsylvania Railroad, Reading Railroad, Indiana Avenue (red, 0 houses, 0 hotels), Pennsylvania Avenue (green, 2 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels)
 
-2024-11-27 18:03:33,124 - 
+2024-11-27 18:01:02,884 - 
 Game 9 Results
 
-2024-11-27 18:03:33,124 - Game over after 66 round(s)
+2024-11-27 18:01:02,884 - Game over after 81 round(s)
 
-2024-11-27 18:03:33,124 - Game duration: 825.76 seconds
+2024-11-27 18:01:02,884 - Game duration: 1585.67 seconds
 
-2024-11-27 18:03:33,124 - Player 1 (Bot) won with a net worth of $6303
+2024-11-27 18:01:02,884 - Player 1 (Bot) won with a net worth of $5568
 
-2024-11-27 18:03:33,124 - 
+2024-11-27 18:01:02,884 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 18:03:33,124 -   Properties bought: 12
+2024-11-27 18:01:02,884 -   Properties bought: 10
 
-2024-11-27 18:03:33,124 -   Mortgages: 30
+2024-11-27 18:01:02,884 -   Mortgages: 14
 
-2024-11-27 18:03:33,124 -   Unmortgages: 21
+2024-11-27 18:01:02,884 -   Unmortgages: 9
 
-2024-11-27 18:03:33,124 -   Houses built: 19
+2024-11-27 18:01:02,884 -   Houses built: 0
 
-2024-11-27 18:03:33,124 -   Houses sold: 11
+2024-11-27 18:01:02,884 -   Houses sold: 0
 
-2024-11-27 18:03:33,124 -   Rent paid: 3114
+2024-11-27 18:01:02,884 -   Rent paid: 2322
 
-2024-11-27 18:03:33,124 -   Rent received: 781
+2024-11-27 18:01:02,884 -   Rent received: 324
 
-2024-11-27 18:03:33,124 -   Actions taken: 173
+2024-11-27 18:01:02,884 -   Actions taken: 125
 
-2024-11-27 18:03:33,124 -   Invalid json: 56
+2024-11-27 18:01:02,884 -   Invalid json: 1
 
-2024-11-27 18:03:33,124 -   Invalid move: 0
+2024-11-27 18:01:02,884 -   Invalid move: 0
 
-2024-11-27 18:03:33,124 -   Defaulted move: 0
+2024-11-27 18:01:02,884 -   Defaulted move: 0
 
-2024-11-27 18:03:33,124 - 
+2024-11-27 18:01:02,884 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 18:03:33,124 -   Properties bought: 14
+2024-11-27 18:01:02,884 -   Properties bought: 17
 
-2024-11-27 18:03:33,124 -   Mortgages: 0
+2024-11-27 18:01:02,884 -   Mortgages: 0
 
-2024-11-27 18:03:33,124 -   Unmortgages: 0
+2024-11-27 18:01:02,884 -   Unmortgages: 0
 
-2024-11-27 18:03:33,124 -   Houses built: 11
+2024-11-27 18:01:02,884 -   Houses built: 24
 
-2024-11-27 18:03:33,124 -   Houses sold: 1
+2024-11-27 18:01:02,884 -   Houses sold: 6
 
-2024-11-27 18:03:33,124 -   Rent paid: 781
+2024-11-27 18:01:02,884 -   Rent paid: 324
 
-2024-11-27 18:03:33,124 -   Rent received: 3114
+2024-11-27 18:01:02,884 -   Rent received: 2322
 
-2024-11-27 18:03:33,124 -   Actions taken: 30
+2024-11-27 18:01:02,884 -   Actions taken: 48
 
-2024-11-27 18:03:33,124 - Player 0 has a total net worth of $402, can sell/mortgage everything for $360, has $-1195 in cash, and owns the following properties: Oriental Avenue (mortgaged), New York Avenue (mortgaged), Illinois Avenue (mortgaged), Ventnor Avenue (mortgaged), Park Place (mortgaged), Kentucky Avenue (mortgaged), Mediterranean Avenue (brown, 4 houses, 0 hotels), States Avenue (mortgaged), Atlantic Avenue (mortgaged), Baltic Avenue (brown, 4 houses, 0 hotels), Tennessee Avenue (mortgaged), Pennsylvania Railroad
+2024-11-27 18:01:02,884 - Player 0 has a total net worth of $1010, can sell/mortgage everything for $435, has $-436 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (mortgaged), Illinois Avenue (mortgaged), New York Avenue (mortgaged), Atlantic Avenue (mortgaged), Boardwalk (mortgaged), Marvin Gardens (yellow, 0 houses, 0 hotels), B. & O. Railroad, Water Works, States Avenue (pink, 0 houses, 0 hotels)
 
-2024-11-27 18:03:33,124 - Player 1 has a total net worth of $6303, can sell/mortgage everything for $2490, has $1323 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 0 hotels), Pennsylvania Avenue (green, 4 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), Reading Railroad, Indiana Avenue (red, 0 houses, 0 hotels), Pacific Avenue (green, 3 houses, 0 hotels), Short Line, Electric Company, B. & O. Railroad, Connecticut Avenue (light_blue, 0 houses, 0 hotels), Water Works, North Carolina Avenue (green, 3 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels)
+2024-11-27 18:01:02,884 - Player 1 has a total net worth of $5568, can sell/mortgage everything for $2510, has $548 in cash, and owns the following properties: Reading Railroad, Electric Company, Ventnor Avenue (yellow, 0 houses, 0 hotels), Pacific Avenue (green, 3 houses, 0 hotels), Park Place (dark_blue, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Pennsylvania Railroad, Baltic Avenue (brown, 0 houses, 1 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Short Line, North Carolina Avenue (green, 3 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Pennsylvania Avenue (green, 2 houses, 0 hotels)
 
-2024-11-27 18:17:47,422 - 
+2024-11-27 18:50:05,902 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:50:48,766 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:52:44,066 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:54:00,568 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:54:50,122 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:55:32,109 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:56:16,229 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:57:05,622 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:57:59,951 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 18:59:48,128 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:00:56,654 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:02:17,917 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:02:56,921 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:03:58,811 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:04:41,155 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:05:20,971 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:06:02,085 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:06:49,561 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:07:30,362 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:08:08,622 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:08:56,667 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:09:39,115 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:13:04,583 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:14:02,160 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:14:50,458 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:15:37,338 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:16:53,757 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:17:40,676 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-27 19:17:40,676 - 
 Game 10 Results
 
-2024-11-27 18:17:47,423 - Game over after 100 round(s)
+2024-11-27 19:17:40,677 - Game over after 90 round(s)
 
-2024-11-27 18:17:47,423 - Game duration: 854.30 seconds
+2024-11-27 19:17:40,677 - Game duration: 4597.79 seconds
 
-2024-11-27 18:17:47,423 - Player 1 (Bot) won with a net worth of $6502
+2024-11-27 19:17:40,677 - Player 1 (Bot) won with a net worth of $7775
 
-2024-11-27 18:17:47,423 - 
+2024-11-27 19:17:40,677 - 
 Player 0 (LLM) Stats:
 
-2024-11-27 18:17:47,423 -   Properties bought: 12
+2024-11-27 19:17:40,677 -   Properties bought: 9
 
-2024-11-27 18:17:47,423 -   Mortgages: 40
+2024-11-27 19:17:40,677 -   Mortgages: 18
 
-2024-11-27 18:17:47,423 -   Unmortgages: 37
+2024-11-27 19:17:40,677 -   Unmortgages: 11
 
-2024-11-27 18:17:47,423 -   Houses built: 0
+2024-11-27 19:17:40,677 -   Houses built: 9
 
-2024-11-27 18:17:47,423 -   Houses sold: 0
+2024-11-27 19:17:40,677 -   Houses sold: 7
 
-2024-11-27 18:17:47,423 -   Rent paid: 2327
+2024-11-27 19:17:40,677 -   Rent paid: 3754
 
-2024-11-27 18:17:47,423 -   Rent received: 500
+2024-11-27 19:17:40,677 -   Rent received: 259
 
-2024-11-27 18:17:47,423 -   Actions taken: 204
+2024-11-27 19:17:40,677 -   Actions taken: 156
 
-2024-11-27 18:17:47,423 -   Invalid json: 38
+2024-11-27 19:17:40,677 -   Invalid json: 7
 
-2024-11-27 18:17:47,423 -   Invalid move: 0
+2024-11-27 19:17:40,677 -   Invalid move: 134
 
-2024-11-27 18:17:47,423 -   Defaulted move: 0
+2024-11-27 19:17:40,677 -   Defaulted move: 28
 
-2024-11-27 18:17:47,423 - 
+2024-11-27 19:17:40,677 - 
 Player 1 (Bot) Stats:
 
-2024-11-27 18:17:47,423 -   Properties bought: 16
+2024-11-27 19:17:40,677 -   Properties bought: 18
 
-2024-11-27 18:17:47,423 -   Mortgages: 0
+2024-11-27 19:17:40,677 -   Mortgages: 0
 
-2024-11-27 18:17:47,423 -   Unmortgages: 0
+2024-11-27 19:17:40,677 -   Unmortgages: 0
 
-2024-11-27 18:17:47,423 -   Houses built: 0
+2024-11-27 19:17:40,677 -   Houses built: 11
 
-2024-11-27 18:17:47,423 -   Houses sold: 0
+2024-11-27 19:17:40,677 -   Houses sold: 1
 
-2024-11-27 18:17:47,423 -   Rent paid: 500
+2024-11-27 19:17:40,677 -   Rent paid: 259
 
-2024-11-27 18:17:47,423 -   Rent received: 2327
+2024-11-27 19:17:40,677 -   Rent received: 3754
 
-2024-11-27 18:17:47,423 -   Actions taken: 23
+2024-11-27 19:17:40,677 -   Actions taken: 32
 
-2024-11-27 18:17:47,423 - Player 0 has a total net worth of $2588, can sell/mortgage everything for $830, has $555 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 0 hotels), Virginia Avenue (mortgaged), Atlantic Avenue (yellow, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Pennsylvania Avenue (mortgaged), Indiana Avenue (red, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Park Place (mortgaged)
+2024-11-27 19:17:40,677 - Player 0 has a total net worth of $833, can sell/mortgage everything for $290, has $-408 in cash, and owns the following properties: Reading Railroad (mortgaged), Tennessee Avenue (orange, 1 houses, 0 hotels), Park Place (mortgaged), St. Charles Place (mortgaged), New York Avenue (orange, 1 houses, 0 hotels), St. James Place (mortgaged), Atlantic Avenue (mortgaged), Connecticut Avenue (mortgaged), Indiana Avenue (mortgaged)
 
-2024-11-27 18:17:47,423 - Player 1 has a total net worth of $6502, can sell/mortgage everything for $1600, has $3302 in cash, and owns the following properties: Boardwalk (dark_blue, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, Kentucky Avenue (red, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Water Works, Short Line, Baltic Avenue (brown, 0 houses, 0 hotels), Electric Company, B. & O. Railroad, Reading Railroad, Pacific Avenue (green, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels)
+2024-11-27 19:17:40,677 - Player 1 has a total net worth of $7775, can sell/mortgage everything for $1810, has $4155 in cash, and owns the following properties: Pennsylvania Railroad, Ventnor Avenue (yellow, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), B. & O. Railroad, Water Works, Short Line, Electric Company, Baltic Avenue (brown, 0 houses, 1 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels)
 
-2024-11-27 18:17:47,423 - LLM won 4/10 games 
+2024-11-27 19:17:40,677 - LLM won 3/10 games 
 
-2024-11-27 18:17:47,423 - Bot won 6/10 games 
+2024-11-27 19:17:40,677 - Bot won 7/10 games 
 
-2024-11-27 18:26:31,586 - 
+2024-11-27 20:32:47,831 - 
 Game 1 Results
 
-2024-11-27 18:26:31,587 - Game over after 47 round(s)
+2024-11-27 20:32:47,832 - Game over after 86 round(s)
 
-2024-11-27 18:26:31,587 - Game duration: 524.16 seconds
+2024-11-27 20:32:47,832 - Game duration: 4507.15 seconds
 
-2024-11-27 18:26:31,587 - Player 1 (LLM) won with a net worth of $5338
+2024-11-27 20:32:47,832 - Player 0 (Bot) won with a net worth of $5961
 
-2024-11-27 18:26:31,587 - 
+2024-11-27 20:32:47,832 - 
 Player 0 (Bot) Stats:
 
-2024-11-27 18:26:31,587 -   Properties bought: 9
+2024-11-27 20:32:47,832 -   Properties bought: 19
 
-2024-11-27 18:26:31,587 -   Mortgages: 10
+2024-11-27 20:32:47,832 -   Mortgages: 0
 
-2024-11-27 18:26:31,587 -   Unmortgages: 6
+2024-11-27 20:32:47,832 -   Unmortgages: 0
 
-2024-11-27 18:26:31,587 -   Houses built: 0
+2024-11-27 20:32:47,832 -   Houses built: 40
 
-2024-11-27 18:26:31,587 -   Houses sold: 0
+2024-11-27 20:32:47,832 -   Houses sold: 21
 
-2024-11-27 18:26:31,587 -   Rent paid: 3342
+2024-11-27 20:32:47,832 -   Rent paid: 319
 
-2024-11-27 18:26:31,587 -   Rent received: 190
+2024-11-27 20:32:47,832 -   Rent received: 3420
 
-2024-11-27 18:26:31,587 -   Actions taken: 28
+2024-11-27 20:32:47,832 -   Actions taken: 84
 
-2024-11-27 18:26:31,587 - 
+2024-11-27 20:32:47,832 - 
 Player 1 (LLM) Stats:
 
-2024-11-27 18:26:31,587 -   Properties bought: 13
+2024-11-27 20:32:47,832 -   Properties bought: 9
 
-2024-11-27 18:26:31,587 -   Mortgages: 9
+2024-11-27 20:32:47,832 -   Mortgages: 25
 
-2024-11-27 18:26:31,587 -   Unmortgages: 7
+2024-11-27 20:32:47,832 -   Unmortgages: 17
 
-2024-11-27 18:26:31,587 -   Houses built: 25
+2024-11-27 20:32:47,832 -   Houses built: 0
 
-2024-11-27 18:26:31,587 -   Houses sold: 8
+2024-11-27 20:32:47,832 -   Houses sold: 0
 
-2024-11-27 18:26:31,587 -   Rent paid: 190
+2024-11-27 20:32:47,832 -   Rent paid: 3420
 
-2024-11-27 18:26:31,587 -   Rent received: 3342
+2024-11-27 20:32:47,832 -   Rent received: 319
 
-2024-11-27 18:26:31,587 -   Actions taken: 119
+2024-11-27 20:32:47,832 -   Actions taken: 151
 
-2024-11-27 18:26:31,587 -   Invalid json: 36
+2024-11-27 20:32:47,832 -   Invalid json: 3
 
-2024-11-27 18:26:31,587 -   Invalid move: 1
+2024-11-27 20:32:47,832 -   Invalid move: 0
 
-2024-11-27 18:26:31,587 -   Defaulted move: 0
+2024-11-27 20:32:47,832 -   Defaulted move: 0
 
-2024-11-27 18:26:31,587 - Player 0 has a total net worth of $129, can sell/mortgage everything for $510, has $-1296 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), New York Avenue (mortgaged), B. & O. Railroad (mortgaged), North Carolina Avenue (mortgaged), Short Line (mortgaged), St. James Place (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels)
+2024-11-27 20:32:47,832 - Player 0 has a total net worth of $5961, can sell/mortgage everything for $2570, has $821 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), Electric Company, Illinois Avenue (red, 0 houses, 0 hotels), Marvin Gardens (yellow, 3 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), States Avenue (pink, 0 houses, 0 hotels), Reading Railroad, Pennsylvania Railroad, Water Works, St. Charles Place (pink, 0 houses, 0 hotels), Ventnor Avenue (yellow, 3 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Short Line, North Carolina Avenue (green, 0 houses, 0 hotels), Park Place (dark_blue, 0 houses, 0 hotels), Atlantic Avenue (yellow, 3 houses, 0 hotels)
 
-2024-11-27 18:26:31,587 - Player 1 has a total net worth of $5338, can sell/mortgage everything for $1910, has $1410 in cash, and owns the following properties: Electric Company, Pennsylvania Avenue (green, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), St. Charles Place (mortgaged), Ventnor Avenue (yellow, 0 houses, 0 hotels), Reading Railroad, Vermont Avenue (mortgaged), Pennsylvania Railroad, Boardwalk (dark_blue, 3 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Park Place (dark_blue, 4 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels)
+2024-11-27 20:32:47,832 - Player 1 has a total net worth of $260, can sell/mortgage everything for $100, has $-750 in cash, and owns the following properties: Vermont Avenue (mortgaged), Virginia Avenue (mortgaged), B. & O. Railroad, Pennsylvania Avenue (mortgaged), Kentucky Avenue (mortgaged), Boardwalk (mortgaged), Tennessee Avenue (mortgaged), Indiana Avenue (mortgaged), New York Avenue (mortgaged)
 
-2024-11-27 18:37:46,320 - 
+2024-11-27 21:37:48,218 - 
 Game 2 Results
 
-2024-11-27 18:37:46,320 - Game over after 81 round(s)
+2024-11-27 21:37:48,218 - Game over after 80 round(s)
 
-2024-11-27 18:37:46,320 - Game duration: 674.73 seconds
+2024-11-27 21:37:48,218 - Game duration: 3900.39 seconds
 
-2024-11-27 18:37:46,320 - Player 1 (LLM) won with a net worth of $3820
+2024-11-27 21:37:48,218 - Player 0 (Bot) won with a net worth of $5241
 
-2024-11-27 18:37:46,320 - 
+2024-11-27 21:37:48,218 - 
 Player 0 (Bot) Stats:
 
-2024-11-27 18:37:46,320 -   Properties bought: 14
+2024-11-27 21:37:48,218 -   Properties bought: 9
 
-2024-11-27 18:37:46,320 -   Mortgages: 27
+2024-11-27 21:37:48,219 -   Mortgages: 0
 
-2024-11-27 18:37:46,320 -   Unmortgages: 17
+2024-11-27 21:37:48,219 -   Unmortgages: 0
 
-2024-11-27 18:37:46,320 -   Houses built: 12
+2024-11-27 21:37:48,219 -   Houses built: 14
 
-2024-11-27 18:37:46,320 -   Houses sold: 12
+2024-11-27 21:37:48,219 -   Houses sold: 6
 
-2024-11-27 18:37:46,320 -   Rent paid: 3282
+2024-11-27 21:37:48,219 -   Rent paid: 295
 
-2024-11-27 18:37:46,320 -   Rent received: 738
+2024-11-27 21:37:48,219 -   Rent received: 2876
 
-2024-11-27 18:37:46,320 -   Actions taken: 95
+2024-11-27 21:37:48,219 -   Actions taken: 36
 
-2024-11-27 18:37:46,320 - 
+2024-11-27 21:37:48,219 - 
 Player 1 (LLM) Stats:
 
-2024-11-27 18:37:46,320 -   Properties bought: 8
+2024-11-27 21:37:48,219 -   Properties bought: 15
 
-2024-11-27 18:37:46,320 -   Mortgages: 15
+2024-11-27 21:37:48,219 -   Mortgages: 34
 
-2024-11-27 18:37:46,320 -   Unmortgages: 14
+2024-11-27 21:37:48,219 -   Unmortgages: 25
 
-2024-11-27 18:37:46,320 -   Houses built: 19
+2024-11-27 21:37:48,219 -   Houses built: 11
 
-2024-11-27 18:37:46,320 -   Houses sold: 9
+2024-11-27 21:37:48,219 -   Houses sold: 6
 
-2024-11-27 18:37:46,320 -   Rent paid: 738
+2024-11-27 21:37:48,219 -   Rent paid: 2876
 
-2024-11-27 18:37:46,320 -   Rent received: 3282
+2024-11-27 21:37:48,219 -   Rent received: 295
 
-2024-11-27 18:37:46,320 -   Actions taken: 156
+2024-11-27 21:37:48,219 -   Actions taken: 184
 
-2024-11-27 18:37:46,320 -   Invalid json: 60
+2024-11-27 21:37:48,219 -   Invalid json: 3
 
-2024-11-27 18:37:46,320 -   Invalid move: 1
+2024-11-27 21:37:48,219 -   Invalid move: 0
 
-2024-11-27 18:37:46,320 -   Defaulted move: 1
+2024-11-27 21:37:48,219 -   Defaulted move: 0
 
-2024-11-27 18:37:46,320 - Player 0 has a total net worth of $-157, can sell/mortgage everything for $240, has $-1487 in cash, and owns the following properties: Oriental Avenue (mortgaged), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Atlantic Avenue (mortgaged), Short Line, Electric Company (mortgaged), Tennessee Avenue (mortgaged), Illinois Avenue (mortgaged), New York Avenue (mortgaged), States Avenue (mortgaged), Kentucky Avenue (mortgaged), Reading Railroad (mortgaged), B. & O. Railroad (mortgaged), Vermont Avenue (light_blue, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels)
+2024-11-27 21:37:48,219 - Player 0 has a total net worth of $5241, can sell/mortgage everything for $1740, has $1761 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), B. & O. Railroad, Short Line, Boardwalk (dark_blue, 4 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Park Place (dark_blue, 4 houses, 0 hotels), Electric Company
 
-2024-11-27 18:37:46,320 - Player 1 has a total net worth of $3820, can sell/mortgage everything for $1055, has $1611 in cash, and owns the following properties: Baltic Avenue (brown, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 1 hotels), Indiana Avenue (mortgaged), Park Place (dark_blue, 0 houses, 1 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels)
+2024-11-27 21:37:48,219 - Player 1 has a total net worth of $564, can sell/mortgage everything for $675, has $-1690 in cash, and owns the following properties: Tennessee Avenue (mortgaged), Ventnor Avenue (mortgaged), Reading Railroad, Virginia Avenue (mortgaged), Indiana Avenue (mortgaged), Water Works (mortgaged), Pacific Avenue (mortgaged), Atlantic Avenue (yellow, 0 houses, 0 hotels), Baltic Avenue (brown, 2 houses, 0 hotels), Kentucky Avenue (red, 1 houses, 0 hotels), Illinois Avenue (mortgaged), New York Avenue (orange, 0 houses, 0 hotels), North Carolina Avenue (mortgaged), Pennsylvania Railroad (mortgaged), Mediterranean Avenue (brown, 2 houses, 0 hotels)
 
-2024-11-27 18:47:18,440 - 
+2024-11-27 22:18:40,647 - 
 Game 3 Results
 
-2024-11-27 18:47:18,440 - Game over after 65 round(s)
+2024-11-27 22:18:40,647 - Game over after 100 round(s)
 
-2024-11-27 18:47:18,440 - Game duration: 572.12 seconds
+2024-11-27 22:18:40,647 - Game duration: 2452.43 seconds
 
-2024-11-27 18:47:18,440 - Player 0 (Bot) won with a net worth of $3927
+2024-11-27 22:18:40,647 - Player 0 (Bot) won with a net worth of $4140
 
-2024-11-27 18:47:18,440 - 
+2024-11-27 22:18:40,647 - 
 Player 0 (Bot) Stats:
 
-2024-11-27 18:47:18,440 -   Properties bought: 11
+2024-11-27 22:18:40,647 -   Properties bought: 14
 
-2024-11-27 18:47:18,440 -   Mortgages: 0
+2024-11-27 22:18:40,647 -   Mortgages: 1
 
-2024-11-27 18:47:18,440 -   Unmortgages: 0
+2024-11-27 22:18:40,647 -   Unmortgages: 1
 
-2024-11-27 18:47:18,440 -   Houses built: 24
+2024-11-27 22:18:40,647 -   Houses built: 10
 
-2024-11-27 18:47:18,440 -   Houses sold: 9
+2024-11-27 22:18:40,647 -   Houses sold: 0
 
-2024-11-27 18:47:18,440 -   Rent paid: 311
+2024-11-27 22:18:40,647 -   Rent paid: 1700
 
-2024-11-27 18:47:18,440 -   Rent received: 3243
+2024-11-27 22:18:40,647 -   Rent received: 2307
 
-2024-11-27 18:47:18,440 -   Actions taken: 46
+2024-11-27 22:18:40,647 -   Actions taken: 32
 
-2024-11-27 18:47:18,440 - 
+2024-11-27 22:18:40,647 - 
 Player 1 (LLM) Stats:
 
-2024-11-27 18:47:18,440 -   Properties bought: 12
+2024-11-27 22:18:40,647 -   Properties bought: 14
 
-2024-11-27 18:47:18,440 -   Mortgages: 33
+2024-11-27 22:18:40,648 -   Mortgages: 39
 
-2024-11-27 18:47:18,440 -   Unmortgages: 25
+2024-11-27 22:18:40,648 -   Unmortgages: 38
 
-2024-11-27 18:47:18,440 -   Houses built: 0
+2024-11-27 22:18:40,648 -   Houses built: 21
 
-2024-11-27 18:47:18,440 -   Houses sold: 0
+2024-11-27 22:18:40,648 -   Houses sold: 6
 
-2024-11-27 18:47:18,440 -   Rent paid: 3243
+2024-11-27 22:18:40,648 -   Rent paid: 2307
 
-2024-11-27 18:47:18,440 -   Rent received: 311
+2024-11-27 22:18:40,648 -   Rent received: 1700
 
-2024-11-27 18:47:18,440 -   Actions taken: 144
+2024-11-27 22:18:40,648 -   Actions taken: 237
 
-2024-11-27 18:47:18,440 -   Invalid json: 40
+2024-11-27 22:18:40,648 -   Invalid json: 1
 
-2024-11-27 18:47:18,440 -   Invalid move: 0
+2024-11-27 22:18:40,648 -   Invalid move: 1
 
-2024-11-27 18:47:18,440 -   Defaulted move: 1
+2024-11-27 22:18:40,648 -   Defaulted move: 0
 
-2024-11-27 18:47:18,440 - Player 0 has a total net worth of $3927, can sell/mortgage everything for $1285, has $1357 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, Illinois Avenue (red, 0 houses, 1 hotels), Indiana Avenue (red, 0 houses, 1 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 1 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels)
+2024-11-27 22:18:40,648 - Player 0 has a total net worth of $4140, can sell/mortgage everything for $1455, has $1230 in cash, and owns the following properties: States Avenue (pink, 0 houses, 0 hotels), Pennsylvania Railroad, Tennessee Avenue (orange, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Electric Company, Water Works, Mediterranean Avenue (brown, 0 houses, 1 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), Illinois Avenue (red, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Park Place (dark_blue, 0 houses, 0 hotels)
 
-2024-11-27 18:47:18,440 - Player 1 has a total net worth of $613, can sell/mortgage everything for $340, has $-872 in cash, and owns the following properties: Reading Railroad (mortgaged), States Avenue (mortgaged), New York Avenue (orange, 0 houses, 0 hotels), Ventnor Avenue (mortgaged), Pacific Avenue (mortgaged), Boardwalk (mortgaged), Mediterranean Avenue (mortgaged), Oriental Avenue (light_blue, 0 houses, 0 hotels), Marvin Gardens (mortgaged), Pennsylvania Railroad, Tennessee Avenue (orange, 0 houses, 0 hotels), Electric Company (mortgaged)
+2024-11-27 22:18:40,648 - Player 1 has a total net worth of $3161, can sell/mortgage everything for $1415, has $241 in cash, and owns the following properties: Reading Railroad, St. Charles Place (pink, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Short Line (mortgaged), Kentucky Avenue (red, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 1 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 1 hotels), New York Avenue (orange, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 1 hotels), B. & O. Railroad
 
-2024-11-27 18:54:38,199 - 
+2024-11-27 22:54:49,282 - 
 Game 4 Results
 
-2024-11-27 18:54:38,199 - Game over after 51 round(s)
+2024-11-27 22:54:49,283 - Game over after 42 round(s)
 
-2024-11-27 18:54:38,199 - Game duration: 439.76 seconds
+2024-11-27 22:54:49,283 - Game duration: 2168.63 seconds
 
-2024-11-27 18:54:38,199 - Player 1 (LLM) won with a net worth of $4578
+2024-11-27 22:54:49,283 - Player 1 (LLM) won with a net worth of $4838
 
-2024-11-27 18:54:38,199 - 
+2024-11-27 22:54:49,283 - 
 Player 0 (Bot) Stats:
 
-2024-11-27 18:54:38,199 -   Properties bought: 12
+2024-11-27 22:54:49,283 -   Properties bought: 7
 
-2024-11-27 18:54:38,199 -   Mortgages: 2
+2024-11-27 22:54:49,283 -   Mortgages: 6
 
-2024-11-27 18:54:38,199 -   Unmortgages: 2
+2024-11-27 22:54:49,283 -   Unmortgages: 4
 
-2024-11-27 18:54:38,199 -   Houses built: 2
+2024-11-27 22:54:49,283 -   Houses built: 0
 
-2024-11-27 18:54:38,199 -   Houses sold: 0
+2024-11-27 22:54:49,283 -   Houses sold: 0
 
-2024-11-27 18:54:38,199 -   Rent paid: 2519
+2024-11-27 22:54:49,283 -   Rent paid: 2977
 
-2024-11-27 18:54:38,199 -   Rent received: 156
+2024-11-27 22:54:49,283 -   Rent received: 316
 
-2024-11-27 18:54:38,199 -   Actions taken: 22
+2024-11-27 22:54:49,283 -   Actions taken: 20
 
-2024-11-27 18:54:38,199 - 
+2024-11-27 22:54:49,283 - 
 Player 1 (LLM) Stats:
 
-2024-11-27 18:54:38,199 -   Properties bought: 11
+2024-11-27 22:54:49,283 -   Properties bought: 12
 
-2024-11-27 18:54:38,199 -   Mortgages: 13
+2024-11-27 22:54:49,283 -   Mortgages: 8
 
-2024-11-27 18:54:38,199 -   Unmortgages: 10
+2024-11-27 22:54:49,283 -   Unmortgages: 5
 
-2024-11-27 18:54:38,199 -   Houses built: 11
+2024-11-27 22:54:49,283 -   Houses built: 21
 
-2024-11-27 18:54:38,199 -   Houses sold: 5
+2024-11-27 22:54:49,283 -   Houses sold: 4
 
-2024-11-27 18:54:38,199 -   Rent paid: 156
+2024-11-27 22:54:49,283 -   Rent paid: 316
 
-2024-11-27 18:54:38,199 -   Rent received: 2519
+2024-11-27 22:54:49,283 -   Rent received: 2977
 
-2024-11-27 18:54:38,199 -   Actions taken: 110
+2024-11-27 22:54:49,283 -   Actions taken: 107
 
-2024-11-27 18:54:38,199 -   Invalid json: 26
+2024-11-27 22:54:49,283 -   Invalid json: 0
 
-2024-11-27 18:54:38,199 -   Invalid move: 1
+2024-11-27 22:54:49,283 -   Invalid move: 0
 
-2024-11-27 18:54:38,199 -   Defaulted move: 0
+2024-11-27 22:54:49,283 -   Defaulted move: 0
 
-2024-11-27 18:54:38,199 - Player 0 has a total net worth of $1338, can sell/mortgage everything for $1350, has $-1362 in cash, and owns the following properties: Baltic Avenue (brown, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Atlantic Avenue (yellow, 1 houses, 0 hotels), Marvin Gardens (yellow, 1 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels)
+2024-11-27 22:54:49,283 - Player 0 has a total net worth of $-847, can sell/mortgage everything for $470, has $-1967 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad (mortgaged), Indiana Avenue (red, 0 houses, 0 hotels), Short Line (mortgaged), St. James Place (orange, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Reading Railroad
 
-2024-11-27 18:54:38,199 - Player 1 has a total net worth of $4578, can sell/mortgage everything for $1440, has $1451 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), B. & O. Railroad (mortgaged), Pacific Avenue (green, 0 houses, 0 hotels), Boardwalk (dark_blue, 3 houses, 0 hotels), Reading Railroad (mortgaged), Tennessee Avenue (orange, 0 houses, 0 hotels), Water Works, Mediterranean Avenue (brown, 0 houses, 0 hotels), Electric Company (mortgaged), Park Place (dark_blue, 3 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels)
+2024-11-27 22:54:49,283 - Player 1 has a total net worth of $4838, can sell/mortgage everything for $1255, has $2058 in cash, and owns the following properties: Connecticut Avenue (mortgaged), New York Avenue (orange, 0 houses, 0 hotels), Marvin Gardens (mortgaged), Boardwalk (dark_blue, 0 houses, 1 hotels), States Avenue (pink, 0 houses, 0 hotels), B. & O. Railroad (mortgaged), North Carolina Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Electric Company, Park Place (dark_blue, 0 houses, 1 hotels), Mediterranean Avenue (brown, 3 houses, 0 hotels), Baltic Avenue (brown, 4 houses, 0 hotels)
 
-2024-11-27 19:11:32,824 - 
+2024-11-27 23:37:33,483 - 
 Game 5 Results
 
-2024-11-27 19:11:32,824 - Game over after 100 round(s)
+2024-11-27 23:37:33,484 - Game over after 86 round(s)
 
-2024-11-27 19:11:32,824 - Game duration: 1014.62 seconds
+2024-11-27 23:37:33,484 - Game duration: 2564.20 seconds
 
-2024-11-27 19:11:32,824 - Player 1 (LLM) won with a net worth of $4747
+2024-11-27 23:37:33,484 - Player 1 (LLM) won with a net worth of $4732
 
-2024-11-27 19:11:32,824 - 
+2024-11-27 23:37:33,484 - 
 Player 0 (Bot) Stats:
 
-2024-11-27 19:11:32,824 -   Properties bought: 12
+2024-11-27 23:37:33,484 -   Properties bought: 11
 
-2024-11-27 19:11:32,824 -   Mortgages: 1
+2024-11-27 23:37:33,484 -   Mortgages: 19
 
-2024-11-27 19:11:32,824 -   Unmortgages: 1
+2024-11-27 23:37:33,484 -   Unmortgages: 9
 
-2024-11-27 19:11:32,824 -   Houses built: 9
+2024-11-27 23:37:33,484 -   Houses built: 0
 
-2024-11-27 19:11:32,824 -   Houses sold: 2
+2024-11-27 23:37:33,484 -   Houses sold: 0
 
-2024-11-27 19:11:32,824 -   Rent paid: 1058
+2024-11-27 23:37:33,484 -   Rent paid: 3576
 
-2024-11-27 19:11:32,824 -   Rent received: 1283
+2024-11-27 23:37:33,484 -   Rent received: 628
 
-2024-11-27 19:11:32,824 -   Actions taken: 28
+2024-11-27 23:37:33,484 -   Actions taken: 46
 
-2024-11-27 19:11:32,824 - 
+2024-11-27 23:37:33,484 - 
 Player 1 (LLM) Stats:
 
-2024-11-27 19:11:32,824 -   Properties bought: 15
+2024-11-27 23:37:33,484 -   Properties bought: 11
 
-2024-11-27 19:11:32,824 -   Mortgages: 41
+2024-11-27 23:37:33,484 -   Mortgages: 11
 
-2024-11-27 19:11:32,824 -   Unmortgages: 41
+2024-11-27 23:37:33,484 -   Unmortgages: 10
 
-2024-11-27 19:11:32,824 -   Houses built: 0
+2024-11-27 23:37:33,484 -   Houses built: 24
 
-2024-11-27 19:11:32,824 -   Houses sold: 0
+2024-11-27 23:37:33,484 -   Houses sold: 9
 
-2024-11-27 19:11:32,824 -   Rent paid: 1283
+2024-11-27 23:37:33,484 -   Rent paid: 628
 
-2024-11-27 19:11:32,824 -   Rent received: 1058
+2024-11-27 23:37:33,484 -   Rent received: 3576
 
-2024-11-27 19:11:32,824 -   Actions taken: 225
+2024-11-27 23:37:33,484 -   Actions taken: 167
 
-2024-11-27 19:11:32,824 -   Invalid json: 57
+2024-11-27 23:37:33,484 -   Invalid json: 1
 
-2024-11-27 19:11:32,824 -   Invalid move: 6
+2024-11-27 23:37:33,485 -   Invalid move: 2
 
-2024-11-27 19:11:32,824 -   Defaulted move: 0
+2024-11-27 23:37:33,485 -   Defaulted move: 0
 
-2024-11-27 19:11:32,824 - Player 0 has a total net worth of $4195, can sell/mortgage everything for $2020, has $155 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Reading Railroad, Connecticut Avenue (light_blue, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), Water Works, Boardwalk (dark_blue, 4 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Park Place (dark_blue, 3 houses, 0 hotels)
+2024-11-27 23:37:33,485 - Player 0 has a total net worth of $510, can sell/mortgage everything for $110, has $-528 in cash, and owns the following properties: Reading Railroad (mortgaged), Indiana Avenue (mortgaged), Water Works (mortgaged), Boardwalk (mortgaged), Vermont Avenue (mortgaged), St. James Place (mortgaged), Ventnor Avenue (mortgaged), Baltic Avenue (mortgaged), Oriental Avenue (mortgaged), Electric Company (mortgaged), Kentucky Avenue (red, 0 houses, 0 hotels)
 
-2024-11-27 19:11:32,825 - Player 1 has a total net worth of $4747, can sell/mortgage everything for $1455, has $1837 in cash, and owns the following properties: Oriental Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, Indiana Avenue (red, 0 houses, 0 hotels), B. & O. Railroad, Mediterranean Avenue (brown, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Electric Company, Ventnor Avenue (yellow, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Short Line, Virginia Avenue (pink, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels)
+2024-11-27 23:37:33,485 - Player 1 has a total net worth of $4732, can sell/mortgage everything for $1100, has $2478 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 1 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Pennsylvania Railroad, Virginia Avenue (pink, 0 houses, 1 hotels), B. & O. Railroad, Mediterranean Avenue (brown, 0 houses, 0 hotels), Connecticut Avenue (mortgaged), States Avenue (pink, 0 houses, 1 hotels), Illinois Avenue (red, 0 houses, 0 hotels)
 
-2024-11-27 19:19:14,985 - 
+2024-11-28 01:17:26,252 - 
 Game 6 Results
 
-2024-11-27 19:19:14,985 - Game over after 69 round(s)
+2024-11-28 01:17:26,252 - Game over after 97 round(s)
 
-2024-11-27 19:19:14,985 - Game duration: 462.16 seconds
+2024-11-28 01:17:26,252 - Game duration: 5992.77 seconds
 
-2024-11-27 19:19:14,985 - Player 0 (Bot) won with a net worth of $4242
+2024-11-28 01:17:26,252 - Player 0 (Bot) won with a net worth of $6295
 
-2024-11-27 19:19:14,985 - 
+2024-11-28 01:17:26,252 - 
 Player 0 (Bot) Stats:
 
-2024-11-27 19:19:14,985 -   Properties bought: 16
+2024-11-28 01:17:26,252 -   Properties bought: 13
 
-2024-11-27 19:19:14,985 -   Mortgages: 0
+2024-11-28 01:17:26,252 -   Mortgages: 0
 
-2024-11-27 19:19:14,985 -   Unmortgages: 0
+2024-11-28 01:17:26,252 -   Unmortgages: 0
 
-2024-11-27 19:19:14,985 -   Houses built: 17
+2024-11-28 01:17:26,252 -   Houses built: 11
 
-2024-11-27 19:19:14,985 -   Houses sold: 2
+2024-11-28 01:17:26,252 -   Houses sold: 3
 
-2024-11-27 19:19:14,985 -   Rent paid: 70
+2024-11-28 01:17:26,252 -   Rent paid: 758
 
-2024-11-27 19:19:14,985 -   Rent received: 3142
+2024-11-28 01:17:26,252 -   Rent received: 3493
 
-2024-11-27 19:19:14,985 -   Actions taken: 51
+2024-11-28 01:17:26,252 -   Actions taken: 30
 
-2024-11-27 19:19:14,985 - 
+2024-11-28 01:17:26,252 - 
 Player 1 (LLM) Stats:
 
-2024-11-27 19:19:14,985 -   Properties bought: 8
+2024-11-28 01:17:26,252 -   Properties bought: 14
 
-2024-11-27 19:19:14,985 -   Mortgages: 21
+2024-11-28 01:17:26,252 -   Mortgages: 15
 
-2024-11-27 19:19:14,985 -   Unmortgages: 16
+2024-11-28 01:17:26,252 -   Unmortgages: 14
 
-2024-11-27 19:19:14,985 -   Houses built: 0
+2024-11-28 01:17:26,252 -   Houses built: 20
 
-2024-11-27 19:19:14,985 -   Houses sold: 0
+2024-11-28 01:17:26,252 -   Houses sold: 18
 
-2024-11-27 19:19:14,985 -   Rent paid: 3142
+2024-11-28 01:17:26,252 -   Rent paid: 3493
 
-2024-11-27 19:19:14,985 -   Rent received: 70
+2024-11-28 01:17:26,252 -   Rent received: 758
 
-2024-11-27 19:19:14,985 -   Actions taken: 123
+2024-11-28 01:17:26,252 -   Actions taken: 199
 
-2024-11-27 19:19:14,985 -   Invalid json: 35
+2024-11-28 01:17:26,252 -   Invalid json: 2
 
-2024-11-27 19:19:14,985 -   Invalid move: 1
+2024-11-28 01:17:26,252 -   Invalid move: 1
 
-2024-11-27 19:19:14,985 -   Defaulted move: 0
+2024-11-28 01:17:26,252 -   Defaulted move: 0
 
-2024-11-27 19:19:14,985 - Player 0 has a total net worth of $4242, can sell/mortgage everything for $1575, has $1092 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 1 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Reading Railroad, B. & O. Railroad, States Avenue (pink, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 1 hotels), Short Line, Baltic Avenue (brown, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Pennsylvania Railroad, Electric Company, New York Avenue (orange, 0 houses, 1 hotels)
+2024-11-28 01:17:26,253 - Player 0 has a total net worth of $6295, can sell/mortgage everything for $2270, has $1755 in cash, and owns the following properties: Pennsylvania Railroad, North Carolina Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), Electric Company, New York Avenue (orange, 0 houses, 0 hotels), Boardwalk (dark_blue, 4 houses, 0 hotels), Reading Railroad, St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, Indiana Avenue (red, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Park Place (dark_blue, 4 houses, 0 hotels)
 
-2024-11-27 19:19:14,985 - Player 1 has a total net worth of $167, can sell/mortgage everything for $270, has $-877 in cash, and owns the following properties: Ventnor Avenue (yellow, 0 houses, 0 hotels), North Carolina Avenue (mortgaged), Oriental Avenue (mortgaged), Virginia Avenue (mortgaged), Illinois Avenue (mortgaged), Pennsylvania Avenue (mortgaged), Mediterranean Avenue (brown, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels)
+2024-11-28 01:17:26,253 - Player 1 has a total net worth of $1039, can sell/mortgage everything for $1145, has $-1368 in cash, and owns the following properties: Vermont Avenue (light_blue, 1 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Ventnor Avenue (mortgaged), Short Line, Mediterranean Avenue (brown, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Water Works, Atlantic Avenue (yellow, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 1 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels)
+
+2024-11-28 01:44:35,882 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:45:15,333 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:46:01,986 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:46:49,588 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:48:11,077 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:48:57,857 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:49:41,488 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:51:49,378 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:52:28,024 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:53:22,250 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:54:29,227 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:55:17,376 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:56:10,954 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:58:31,044 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 01:59:29,570 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:00:42,930 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:01:34,668 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:02:29,796 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:03:23,998 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:04:08,061 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:05:01,911 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 789, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:06:01,973 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:06:53,550 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:07:50,123 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:09:08,830 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:10:27,324 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:11:20,228 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:12:15,501 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:13:00,922 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:13:57,760 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:14:51,797 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:15:37,136 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:16:25,483 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:17:23,265 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:18:11,792 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:19:10,306 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:20:20,667 - list index out of range
+Traceback (most recent call last):
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 806, in play_game
+    self.play_turn()
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 780, in play_turn
+    self.raise_money(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 609, in raise_money
+    self.request_action(player_id, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 852, in request_action
+    self.select_action(player_id, actions, selected_index, space)
+  File "D:\MSCS\CS6220-BDSA\project\LLMonopoly\game\game.py", line 673, in select_action
+    action = actions[selected_index]
+IndexError: list index out of range
+2024-11-28 02:22:57,461 - 
+Game 7 Results
+
+2024-11-28 02:22:57,461 - Game over after 100 round(s)
+
+2024-11-28 02:22:57,461 - Game duration: 3931.21 seconds
+
+2024-11-28 02:22:57,461 - Player 0 (Bot) won with a net worth of $4958
+
+2024-11-28 02:22:57,461 - 
+Player 0 (Bot) Stats:
+
+2024-11-28 02:22:57,461 -   Properties bought: 17
+
+2024-11-28 02:22:57,461 -   Mortgages: 0
+
+2024-11-28 02:22:57,461 -   Unmortgages: 0
+
+2024-11-28 02:22:57,461 -   Houses built: 20
+
+2024-11-28 02:22:57,461 -   Houses sold: 0
+
+2024-11-28 02:22:57,461 -   Rent paid: 997
+
+2024-11-28 02:22:57,461 -   Rent received: 3340
+
+2024-11-28 02:22:57,461 -   Actions taken: 42
+
+2024-11-28 02:22:57,461 - 
+Player 1 (LLM) Stats:
+
+2024-11-28 02:22:57,461 -   Properties bought: 10
+
+2024-11-28 02:22:57,461 -   Mortgages: 18
+
+2024-11-28 02:22:57,461 -   Unmortgages: 12
+
+2024-11-28 02:22:57,461 -   Houses built: 16
+
+2024-11-28 02:22:57,461 -   Houses sold: 16
+
+2024-11-28 02:22:57,461 -   Rent paid: 3340
+
+2024-11-28 02:22:57,461 -   Rent received: 997
+
+2024-11-28 02:22:57,461 -   Actions taken: 192
+
+2024-11-28 02:22:57,461 -   Invalid json: 15
+
+2024-11-28 02:22:57,461 -   Invalid move: 172
+
+2024-11-28 02:22:57,461 -   Defaulted move: 37
+
+2024-11-28 02:22:57,461 - Player 0 has a total net worth of $4958, can sell/mortgage everything for $1975, has $1008 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Water Works, Short Line, Mediterranean Avenue (brown, 0 houses, 1 hotels), Baltic Avenue (brown, 0 houses, 1 hotels), Electric Company, St. James Place (orange, 0 houses, 0 hotels), B. & O. Railroad, Pennsylvania Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Reading Railroad, Kentucky Avenue (red, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 1 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Park Place (dark_blue, 0 houses, 1 hotels)
+
+2024-11-28 02:22:57,462 - Player 1 has a total net worth of $1205, can sell/mortgage everything for $280, has $24 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels), Illinois Avenue (mortgaged), Marvin Gardens (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), Tennessee Avenue (mortgaged), Ventnor Avenue (mortgaged), Pennsylvania Railroad (mortgaged), Indiana Avenue (mortgaged), Virginia Avenue (pink, 0 houses, 0 hotels)
+
+2024-11-28 03:01:08,841 - 
+Game 8 Results
+
+2024-11-28 03:01:08,841 - Game over after 100 round(s)
+
+2024-11-28 03:01:08,841 - Game duration: 2291.38 seconds
+
+2024-11-28 03:01:08,841 - Player 1 (LLM) won with a net worth of $5229
+
+2024-11-28 03:01:08,841 - 
+Player 0 (Bot) Stats:
+
+2024-11-28 03:01:08,841 -   Properties bought: 15
+
+2024-11-28 03:01:08,841 -   Mortgages: 1
+
+2024-11-28 03:01:08,841 -   Unmortgages: 1
+
+2024-11-28 03:01:08,841 -   Houses built: 0
+
+2024-11-28 03:01:08,841 -   Houses sold: 0
+
+2024-11-28 03:01:08,841 -   Rent paid: 1056
+
+2024-11-28 03:01:08,841 -   Rent received: 955
+
+2024-11-28 03:01:08,841 -   Actions taken: 22
+
+2024-11-28 03:01:08,841 - 
+Player 1 (LLM) Stats:
+
+2024-11-28 03:01:08,841 -   Properties bought: 13
+
+2024-11-28 03:01:08,841 -   Mortgages: 12
+
+2024-11-28 03:01:08,841 -   Unmortgages: 11
+
+2024-11-28 03:01:08,841 -   Houses built: 0
+
+2024-11-28 03:01:08,841 -   Houses sold: 0
+
+2024-11-28 03:01:08,841 -   Rent paid: 955
+
+2024-11-28 03:01:08,841 -   Rent received: 1056
+
+2024-11-28 03:01:08,841 -   Actions taken: 153
+
+2024-11-28 03:01:08,841 -   Invalid json: 1
+
+2024-11-28 03:01:08,841 -   Invalid move: 3
+
+2024-11-28 03:01:08,841 -   Defaulted move: 0
+
+2024-11-28 03:01:08,841 - Player 0 has a total net worth of $4724, can sell/mortgage everything for $1485, has $1754 in cash, and owns the following properties: Reading Railroad, Illinois Avenue (red, 0 houses, 0 hotels), Pacific Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 0 hotels), Electric Company, Tennessee Avenue (orange, 0 houses, 0 hotels), Water Works, Ventnor Avenue (yellow, 0 houses, 0 hotels), Park Place (dark_blue, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels)
+
+2024-11-28 03:01:08,842 - Player 1 has a total net worth of $5229, can sell/mortgage everything for $1330, has $2542 in cash, and owns the following properties: St. Charles Place (pink, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), B. & O. Railroad, Pennsylvania Avenue (green, 0 houses, 0 hotels), St. James Place (orange, 0 houses, 0 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Pennsylvania Railroad, Short Line, Marvin Gardens (yellow, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Boardwalk (dark_blue, 0 houses, 0 hotels), Mediterranean Avenue (mortgaged)
+
+2024-11-28 03:35:09,716 - 
+Game 9 Results
+
+2024-11-28 03:35:09,716 - Game over after 83 round(s)
+
+2024-11-28 03:35:09,716 - Game duration: 2040.87 seconds
+
+2024-11-28 03:35:09,716 - Player 1 (LLM) won with a net worth of $5940
+
+2024-11-28 03:35:09,716 - 
+Player 0 (Bot) Stats:
+
+2024-11-28 03:35:09,716 -   Properties bought: 11
+
+2024-11-28 03:35:09,716 -   Mortgages: 0
+
+2024-11-28 03:35:09,716 -   Unmortgages: 0
+
+2024-11-28 03:35:09,716 -   Houses built: 25
+
+2024-11-28 03:35:09,716 -   Houses sold: 15
+
+2024-11-28 03:35:09,716 -   Rent paid: 2696
+
+2024-11-28 03:35:09,716 -   Rent received: 352
+
+2024-11-28 03:35:09,716 -   Actions taken: 55
+
+2024-11-28 03:35:09,717 - 
+Player 1 (LLM) Stats:
+
+2024-11-28 03:35:09,717 -   Properties bought: 15
+
+2024-11-28 03:35:09,717 -   Mortgages: 13
+
+2024-11-28 03:35:09,717 -   Unmortgages: 10
+
+2024-11-28 03:35:09,717 -   Houses built: 11
+
+2024-11-28 03:35:09,717 -   Houses sold: 3
+
+2024-11-28 03:35:09,717 -   Rent paid: 352
+
+2024-11-28 03:35:09,717 -   Rent received: 2696
+
+2024-11-28 03:35:09,717 -   Actions taken: 152
+
+2024-11-28 03:35:09,717 -   Invalid json: 5
+
+2024-11-28 03:35:09,717 -   Invalid move: 1
+
+2024-11-28 03:35:09,717 -   Defaulted move: 0
+
+2024-11-28 03:35:09,717 - Player 0 has a total net worth of $961, can sell/mortgage everything for $1080, has $-1199 in cash, and owns the following properties: States Avenue (pink, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 1 hotels), Connecticut Avenue (light_blue, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 1 hotels)
+
+2024-11-28 03:35:09,717 - Player 1 has a total net worth of $5940, can sell/mortgage everything for $2130, has $1401 in cash, and owns the following properties: Pennsylvania Railroad, B. & O. Railroad, Boardwalk (dark_blue, 4 houses, 0 hotels), Reading Railroad, St. James Place (orange, 0 houses, 0 hotels), Kentucky Avenue (mortgaged), Atlantic Avenue (yellow, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Electric Company, Tennessee Avenue (orange, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), Pacific Avenue (mortgaged), Park Place (dark_blue, 4 houses, 0 hotels), Oriental Avenue (mortgaged), Vermont Avenue (light_blue, 0 houses, 0 hotels)
+
+2024-11-28 04:19:23,586 - 
+Game 10 Results
+
+2024-11-28 04:19:23,586 - Game over after 61 round(s)
+
+2024-11-28 04:19:23,586 - Game duration: 2653.87 seconds
+
+2024-11-28 04:19:23,586 - Player 1 (LLM) won with a net worth of $4121
+
+2024-11-28 04:19:23,587 - 
+Player 0 (Bot) Stats:
+
+2024-11-28 04:19:23,587 -   Properties bought: 13
+
+2024-11-28 04:19:23,587 -   Mortgages: 18
+
+2024-11-28 04:19:23,587 -   Unmortgages: 8
+
+2024-11-28 04:19:23,587 -   Houses built: 9
+
+2024-11-28 04:19:23,587 -   Houses sold: 9
+
+2024-11-28 04:19:23,587 -   Rent paid: 3410
+
+2024-11-28 04:19:23,587 -   Rent received: 566
+
+2024-11-28 04:19:23,587 -   Actions taken: 63
+
+2024-11-28 04:19:23,587 - 
+Player 1 (LLM) Stats:
+
+2024-11-28 04:19:23,587 -   Properties bought: 9
+
+2024-11-28 04:19:23,587 -   Mortgages: 5
+
+2024-11-28 04:19:23,587 -   Unmortgages: 5
+
+2024-11-28 04:19:23,587 -   Houses built: 19
+
+2024-11-28 04:19:23,587 -   Houses sold: 4
+
+2024-11-28 04:19:23,587 -   Rent paid: 566
+
+2024-11-28 04:19:23,587 -   Rent received: 3410
+
+2024-11-28 04:19:23,587 -   Actions taken: 115
+
+2024-11-28 04:19:23,587 -   Invalid json: 2
+
+2024-11-28 04:19:23,587 -   Invalid move: 0
+
+2024-11-28 04:19:23,587 -   Defaulted move: 0
+
+2024-11-28 04:19:23,587 - Player 0 has a total net worth of $228, can sell/mortgage everything for $200, has $-1036 in cash, and owns the following properties: Pennsylvania Railroad (mortgaged), B. & O. Railroad (mortgaged), St. James Place (mortgaged), Ventnor Avenue (mortgaged), Pacific Avenue (mortgaged), Short Line (mortgaged), Virginia Avenue (mortgaged), Mediterranean Avenue (mortgaged), Vermont Avenue (mortgaged), Atlantic Avenue (mortgaged), St. Charles Place (pink, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels)
+
+2024-11-28 04:19:23,587 - Player 1 has a total net worth of $4121, can sell/mortgage everything for $1085, has $1951 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 1 hotels), Illinois Avenue (red, 0 houses, 1 hotels), Reading Railroad, Kentucky Avenue (red, 0 houses, 1 hotels), North Carolina Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 0 hotels)
+
+2024-11-28 04:19:23,587 - Bot won 5/10 games 
+
+2024-11-28 04:19:23,587 - LLM won 5/10 games 
 

@@ -999,7 +999,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "phi3"
+    llm = "llama3"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
@@ -1031,7 +1031,7 @@ def main():
         #         logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
         player_wins = [0 for i in range(num_players)]
-        for i in range(7, total_games + 1):  # LLM going second
+        for i in range(4, total_games + 1):  # LLM going second
             game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
             winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1

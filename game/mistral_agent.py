@@ -28,7 +28,7 @@ class MistralAgent:
     
 if __name__ == "__main__":
     agent = MistralAgent()
-    prompt = "Hello, world!"
+    prompt = "WHat is the most sold phone?"
     response = agent.query(prompt)
     print("Response from MistralAgent:", response)
    

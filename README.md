@@ -95,7 +95,7 @@ ollama pull phi3:medium
 ollama pull qwen2.5:7b
 ```
 
-### Example
+## Running the simulation
 
 Start ollama server:
 ```bash 
@@ -105,20 +105,5 @@ In seperate terminal:
 ```bash 
 python game.py
 ```
-## Running the Simulation
-
-(Add instructions here on how to run your simulation once it's implemented)
-
-## Project Structure
-
-(Add information about your project's directory structure and main files)
-
-## Contributing
-
-(Add guidelines for contributing to your project)
-
-## License
-
-(Add your chosen license information)
 
 ---

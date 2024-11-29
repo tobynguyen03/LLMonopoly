@@ -999,7 +999,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "llama3"
+    llm = "phi3"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
@@ -1018,20 +1018,20 @@ def main():
         handler.flush = lambda: True
 
     with open(results_file, 'a') as file:
-        player_wins = [0 for i in range(num_players)]
-        for i in range(1, total_games + 1): # LLM going first
-            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-            winner_id = game.play_game(max_rounds, i)
-            player_wins[winner_id] += 1
+        # player_wins = [0 for i in range(num_players)]
+        # for i in range(1, total_games + 1): # LLM going first
+        #     game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+        #     winner_id = game.play_game(max_rounds, i)
+        #     player_wins[winner_id] += 1
         
-        for i in range(len(player_wins)):
-            if i == 0:
-                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-            else:
-                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        # for i in range(len(player_wins)):
+        #     if i == 0:
+        #         logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+        #     else:
+        #         logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
         player_wins = [0 for i in range(num_players)]
-        for i in range(1, total_games + 1):  # LLM going second
+        for i in range(7, total_games + 1):  # LLM going second
             game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
             winner_id = game.play_game(max_rounds, i)
             player_wins[winner_id] += 1

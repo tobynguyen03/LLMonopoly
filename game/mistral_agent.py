@@ -5,6 +5,7 @@ import json
 class Mistral_Agent:
     def __init__(self, model="mistral:latest"):
         self.url = "http://localhost:11434/api/chat"
+        self.name = "Mistral"
 
     def query(self, prompt):
         data = {

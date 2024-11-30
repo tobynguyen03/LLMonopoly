@@ -8,7 +8,7 @@ models = [
     "phi3:medium-128k",
     "qwen2.5:7b",
     "gemma2:9b",
-    "mistral:7b-instruct",
+    "mistral:latest",
 ]
 
 url = "http://localhost:11434/api/generate"

@@ -108,4 +108,7 @@ In seperate terminal:
 python game.py
 ```
 
+## Performance Evaluation
+Since our project is creating a custom Monopoly agent, we do not utilize any existing dataset. We evaluate the performance of our agents by having them play many simulations against a default heuristic bot (created by ourselves). 20 games (capped at 100 rounds) are ran for each LLM. Various metrics are tracked, such as win rate, number of actions (and sub-actions) made each game, inference time, game duration, etc. Win rate is used as the main statistic for determining agent ability, with our ensemble agent having the highest winrate at 60% against the benchmark agent. We were limited to 20 trials due to the long inference time of trials (12-15 minutes per game), so the variance of Monopoly as a heavily luck-based game could not be completely eliminated.
+
 ---

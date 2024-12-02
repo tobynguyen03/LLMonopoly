@@ -25,7 +25,7 @@ invalid_move_pattern = re.compile(r"Invalid move: (\d+)")
 defaulted_move_pattern = re.compile(r"Defaulted move: (\d+)")
 ensemble_stats_pattern = re.compile(r"Ensemble selection stats {(.*?)}")
 
-with open("llama3_results.txt", "r") as file:
+with open("phi3_results.txt", "r") as file:
     content = file.read()
 
 games = re.split(r"Game \d+ Results", content)

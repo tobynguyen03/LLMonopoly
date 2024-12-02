@@ -5,13 +5,13 @@ from collections import deque
 from copy import deepcopy
 import re
 from collections import defaultdict
-from llama_agent import Llama3_Agent
-from llama2_agent import Llama2_Agent
-from qwen_agent import Qwen_Agent
-from phi3_agent import Phi3_Agent
-from gemma_agent import GEMMA_Agent
-from mistral_agent import Mistral_Agent
-from ensemble_agent import Ensemble_Agent
+from agents.llama_agent import Llama3_Agent
+from agents.llama2_agent import Llama2_Agent
+from agents.qwen_agent import Qwen_Agent
+from agents.phi3_agent import Phi3_Agent
+from agents.gemma_agent import GEMMA_Agent
+from agents.mistral_agent import Mistral_Agent
+from agents.ensemble_agent import Ensemble_Agent
 import json
 import os
 import logging
@@ -878,7 +878,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'{self.llm}_context.txt', 'r') as file:
+        with open(f'prompts/{self.llm}_context.txt', 'r') as file:
             context = file.read()
 
         # memory_summary = "Past 3 Actions:\n"
@@ -999,7 +999,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "llama3"
+    llm = "ensemble"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
@@ -1018,17 +1018,17 @@ def main():
         handler.flush = lambda: True
 
     with open(results_file, 'a') as file:
-        # player_wins = [0 for i in range(num_players)]
-        # for i in range(1, total_games + 1): # LLM going first
-        #     game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-        #     winner_id = game.play_game(max_rounds, i)
-        #     player_wins[winner_id] += 1
+        player_wins = [0 for i in range(num_players)]
+        for i in range(1, total_games + 1): # LLM going first
+            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+            winner_id = game.play_game(max_rounds, i)
+            player_wins[winner_id] += 1
         
-        # for i in range(len(player_wins)):
-        #     if i == 0:
-        #         logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-        #     else:
-        #         logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        for i in range(len(player_wins)):
+            if i == 0:
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+            else:
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
         player_wins = [0 for i in range(num_players)]
         for i in range(4, total_games + 1):  # LLM going second

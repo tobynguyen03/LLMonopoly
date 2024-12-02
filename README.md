@@ -98,10 +98,15 @@ ollama pull gemma2:9b
 ```
 
 Model details can be found here
+
 https://ollama.com/library/llama3.1:8b-instruct-q5_K_M
+
 https://ollama.com/library/phi3:medium-128k
+
 https://ollama.com/library/qwen2.5:7b
+
 https://ollama.com/library/mistral:7b-instruct
+
 https://ollama.com/library/gemma2:9b
 
 ## Running the simulation

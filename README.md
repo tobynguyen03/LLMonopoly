@@ -93,6 +93,8 @@ Dowload ollama models:
 ollama pull llama3.2
 ollama pull phi3:medium
 ollama pull qwen2.5:7b
+ollama pull mistral:7b-instruct
+ollama pull gemma2:9b
 ```
 
 ## Running the simulation

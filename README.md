@@ -1,6 +1,6 @@
 ﻿# LLMonopoly
 
-This project implements a Monopoly simulation designed for Large Language Models (LLMs) to interact with and utilize.
+This project implements a Monopoly simulation designed for Large Language Models (LLMs) to interact with and utilize. We host and download our models using Ollama (https://ollama.com)
 
 ## Setup
 
@@ -90,12 +90,19 @@ ssh atl1-1-03-012-13-0
 
 Dowload ollama models:
 ```bash
-ollama pull llama3.2
-ollama pull phi3:medium
+ollama pull llama3.1:8b-instruct-q5_K_M
+ollama pull phi3:medium-128k
 ollama pull qwen2.5:7b
 ollama pull mistral:7b-instruct
 ollama pull gemma2:9b
 ```
+
+Model details can be found here
+https://ollama.com/library/llama3.1:8b-instruct-q5_K_M
+https://ollama.com/library/phi3:medium-128k
+https://ollama.com/library/qwen2.5:7b
+https://ollama.com/library/mistral:7b-instruct
+https://ollama.com/library/gemma2:9b
 
 ## Running the simulation
 

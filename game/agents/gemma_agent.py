@@ -4,12 +4,16 @@ import json
 class GEMMA_Agent():
     def __init__(self):
         self.url = "http://localhost:11434/api/chat"
+<<<<<<< HEAD:game/gemma_agent.py
         self.model = "gemma2:9b"
         self.name = "Gemma2"
+=======
+        self.name = "Gemma"
+>>>>>>> d2be33b (clean up repo):game/agents/gemma_agent.py
 
     def query(self, prompt):
         data = {
-            "model": self.model,
+            "model": "gemma2:9b",
             "prompt": prompt,
             "temperature": 0.7,
             "max_tokens": 150,

@@ -16,6 +16,7 @@ import json
 import os
 import logging
 import time
+from PIL import Image, ImageDraw
 
 @dataclass
 class Property:
@@ -27,6 +28,7 @@ class Property:
     number_in_set: int
     mortgage_value: int
     mortgage_fee: int
+    coordinates: List[tuple[int, int]] = None
     is_mortgaged: bool = False
     number_of_houses: int = 0
     number_of_hotels: int = 0
@@ -39,6 +41,7 @@ class Railroad:
     rent: List[int]
     mortgage_value: int
     mortgage_fee: int
+    coordinates: List[tuple[int, int]] = None
     is_mortgaged: bool = False
     owned_by: Optional[int] = None
 
@@ -48,6 +51,7 @@ class Utility:
     price: int
     mortgage_value: int
     mortgage_fee: int
+    coordinates: List[tuple[int, int]] = None
     is_mortgaged: bool = False
     owned_by: Optional[int] = None
 
@@ -56,25 +60,27 @@ class Tax:
     name: str
     type: str
     amount: int
+    coordinates: List[tuple[int, int]] = None
 
 @dataclass
 class SpecialSpace:
     name: str
+    coordinates: List[tuple[int, int]] = None
 
 PurchaseableProperty = Property | Railroad | Utility
 
 MONOPOLY_BOARD = [
-    SpecialSpace("Go"),
-    Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33, False, 0, 0, None),
-    SpecialSpace("Community Chest"),
-    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, False, 0, 0, None),
-    Tax("Income Tax", "tax", 200),
-    Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
-    Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, False, 0, 0, None),
-    SpecialSpace("Chance"),
-    Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, False, 0, 0, None),
-    Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66, False, 0, 0, None),
-    SpecialSpace("Jail/Just Visiting"),
+    SpecialSpace("Go", [(1729, 1731), (1729, 2000)]),
+    Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33, [(1562, 1731), (1729, 2000)], False, 0, 0, None),
+    SpecialSpace("Community Chest", [(1409, 1731), (1562, 2000)]),
+    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, [(1249, 1731), (1409, 2000)], False, 0, 0, None),
+    Tax("Income Tax", "tax", 200, [(1086, 1731), (1249, 2000)]),
+    Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110, [(923, 1731), (1086, 2000)], False, None),
+    Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, [(760, 1731), (923, 2000)], False, 0, 0, None),
+    SpecialSpace("Chance", [(597, 1731), (760, 2000)]),
+    Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, [(434, 1731), (597, 2000)], False, 0, 0, None),
+    Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66, [(271, 1731), (434, 2000)], False, 0, 0, None),
+    SpecialSpace("Jail/Just Visiting", [(0, 1731), (0, 2000)]),
     Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, False, 0, 0, None),
     Utility("Electric Company", 150, 75, 83, False, None),
     Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, False, 0, 0, None),
@@ -998,49 +1004,74 @@ class MonopolyGame:
 
         return summary
 
+    def display_board_state(self):
+        img = Image.open("assets/board.png")
+        draw = ImageDraw.Draw(img)
+
+        def draw_dot(x, y, radius=5, color='red'):
+            draw.ellipse([x-radius, y-radius, x+radius, y+radius], fill=color)
+
+        for space in self.board:
+            if space.coordinates:
+                top_left = space.coordinates[0]
+                bottom_right = space.coordinates[1]
+                
+                # Draw dots at all 4 corners
+                draw_dot(top_left[0], top_left[1])      # Top-left
+                draw_dot(bottom_right[0], top_left[1])  # Top-right
+                draw_dot(top_left[0], bottom_right[1])  # Bottom-left
+                draw_dot(bottom_right[0], bottom_right[1])  # Bottom-right
+
+        # Save the modified image
+        img.save("assets/dotted_board.png")
+
 def main():
     llm = "ensemble"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
 
-    os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results.txt')
+    game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
 
-    logging.basicConfig(
-        filename=results_file,
-        level=logging.INFO,
-        format='%(asctime)s - %(message)s'
-    )
+    game.display_board_state()
 
-    logger = logging.getLogger()
-    for handler in logger.handlers:
-        handler.flush = lambda: True
+    # os.makedirs('game_results', exist_ok=True)
+    # results_file = os.path.join('game_results', f'{llm}_results.txt')
 
-    with open(results_file, 'a') as file:
-        player_wins = [0 for i in range(num_players)]
-        for i in range(1, total_games + 1): # LLM going first
-            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-            winner_id = game.play_game(max_rounds, i)
-            player_wins[winner_id] += 1
+    # logging.basicConfig(
+    #     filename=results_file,
+    #     level=logging.INFO,
+    #     format='%(asctime)s - %(message)s'
+    # )
+
+    # logger = logging.getLogger()
+    # for handler in logger.handlers:
+    #     handler.flush = lambda: True
+
+    # with open(results_file, 'a') as file:
+    #     player_wins = [0 for i in range(num_players)]
+    #     for i in range(1, total_games + 1): # LLM going first
+    #         game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+    #         winner_id = game.play_game(max_rounds, i)
+    #         player_wins[winner_id] += 1
         
-        for i in range(len(player_wins)):
-            if i == 0:
-                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-            else:
-                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+    #     for i in range(len(player_wins)):
+    #         if i == 0:
+    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+    #         else:
+    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
-        player_wins = [0 for i in range(num_players)]
-        for i in range(4, total_games + 1):  # LLM going second
-            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-            winner_id = game.play_game(max_rounds, i)
-            player_wins[winner_id] += 1
+    #     player_wins = [0 for i in range(num_players)]
+    #     for i in range(4, total_games + 1):  # LLM going second
+    #         game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+    #         winner_id = game.play_game(max_rounds, i)
+    #         player_wins[winner_id] += 1
         
-        for i in range(len(player_wins)):
-            if i == 1:
-                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-            else:
-                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+    #     for i in range(len(player_wins)):
+    #         if i == 1:
+    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+    #         else:
+    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

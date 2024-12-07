@@ -63,9 +63,21 @@ for game in games[1:]:
     for stats in stats_to_update:
         llm_stats[stats]["games_played"].append(1)
 
+    game_won = False
     if winner_pattern.search(game):
+        game_won = True
         for stats in stats_to_update:
             llm_stats[stats]["games_won"].append(1)
+
+    if match := game_over_pattern.search(game):
+        rounds = int(match.group(1))
+        for stats in stats_to_update:
+            update_stats(llm_stats[stats], "rounds_played", rounds)
+            if rounds < 100:
+                update_stats(llm_stats[stats], "games_under_100", 1)
+                if game_won:
+                    update_stats(llm_stats[stats], "games_won_under_100", 1)
+
     if ensemble_match := ensemble_stats_pattern.search(game):
         ensemble_data = ensemble_match.group(1)
         for model_stat in ensemble_data.split(","):
@@ -101,8 +113,13 @@ def calculate_averages_and_summary(stats):
     summary["win_rate"] = (
         summary["games_won"] / summary["games_played"] * 100 if summary["games_played"] > 0 else 0
     )
+    summary["games_under_100"] = sum(stats["games_under_100"])
+    summary["games_won_under_100"] = sum(stats["games_won_under_100"])
+    summary["avg_rounds_played"] = (
+        statistics.mean(stats["rounds_played"]) if stats["rounds_played"] else 0
+    )
     for key in stats:
-        if key not in ["games_played", "games_won"]:
+        if key not in ["games_played", "games_won", "games_under_100", "games_won_under_100"]:
             summary[f"avg_{key}"] = statistics.mean(stats[key]) if stats[key] else 0
             # summary[f"total_{key}"] = sum(stats[key])
 
@@ -139,9 +156,11 @@ for role, stats in summaries.items():
     print(f"Games Played: {stats['games_played']}")
     print(f"Games Won: {stats['games_won']} ({stats['win_rate']:.2f}%)")
     print(f"Average Game Duration: {stats.get('avg_game_duration', 0):.2f} seconds")
+    print(f"Games under 100 Rounds: {stats['games_under_100']}")
+    print(f"Games Won in Under 100 Rounds: {stats['games_won_under_100']}")
     print(f"Average Inference Time: {stats.get('avg_inference_time', 0):.4f} seconds per action")
     for key, value in stats.items():
-        if key not in ["games_played", "games_won", "win_rate", "avg_game_duration", "avg_inference_time"]:
+        if key not in ["games_played", "games_won", "win_rate", "avg_game_duration", "avg_inference_time", "games_under_100"]:
             print(f"{key.replace('_', ' ').capitalize()}: {value:.2f}")
 for role, stats in ensemble_summaries.items():
     print(f"\n=== Ensemble Selection Statistics ({role}) ===")

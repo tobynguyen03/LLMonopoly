@@ -2,12 +2,11 @@ import requests
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter
-from llama_agent import Llama3_Agent
-from llama2_agent import Llama2_Agent
-from phi3_agent import Phi3_Agent
-from qwen_agent import Qwen_Agent
-from gemma_agent import GEMMA_Agent
-from mistral_agent import Mistral_Agent
+from agents.llama_agent import Llama3_Agent
+from agents.phi3_agent import Phi3_Agent
+from agents.qwen_agent import Qwen_Agent
+from agents.gemma_agent import GEMMA_Agent
+from agents.mistral_agent import Mistral_Agent
 from util import naive_json_from_text
 from collections import defaultdict
 

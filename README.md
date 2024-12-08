@@ -1,6 +1,6 @@
 ﻿# LLMonopoly
 
-This project implements a Monopoly simulation designed for Large Language Models (LLMs) to interact with and utilize.
+This project implements a Monopoly simulation designed for Large Language Models (LLMs) to interact with and utilize. We host and download our models using Ollama (https://ollama.com)
 
 ## Setup
 
@@ -90,12 +90,26 @@ ssh atl1-1-03-012-13-0
 
 Dowload ollama models:
 ```bash
-ollama pull llama3.2
-ollama pull phi3:medium
+ollama pull llama3.1:8b-instruct-q5_K_M
+ollama pull phi3:medium-128k
 ollama pull qwen2.5:7b
+ollama pull mistral:7b-instruct
+ollama pull gemma2:9b
 ```
 
-### Example
+Model details can be found here
+
+https://ollama.com/library/llama3.1:8b-instruct-q5_K_M
+
+https://ollama.com/library/phi3:medium-128k
+
+https://ollama.com/library/qwen2.5:7b
+
+https://ollama.com/library/mistral:7b-instruct
+
+https://ollama.com/library/gemma2:9b
+
+## Running the simulation
 
 Start ollama server:
 ```bash 
@@ -105,20 +119,8 @@ In seperate terminal:
 ```bash 
 python game.py
 ```
-## Running the Simulation
 
-(Add instructions here on how to run your simulation once it's implemented)
-
-## Project Structure
-
-(Add information about your project's directory structure and main files)
-
-## Contributing
-
-(Add guidelines for contributing to your project)
-
-## License
-
-(Add your chosen license information)
+## Performance Evaluation
+Since our project is creating a custom Monopoly agent, we do not utilize any existing dataset. We evaluate the performance of our agents by having them play many simulations against a default heuristic bot (created by ourselves). 20 games (capped at 100 rounds) are ran for each LLM. Various metrics are tracked, such as win rate, number of actions (and sub-actions) made each game, inference time, game duration, etc. Win rate is used as the main statistic for determining agent ability, with our ensemble agent having the highest winrate at 60% against the benchmark agent. We were limited to 20 trials due to the long inference time of trials (12-15 minutes per game), so the variance of Monopoly as a heavily luck-based game could not be completely eliminated.
 
 ---

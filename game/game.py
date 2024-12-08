@@ -5,17 +5,18 @@ from collections import deque
 from copy import deepcopy
 import re
 from collections import defaultdict
-from llama_agent import Llama3_Agent
-from llama2_agent import Llama2_Agent
-from qwen_agent import Qwen_Agent
-from phi3_agent import Phi3_Agent
-from gemma_agent import GEMMA_Agent
-from mistral_agent import Mistral_Agent
-from ensemble_agent import Ensemble_Agent
+from agents.llama_agent import Llama3_Agent
+from agents.llama2_agent import Llama2_Agent
+from agents.qwen_agent import Qwen_Agent
+from agents.phi3_agent import Phi3_Agent
+from agents.gemma_agent import GEMMA_Agent
+from agents.mistral_agent import Mistral_Agent
+from agents.ensemble_agent import Ensemble_Agent
 import json
 import os
 import logging
 import time
+from PIL import Image, ImageDraw
 
 @dataclass
 class Property:
@@ -27,6 +28,7 @@ class Property:
     number_in_set: int
     mortgage_value: int
     mortgage_fee: int
+    coordinates: List[tuple[int, int]] = None
     is_mortgaged: bool = False
     number_of_houses: int = 0
     number_of_hotels: int = 0
@@ -39,6 +41,7 @@ class Railroad:
     rent: List[int]
     mortgage_value: int
     mortgage_fee: int
+    coordinates: List[tuple[int, int]] = None
     is_mortgaged: bool = False
     owned_by: Optional[int] = None
 
@@ -48,6 +51,7 @@ class Utility:
     price: int
     mortgage_value: int
     mortgage_fee: int
+    coordinates: List[tuple[int, int]] = None
     is_mortgaged: bool = False
     owned_by: Optional[int] = None
 
@@ -56,55 +60,58 @@ class Tax:
     name: str
     type: str
     amount: int
+    coordinates: List[tuple[int, int]] = None
 
 @dataclass
 class SpecialSpace:
     name: str
+    coordinates: List[tuple[int, int]] = None
 
 PurchaseableProperty = Property | Railroad | Utility
 
 MONOPOLY_BOARD = [
-    SpecialSpace("Go"),
-    Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33, False, 0, 0, None),
-    SpecialSpace("Community Chest"),
-    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, False, 0, 0, None),
-    Tax("Income Tax", "tax", 200),
-    Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
-    Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, False, 0, 0, None),
-    SpecialSpace("Chance"),
-    Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, False, 0, 0, None),
-    Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66, False, 0, 0, None),
-    SpecialSpace("Jail/Just Visiting"),
-    Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, False, 0, 0, None),
-    Utility("Electric Company", 150, 75, 83, False, None),
-    Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, False, 0, 0, None),
-    Property("Virginia Avenue", 160, [12, 60, 180, 500, 700, 900], 100, "pink", 3, 80, 88, False, 0, 0, None),
-    Railroad("Pennsylvania Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
-    Property("St. James Place", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, False, 0, 0, None),
-    SpecialSpace("Community Chest"),
-    Property("Tennessee Avenue", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, False, 0, 0, None),
-    Property("New York Avenue", 200, [16, 80, 220, 600, 800, 1000], 100, "orange", 3, 100, 110, False, 0, 0, None),
-    SpecialSpace("Free Parking"),
-    Property("Kentucky Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121, False, 0, 0, None),
-    SpecialSpace("Chance"),
-    Property("Indiana Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121, False, 0, 0, None),
-    Property("Illinois Avenue", 240, [20, 100, 300, 750, 925, 1100], 150, "red", 3, 120, 132, False, 0, 0, None),
-    Railroad("B. & O. Railroad", 200, [25, 50, 100, 200], 100, 110, False, None),
-    Property("Atlantic Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, False, 0, 0, None),
-    Property("Ventnor Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, False, 0, 0, None),
-    Utility("Water Works", 150, 75, 83, False, None),
-    Property("Marvin Gardens", 280, [24, 120, 360, 850, 1025, 1200], 150, "yellow", 3, 140, 154, False, 0, 0, None),
-    SpecialSpace("Go To Jail"),
-    Property("Pacific Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, False, 0, 0, None),
-    Property("North Carolina Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, False, 0, 0, None),
-    SpecialSpace("Community Chest"),
-    Property("Pennsylvania Avenue", 320, [28, 150, 450, 1000, 1200, 1400], 200, "green", 3, 160, 176, False, 0, 0, None),
-    Railroad("Short Line", 200, [25, 50, 100, 200], 100, 110, False, None),
-    SpecialSpace("Chance"),
-    Property("Park Place", 350, [35, 175, 500, 1100, 1300, 1500], 200, "dark_blue", 2, 175, 193, False, 0, 0, None),
-    Tax("Luxury Tax", "tax", 100),
-    Property("Boardwalk", 400, [50, 200, 600, 1400, 1700, 2000], 200, "dark_blue", 2, 200, 220, False, 0, 0, None),
+    SpecialSpace("Go", [(1729, 1729), (2000, 2000)]),
+    Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33, [(1562, 1729), (1729, 2000)], False, 0, 0, None),
+    SpecialSpace("Community Chest", [(1400, 1729), (1562, 2000)]),
+    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, [(1249, 1729), (1400, 2000)], False, 0, 0, None),
+    Tax("Income Tax", "tax", 200, [(1086, 1729), (1249, 2000)]),
+    Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110, [(923, 1729), (1086, 2000)], False, None),
+    Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, [(760, 1729), (923, 2000)], False, 0, 0, None),
+    SpecialSpace("Chance", [(597, 1729), (760, 2000)]),
+    Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, [(434, 1729), (597, 2000)], False, 0, 0, None),
+    Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66, [(271, 1729), (434, 2000)], False, 0, 0, None),
+    SpecialSpace("Jail/Just Visiting", [(0, 1729), (271, 2000)]),
+    Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, [(0, 1562), (271, 1729)], False, 0, 0, None),
+    Utility("Electric Company", 150, 75, 83, [(0, 1400), (271, 1562)], False, None),
+    Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, [(0, 1249), (271, 1400)], False, 0, 0, None),
+    Property("Virginia Avenue", 160, [12, 60, 180, 500, 700, 900], 100, "pink", 3, 80, 88, [(0, 1086), (271, 1249)], False, 0, 0, None),
+    Railroad("Pennsylvania Railroad", 200, [25, 50, 100, 200], 100, 110, [(0, 923), (271, 1086)], False, None),
+    Property("St. James Place", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, [(0, 760), (271, 923)], False, 0, 0, None),
+    SpecialSpace("Community Chest", [(0, 597), (271, 760)]),
+    Property("Tennessee Avenue", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, [(0, 434), (271, 597)], False, 0, 0, None),
+    Property("New York Avenue", 200, [16, 80, 220, 600, 800, 1000], 100, "orange", 3, 100, 110, [(0, 271), (271, 434)], False, 0, 0, None),
+    SpecialSpace("Free Parking", [(0, 0), (271, 271)]),
+    Property("Kentucky Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121, [(271, 0), (434, 271)], False, 0, 0, None),
+    SpecialSpace("Chance", [(434, 0), (597, 271)]),
+    Property("Indiana Avenue", 220, [18, 90, 250, 700, 875, 1050], 150, "red", 3, 110, 121, [(597, 0), (760, 271)], False, 0, 0, None),
+    Property("Illinois Avenue", 240, [20, 100, 300, 750, 925, 1100], 150, "red", 3, 120, 132, [(760, 0), (923, 271)], False, 0, 0, None),
+    Railroad("B. & O. Railroad", 200, [25, 50, 100, 200], 100, 110, [(923, 0), (1086, 271)], False, None),
+    Property("Atlantic Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, [(1086, 0), (1249, 271)], False, 0, 0, None),
+    Property("Ventnor Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, [(1249, 0), (1400, 271)], False, 0, 0, None),
+    Utility("Water Works", 150, 75, 83, [(1400, 0), (1562, 271)], False, None),
+    Property("Marvin Gardens", 280, [24, 120, 360, 850, 1025, 1200], 150, "yellow", 3, 140, 154, [(1562, 0), (1729, 271)], False, 0, 0, None),
+    SpecialSpace("Go To Jail", [(1729, 0), (2000, 271)]),
+    Property("Pacific Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, [(1729, 271), (2000, 434)], False, 0, 0, None),
+    Property("North Carolina Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, [(1729, 434), (2000, 597)], False, 0, 0, None),
+    SpecialSpace("Community Chest", [(1729, 597), (2000, 760)]),
+    Property("Pennsylvania Avenue", 320, [28, 150, 450, 1000, 1200, 1400], 200, "green", 3, 160, 176, [(1729, 760), (2000, 923)], False, 0, 0, None),
+    Railroad("Short Line", 200, [25, 50, 100, 200], 100, 110, [(1729, 923), (2000, 1086)], False, None),
+    SpecialSpace("Chance", [(1729, 1086), (2000, 1249)]),
+    Property("Park Place", 350, [35, 175, 500, 1100, 1300, 1500], 200, "dark_blue", 2, 175, 193, [(1729, 1249), (2000, 1400)], False, 0, 0, None),
+    Tax("Luxury Tax", "tax", 100, [(1729, 1400), (2000, 1562)]),
+    Property("Boardwalk", 400, [50, 200, 600, 1400, 1700, 2000], 200, "dark_blue", 2, 200, 220, [(1729, 1562), (2000, 1729)], False, 0, 0, None),
 ]
+
 
 class MonopolyGame:
     def __init__(self, num_players: int, llm_player_id: int, llm = 'manual'):
@@ -878,7 +885,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'{self.llm}_context.txt', 'r') as file:
+        with open(f'prompts/{self.llm}_context.txt', 'r') as file:
             context = file.read()
 
         memory_summary = "Past 3 Actions:\n"
@@ -998,49 +1005,74 @@ class MonopolyGame:
 
         return summary
 
+    def display_board_state(self):
+        img = Image.open("assets/board.png")
+        draw = ImageDraw.Draw(img)
+
+        def draw_dot(x, y, radius=5, color='red'):
+            draw.ellipse([x-radius, y-radius, x+radius, y+radius], fill=color)
+
+        for space in self.board:
+            if space.coordinates:
+                top_left = space.coordinates[0]
+                bottom_right = space.coordinates[1]
+                
+                # Draw dots at all 4 corners
+                draw_dot(top_left[0], top_left[1])      # Top-left
+                draw_dot(bottom_right[0], top_left[1])  # Top-right
+                draw_dot(top_left[0], bottom_right[1])  # Bottom-left
+                draw_dot(bottom_right[0], bottom_right[1])  # Bottom-right
+
+        # Save the modified image
+        img.save("assets/dotted_board.png")
+
 def main():
-    llm = "qwen"
+    llm = "ensemble"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
 
-    os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results.txt')
+    game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
 
-    logging.basicConfig(
-        filename=results_file,
-        level=logging.INFO,
-        format='%(asctime)s - %(message)s'
-    )
+    game.display_board_state()
 
-    logger = logging.getLogger()
-    for handler in logger.handlers:
-        handler.flush = lambda: True
+    # os.makedirs('game_results', exist_ok=True)
+    # results_file = os.path.join('game_results', f'{llm}_results.txt')
 
-    with open(results_file, 'a') as file:
-        player_wins = [0 for i in range(num_players)]
-        for i in range(1, total_games + 1): # LLM going first
-            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-            winner_id = game.play_game(max_rounds, i)
-            player_wins[winner_id] += 1
+    # logging.basicConfig(
+    #     filename=results_file,
+    #     level=logging.INFO,
+    #     format='%(asctime)s - %(message)s'
+    # )
+
+    # logger = logging.getLogger()
+    # for handler in logger.handlers:
+    #     handler.flush = lambda: True
+
+    # with open(results_file, 'a') as file:
+    #     player_wins = [0 for i in range(num_players)]
+    #     for i in range(1, total_games + 1): # LLM going first
+    #         game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+    #         winner_id = game.play_game(max_rounds, i)
+    #         player_wins[winner_id] += 1
         
-        for i in range(len(player_wins)):
-            if i == 0:
-                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-            else:
-                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+    #     for i in range(len(player_wins)):
+    #         if i == 0:
+    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+    #         else:
+    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
-        player_wins = [0 for i in range(num_players)]
-        for i in range(1, total_games + 1):  # LLM going second
-            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-            winner_id = game.play_game(max_rounds, i)
-            player_wins[winner_id] += 1
+    #     player_wins = [0 for i in range(num_players)]
+    #     for i in range(4, total_games + 1):  # LLM going second
+    #         game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+    #         winner_id = game.play_game(max_rounds, i)
+    #         player_wins[winner_id] += 1
         
-        for i in range(len(player_wins)):
-            if i == 1:
-                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-            else:
-                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+    #     for i in range(len(player_wins)):
+    #         if i == 1:
+    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+    #         else:
+    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

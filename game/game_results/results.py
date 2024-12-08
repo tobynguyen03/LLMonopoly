@@ -24,7 +24,7 @@ invalid_json_pattern = re.compile(r"Invalid json: (\d+)")
 invalid_move_pattern = re.compile(r"Invalid move: (\d+)")
 defaulted_move_pattern = re.compile(r"Defaulted move: (\d+)")
 
-with open("full_ensemble_results.txt", "r") as file:
+with open("qwen_results_no_mem_2.txt", "r") as file:
     content = file.read()
 
 games = re.split(r"Game \d+ Results", content)

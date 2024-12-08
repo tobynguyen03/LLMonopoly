@@ -881,11 +881,11 @@ class MonopolyGame:
         with open(f'{self.llm}_context.txt', 'r') as file:
             context = file.read()
 
-        # memory_summary = "Past 3 Actions:\n"
-        # for memory in self.llm_memory:
-        #     new_net_worth = memory["new_net_worth"] if memory["new_net_worth"] is not None else memory["prev_net_worth"]
-        #     effect = new_net_worth - memory["prev_net_worth"]
-        #     memory_summary += f"Action: {memory['action']} | Effect on net worth: {effect:+} (${memory['new_net_worth']})\n"
+        memory_summary = "Past 3 Actions:\n"
+        for memory in self.llm_memory:
+            new_net_worth = memory["new_net_worth"] if memory["new_net_worth"] is not None else memory["prev_net_worth"]
+            effect = new_net_worth - memory["prev_net_worth"]
+            memory_summary += f"Action: {memory['action']} | Effect on net worth: {effect:+} (${memory['new_net_worth']})\n"
 
         # useful variables
         # player = self.get_current_player()
@@ -949,8 +949,8 @@ class MonopolyGame:
         for index, action in enumerate(actions):
             actions_desc += f"{index}: {action}\n"
         # prompt = context.replace("<INPUT>", f"\n{players_info}{actions_desc}")
-        # prompt = f"{context} \n{memory_summary} \nProperties Owned: \n{players_info}{actions_desc}"
-        prompt = f"{context} \nProperties Owned: \n{players_info}{actions_desc}"
+        prompt = f"{context} \n{memory_summary} \nProperties Owned: \n{players_info}{actions_desc}"
+        # prompt = f"{context} \nProperties Owned: \n{players_info}{actions_desc}"
         game_state = f"\n{players_info}{actions_desc}"
         return prompt, game_state
 
@@ -999,7 +999,7 @@ class MonopolyGame:
         return summary
 
 def main():
-    llm = "llama3"
+    llm = "qwen"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side

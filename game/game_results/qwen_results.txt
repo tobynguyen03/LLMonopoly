@@ -1,0 +1,57 @@
+2024-11-29 13:24:40,577 - 
+Game 1 Results
+
+2024-11-29 13:24:40,577 - Game over after 41 round(s)
+
+2024-11-29 13:24:40,577 - Game duration: 89.62 seconds
+
+2024-11-29 13:24:40,577 - Player 1 (Bot) won with a net worth of $3601
+
+2024-11-29 13:24:40,577 - 
+Player 0 (LLM) Stats:
+
+2024-11-29 13:24:40,577 -   Properties bought: 8
+
+2024-11-29 13:24:40,577 -   Mortgages: 8
+
+2024-11-29 13:24:40,577 -   Unmortgages: 6
+
+2024-11-29 13:24:40,577 -   Houses built: 0
+
+2024-11-29 13:24:40,577 -   Houses sold: 0
+
+2024-11-29 13:24:40,577 -   Rent paid: 1513
+
+2024-11-29 13:24:40,577 -   Rent received: 122
+
+2024-11-29 13:24:40,577 -   Actions taken: 71
+
+2024-11-29 13:24:40,577 -   Invalid json: 0
+
+2024-11-29 13:24:40,578 -   Invalid move: 0
+
+2024-11-29 13:24:40,578 -   Defaulted move: 0
+
+2024-11-29 13:24:40,578 - 
+Player 1 (Bot) Stats:
+
+2024-11-29 13:24:40,578 -   Properties bought: 13
+
+2024-11-29 13:24:40,578 -   Mortgages: 0
+
+2024-11-29 13:24:40,578 -   Unmortgages: 0
+
+2024-11-29 13:24:40,578 -   Houses built: 15
+
+2024-11-29 13:24:40,578 -   Houses sold: 0
+
+2024-11-29 13:24:40,578 -   Rent paid: 122
+
+2024-11-29 13:24:40,578 -   Rent received: 1513
+
+2024-11-29 13:24:40,578 -   Actions taken: 29
+
+2024-11-29 13:24:40,578 - Player 0 has a total net worth of $740, can sell/mortgage everything for $540, has $-614 in cash, and owns the following properties: Connecticut Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Railroad, Kentucky Avenue (red, 0 houses, 0 hotels), Atlantic Avenue (mortgaged), Park Place (mortgaged), New York Avenue (orange, 0 houses, 0 hotels), Marvin Gardens (yellow, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels)
+
+2024-11-29 13:24:40,578 - Player 1 has a total net worth of $3601, can sell/mortgage everything for $1330, has $941 in cash, and owns the following properties: Vermont Avenue (light_blue, 0 houses, 0 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Oriental Avenue (light_blue, 0 houses, 0 hotels), Virginia Avenue (pink, 0 houses, 1 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Water Works, Baltic Avenue (brown, 0 houses, 0 hotels), States Avenue (pink, 0 houses, 1 hotels), Electric Company, B. & O. Railroad, Boardwalk (dark_blue, 0 houses, 0 hotels), St. Charles Place (pink, 0 houses, 1 hotels), Reading Railroad
+

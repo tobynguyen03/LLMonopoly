@@ -73,8 +73,8 @@ PurchaseableProperty = Property | Railroad | Utility
 MONOPOLY_BOARD = [
     SpecialSpace("Go", [(1729, 1729), (2000, 2000)]),
     Property("Mediterranean Avenue", 60, [2, 10, 30, 90, 160, 250], 50, "brown", 2, 30, 33, [(1562, 1729), (1729, 2000)], False, 0, 0, None),
-    SpecialSpace("Community Chest", [(1400, 1729), (1562, 2000)]),
-    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, [(1249, 1729), (1400, 2000)], False, 0, 0, None),
+    SpecialSpace("Community Chest", [(1409, 1729), (1562, 2000)]),
+    Property("Baltic Avenue", 60, [4, 20, 60, 180, 320, 450], 50, "brown", 2, 30, 33, [(1249, 1729), (1409, 2000)], False, 0, 0, None),
     Tax("Income Tax", "tax", 200, [(1086, 1729), (1249, 2000)]),
     Railroad("Reading Railroad", 200, [25, 50, 100, 200], 100, 110, [(923, 1729), (1086, 2000)], False, None),
     Property("Oriental Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, [(760, 1729), (923, 2000)], False, 0, 0, None),
@@ -98,9 +98,9 @@ MONOPOLY_BOARD = [
     Property("Illinois Avenue", 240, [20, 100, 300, 750, 925, 1100], 150, "red", 3, 120, 132, [(760, 0), (923, 271)], False, 0, 0, None),
     Railroad("B. & O. Railroad", 200, [25, 50, 100, 200], 100, 110, [(923, 0), (1086, 271)], False, None),
     Property("Atlantic Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, [(1086, 0), (1249, 271)], False, 0, 0, None),
-    Property("Ventnor Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, [(1249, 0), (1400, 271)], False, 0, 0, None),
-    Utility("Water Works", 150, 75, 83, [(1400, 0), (1562, 271)], False, None),
-    Property("Marvin Gardens", 280, [24, 120, 360, 850, 1025, 1200], 150, "yellow", 3, 140, 154, [(1562, 0), (1729, 271)], False, 0, 0, None),
+    Property("Ventnor Avenue", 260, [22, 110, 330, 800, 975, 1150], 150, "yellow", 3, 130, 143, [(1249, 0), (1409, 271)], False, 0, 0, None),
+    Utility("Water Works", 150, 75, 83, [(1409, 0), (1573, 271)], False, None),
+    Property("Marvin Gardens", 280, [24, 120, 360, 850, 1025, 1200], 150, "yellow", 3, 140, 154, [(1573, 0), (1729, 271)], False, 0, 0, None),
     SpecialSpace("Go To Jail", [(1729, 0), (2000, 271)]),
     Property("Pacific Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, [(1729, 271), (2000, 434)], False, 0, 0, None),
     Property("North Carolina Avenue", 300, [26, 130, 390, 900, 1100, 1275], 200, "green", 3, 150, 165, [(1729, 434), (2000, 597)], False, 0, 0, None),
@@ -123,6 +123,7 @@ class MonopolyGame:
         self.llm_player_id = llm_player_id
         self.current_player = 0
         self.num_rounds = 0
+        self.dice_rolls = 0
         self.chance_cards = self._initialize_cards()
         self.community_chest_cards = self._initialize_cards()
         self.remaining_houses = 32
@@ -213,6 +214,7 @@ class MonopolyGame:
         dice_1 = 3
         dice_2 = 3
         double_rolled = True if dice_1 == dice_2 else False
+        self.dice_rolls += 1
 
         return (dice_1, dice_2, double_rolled)
     
@@ -233,10 +235,7 @@ class MonopolyGame:
         if current_position > new_position and not go_back_3_spaces:
             self.pass_go(player_id)
 
-        if not hasattr(self, 'turn_counter'):
-            self.turn_counter = 0
-        self.turn_counter += 1
-        self.save_board_image(self.turn_counter)
+        self.save_board_image(self.dice_rolls)
 
     def pass_go(self, player_id: int):
         self.players[player_id]["money"] += 200
@@ -742,7 +741,6 @@ class MonopolyGame:
                                 #default to end turn or mortgage
                                 selected_index = 0
                                 self.stats[self.llm_player_id]["defaulted_move"] += 1
-                                break
                             attempts += 1
                             selected_index = self.request_llm_action(actions)
                     else:
@@ -800,7 +798,7 @@ class MonopolyGame:
                         return
                     self.raise_money(player_id, space)
                     break
-            
+
             if player_id == self.llm_player_id:
                 self.request_action(player_id, space)
             else:
@@ -846,7 +844,7 @@ class MonopolyGame:
     def request_action(self, player_id: int, space):
         selected_index = -1
         actions = self.get_valid_actions(player_id, space)
-                
+
         while True:
             selected_index = -1
             if self.agent:
@@ -891,6 +889,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
+        with open(f'prompts/{self.llm}_context.txt', 'r') as file:
         with open(f'prompts/{self.llm}_context.txt', 'r') as file:
             context = file.read()
 
@@ -1038,6 +1037,36 @@ class MonopolyGame:
         center_x = ((space.coordinates[0][0] + space.coordinates[1][0]) // 2)
         center_y = ((space.coordinates[0][1] + space.coordinates[1][1]) // 2)
         return (center_x, center_y)
+    
+    def draw_property_owners(self, property: PurchaseableProperty, property_index: int, draw, color):
+        side = (property_index // 10) % 4
+        (x1, y1), (x2, y2) = property.coordinates
+
+        width = abs(x2 - x1)
+        height = abs(y2 - y1)
+        
+        if side == 0:
+            fill_coords = (
+                (x1, y2 - height/5),
+                (x2, y2)
+            )
+        elif side == 1:
+            fill_coords = (
+                (x2 - width/5, y1),
+                (x2, y2)
+            )
+        elif side == 2:
+            fill_coords = (
+                (x1, y1),
+                (x2, y1 + height/5)
+            )
+        else:
+            fill_coords = (
+                (x1, y1),
+                (x1 + width/5, y2)
+            )
+
+        draw.rectangle([fill_coords[0], fill_coords[1]], fill=color)
 
     def save_board_image(self, turn_number):
         img = Image.open("assets/board.png").convert("RGBA")
@@ -1046,6 +1075,9 @@ class MonopolyGame:
 
         for player in self.players:
             positions[player["position"]].append(player)
+            color = "blue" if player["id"] == self.llm_player_id else "purple"
+            for property in player["properties"]:
+                self.draw_property_owners(property, self.board.index(property), draw, color)
 
         for position, players in positions.items():
             space = self.board[position]
@@ -1106,7 +1138,7 @@ class MonopolyGame:
         
 
 def main():
-    llm = "qwen"
+    llm = "phi3"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side

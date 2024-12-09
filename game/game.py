@@ -17,6 +17,7 @@ import os
 import logging
 import time
 from PIL import Image, ImageDraw
+import math
 
 @dataclass
 class Property:
@@ -209,8 +210,8 @@ class MonopolyGame:
         return sell_worth
     
     def roll_dice(self):
-        dice_1 = random.randint(1, 6)
-        dice_2 = random.randint(1, 6)
+        dice_1 = 3
+        dice_2 = 3
         double_rolled = True if dice_1 == dice_2 else False
 
         return (dice_1, dice_2, double_rolled)
@@ -890,7 +891,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'prompts/{self.llm}_context_1s.txt', 'r') as file:
+        with open(f'prompts/{self.llm}_context.txt', 'r') as file:
             context = file.read()
 
         memory_summary = "Past 3 Actions:\n"
@@ -1041,21 +1042,67 @@ class MonopolyGame:
     def save_board_image(self, turn_number):
         img = Image.open("assets/board.png").convert("RGBA")
         draw = ImageDraw.Draw(img)
+        positions = defaultdict(list)
 
         for player in self.players:
-            space = self.board[player["position"]]
+            positions[player["position"]].append(player)
+
+        for position, players in positions.items():
+            space = self.board[position]
             center_x, center_y = self.get_space_center(space)
-
-            if player["id"] == self.llm_player_id:
-                color = "blue"
+            num_players = len(players)
+            radius = 30
+            if len(players) == 1:
+                color = "blue" if players[0]["id"] == self.llm_player_id else "purple"
+                draw.ellipse(
+                    (
+                        center_x - radius,
+                        center_y - radius,
+                        center_x + radius,
+                        center_y + radius,
+                    ),
+                    fill=color,
+                    outline="black",
+                )
             else:
-                color = "purple"
+                for i, player in enumerate(players):
+                    angle = (2 * math.pi / num_players) * i
+                    offset_x = int(38 * math.cos(angle))
+                    offset_y = int(38 * math.sin(angle))
 
-            radius = 50
-            draw.ellipse((center_x - radius, center_y - radius, center_x + radius, center_y + radius), fill=color, outline="black")
+                    color = "blue" if player["id"] == self.llm_player_id else "purple"
+                    draw.ellipse(
+                        (
+                            center_x + offset_x - radius,
+                            center_y + offset_y - radius,
+                            center_x + offset_x + radius,
+                            center_y + offset_y + radius,
+                        ),
+                        fill=color,
+                        outline="black",
+                    )
         
         os.makedirs("game_frames", exist_ok=True)
         img.save(f"game_frames/frame_{turn_number}.png")
+
+    # def save_board_image(self, turn_number):
+    #     img = Image.open("assets/board.png").convert("RGBA")
+    #     draw = ImageDraw.Draw(img)
+
+    #     for player in self.players:
+    #         space = self.board[player["position"]]
+    #         center_x, center_y = self.get_space_center(space)
+
+    #         if player["id"] == self.llm_player_id:
+    #             color = "blue"
+    #         else:
+    #             color = "purple"
+
+    #         radius = 50
+    #         draw.ellipse((center_x - radius, center_y - radius, center_x + radius, center_y + radius), fill=color, outline="black")
+        
+    #     os.makedirs("game_frames", exist_ok=True)
+    #     img.save(f"game_frames/frame_{turn_number}.png")
         
 
 def main():
@@ -1069,7 +1116,7 @@ def main():
     game.display_board_state()
 
     os.makedirs('game_results', exist_ok=True)
-    results_file = os.path.join('game_results', f'{llm}_results_test.txt')
+    results_file = os.path.join('game_results', f'{llm}_results_trials.txt')
 
     logging.basicConfig(
         filename=results_file,

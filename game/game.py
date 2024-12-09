@@ -890,7 +890,6 @@ class MonopolyGame:
     def create_llm_context(self, actions):
         context = ""
         with open(f'prompts/{self.llm}_context.txt', 'r') as file:
-        with open(f'prompts/{self.llm}_context.txt', 'r') as file:
             context = file.read()
 
         memory_summary = "Past 3 Actions:\n"
@@ -1116,29 +1115,10 @@ class MonopolyGame:
         
         os.makedirs("game_frames", exist_ok=True)
         img.save(f"game_frames/frame_{turn_number}.png")
-
-    # def save_board_image(self, turn_number):
-    #     img = Image.open("assets/board.png").convert("RGBA")
-    #     draw = ImageDraw.Draw(img)
-
-    #     for player in self.players:
-    #         space = self.board[player["position"]]
-    #         center_x, center_y = self.get_space_center(space)
-
-    #         if player["id"] == self.llm_player_id:
-    #             color = "blue"
-    #         else:
-    #             color = "purple"
-
-    #         radius = 50
-    #         draw.ellipse((center_x - radius, center_y - radius, center_x + radius, center_y + radius), fill=color, outline="black")
-        
-    #     os.makedirs("game_frames", exist_ok=True)
-    #     img.save(f"game_frames/frame_{turn_number}.png")
         
 
 def main():
-    llm = "phi3"
+    llm = "qwen"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side

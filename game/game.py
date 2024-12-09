@@ -115,7 +115,7 @@ MONOPOLY_BOARD = [
 
 
 class MonopolyGame:
-    def __init__(self, num_players: int, llm_player_id: int, llm = 'manual'):
+    def __init__(self, num_players: int, llm_player_id: int, llm = 'human'):
         self.num_players = num_players
         self.game_ended = False
         self.board = self._initialize_board()
@@ -212,8 +212,8 @@ class MonopolyGame:
         return sell_worth
     
     def roll_dice(self):
-        dice_1 = 3
-        dice_2 = 3
+        dice_1 = random.randint(1, 6)
+        dice_2 = random.randint(1, 6)
         double_rolled = True if dice_1 == dice_2 else False
         self.last_dice_roll = (dice_1, dice_2)
 
@@ -1211,6 +1211,7 @@ class MonopolyGame:
             y += spacing
             draw.text((x, y), f"Player {id} Net Worth: {self.get_net_worth(id)}", fill='black', font=font)
             y += spacing
+
     def save_board_image(self, turn_number):
         img = Image.open("assets/board.png").convert("RGBA")
         draw = ImageDraw.Draw(img)
@@ -1267,56 +1268,56 @@ class MonopolyGame:
         
         img = Image.alpha_composite(img, overlay)
         os.makedirs("game_frames", exist_ok=True)
-        img.save(f"game_frames/frame_{turn_number}.png")
+        img.save(f"game_frames/{self.llm}_frame_{turn_number}.png")
         
 
 def main():
     llm = "human"
     num_players = 2
     max_rounds = 100
-    total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
+    total_games = 1 #total games ran is actually 2x this since it runs total_games for each side
 
     game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
 
-    game.display_board_state()
+    #game.display_board_state()
 
-    # os.makedirs('game_results', exist_ok=True)
-    # results_file = os.path.join('game_results', f'{llm}_results_trials.txt')
+    os.makedirs('game_results', exist_ok=True)
+    results_file = os.path.join('game_results', f'{llm}_results_trials.txt')
 
-    # logging.basicConfig(
-    #     filename=results_file,
-    #     level=logging.INFO,
-    #     format='%(asctime)s - %(message)s'
-    # )
+    logging.basicConfig(
+        filename=results_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(message)s'
+    )
 
-    # logger = logging.getLogger()
-    # for handler in logger.handlers:
-    #     handler.flush = lambda: True
+    logger = logging.getLogger()
+    for handler in logger.handlers:
+        handler.flush = lambda: True
 
-    # with open(results_file, 'a') as file:
-    #     player_wins = [0 for i in range(num_players)]
-    #     for i in range(1, total_games + 1): # LLM going first
-    #         game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-    #         winner_id = game.play_game(max_rounds, i)
-    #         player_wins[winner_id] += 1
+    with open(results_file, 'a') as file:
+        player_wins = [0 for i in range(num_players)]
+        for i in range(1, total_games + 1): # LLM going first
+            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+            winner_id = game.play_game(max_rounds, i)
+            player_wins[winner_id] += 1
         
-    #     for i in range(len(player_wins)):
-    #         if i == 0:
-    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-    #         else:
-    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        for i in range(len(player_wins)):
+            if i == 0:
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+            else:
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
-    #     player_wins = [0 for i in range(num_players)]
-    #     for i in range(4, total_games + 1):  # LLM going second
-    #         game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-    #         winner_id = game.play_game(max_rounds, i)
-    #         player_wins[winner_id] += 1
+        # player_wins = [0 for i in range(num_players)]
+        # for i in range(1, total_games + 1):  # LLM going second
+        #     game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+        #     winner_id = game.play_game(max_rounds, i)
+        #     player_wins[winner_id] += 1
         
-    #     for i in range(len(player_wins)):
-    #         if i == 1:
-    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-    #         else:
-    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        # for i in range(len(player_wins)):
+        #     if i == 1:
+        #         logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+        #     else:
+        #         logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

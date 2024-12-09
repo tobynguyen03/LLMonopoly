@@ -5,12 +5,12 @@ from collections import deque
 from copy import deepcopy
 import re
 from collections import defaultdict
-from llama_agent import Llama3_Agent
-from llama2_agent import Llama2_Agent
-from qwen_agent import Qwen_Agent
-from phi3_agent import Phi3_Agent
-from gemma_agent import GEMMA_Agent
-from ensemble_agent import Ensemble_Agent
+from agents.llama_agent import Llama3_Agent
+from agents.llama2_agent import Llama2_Agent
+from agents.qwen_agent import Qwen_Agent
+from agents.phi3_agent import Phi3_Agent
+from agents.gemma_agent import GEMMA_Agent
+from agents.ensemble_agent import Ensemble_Agent
 import json
 import os
 import logging
@@ -873,7 +873,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'{self.llm}_context2.txt', 'r') as file:
+        with open(f'prompts/{self.llm}_context_0s.txt', 'r') as file:
             context = file.read()
 
         # memory_summary = "Past 3 Actions:\n"

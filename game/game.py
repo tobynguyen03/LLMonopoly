@@ -232,6 +232,11 @@ class MonopolyGame:
         if current_position > new_position and not go_back_3_spaces:
             self.pass_go(player_id)
 
+        if not hasattr(self, 'turn_counter'):
+            self.turn_counter = 0
+        self.turn_counter += 1
+        self.save_board_image(self.turn_counter)
+
     def pass_go(self, player_id: int):
         self.players[player_id]["money"] += 200
 
@@ -885,7 +890,7 @@ class MonopolyGame:
     
     def create_llm_context(self, actions):
         context = ""
-        with open(f'prompts/{self.llm}_context.txt', 'r') as file:
+        with open(f'prompts/{self.llm}_context_1s.txt', 'r') as file:
             context = file.read()
 
         memory_summary = "Past 3 Actions:\n"
@@ -1026,8 +1031,35 @@ class MonopolyGame:
         # Save the modified image
         img.save("assets/dotted_board.png")
 
+    def get_space_center(self, space):
+        if not space.coordinates:
+            return (0, 0)
+        center_x = ((space.coordinates[0][0] + space.coordinates[1][0]) // 2)
+        center_y = ((space.coordinates[0][1] + space.coordinates[1][1]) // 2)
+        return (center_x, center_y)
+
+    def save_board_image(self, turn_number):
+        img = Image.open("assets/board.png").convert("RGBA")
+        draw = ImageDraw.Draw(img)
+
+        for player in self.players:
+            space = self.board[player["position"]]
+            center_x, center_y = self.get_space_center(space)
+
+            if player["id"] == self.llm_player_id:
+                color = "blue"
+            else:
+                color = "purple"
+
+            radius = 50
+            draw.ellipse((center_x - radius, center_y - radius, center_x + radius, center_y + radius), fill=color, outline="black")
+        
+        os.makedirs("game_frames", exist_ok=True)
+        img.save(f"game_frames/frame_{turn_number}.png")
+        
+
 def main():
-    llm = "ensemble"
+    llm = "qwen"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
@@ -1036,43 +1068,43 @@ def main():
 
     game.display_board_state()
 
-    # os.makedirs('game_results', exist_ok=True)
-    # results_file = os.path.join('game_results', f'{llm}_results.txt')
+    os.makedirs('game_results', exist_ok=True)
+    results_file = os.path.join('game_results', f'{llm}_results_test.txt')
 
-    # logging.basicConfig(
-    #     filename=results_file,
-    #     level=logging.INFO,
-    #     format='%(asctime)s - %(message)s'
-    # )
+    logging.basicConfig(
+        filename=results_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(message)s'
+    )
 
-    # logger = logging.getLogger()
-    # for handler in logger.handlers:
-    #     handler.flush = lambda: True
+    logger = logging.getLogger()
+    for handler in logger.handlers:
+        handler.flush = lambda: True
 
-    # with open(results_file, 'a') as file:
-    #     player_wins = [0 for i in range(num_players)]
-    #     for i in range(1, total_games + 1): # LLM going first
-    #         game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
-    #         winner_id = game.play_game(max_rounds, i)
-    #         player_wins[winner_id] += 1
+    with open(results_file, 'a') as file:
+        player_wins = [0 for i in range(num_players)]
+        for i in range(1, total_games + 1): # LLM going first
+            game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
+            winner_id = game.play_game(max_rounds, i)
+            player_wins[winner_id] += 1
         
-    #     for i in range(len(player_wins)):
-    #         if i == 0:
-    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-    #         else:
-    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        for i in range(len(player_wins)):
+            if i == 0:
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+            else:
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
-    #     player_wins = [0 for i in range(num_players)]
-    #     for i in range(4, total_games + 1):  # LLM going second
-    #         game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-    #         winner_id = game.play_game(max_rounds, i)
-    #         player_wins[winner_id] += 1
+        player_wins = [0 for i in range(num_players)]
+        for i in range(4, total_games + 1):  # LLM going second
+            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+            winner_id = game.play_game(max_rounds, i)
+            player_wins[winner_id] += 1
         
-    #     for i in range(len(player_wins)):
-    #         if i == 1:
-    #             logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-    #         else:
-    #             logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        for i in range(len(player_wins)):
+            if i == 1:
+                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+            else:
+                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

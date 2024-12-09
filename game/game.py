@@ -1051,8 +1051,8 @@ class MonopolyGame:
             )
         elif side == 1:
             fill_coords = (
-                (x2 - width/5, y1),
-                (x2, y2)
+                (x1 + width/5, y1),
+                (x1, y2)
             )
         elif side == 2:
             fill_coords = (
@@ -1061,11 +1061,81 @@ class MonopolyGame:
             )
         else:
             fill_coords = (
-                (x1, y1),
-                (x1 + width/5, y2)
+                (x2, y1),
+                (x2 - width/5, y2)
             )
 
         draw.rectangle([fill_coords[0], fill_coords[1]], fill=color)
+
+    def draw_construction(self, property: PurchaseableProperty, property_index: int, draw, color):
+        if not hasattr(property, 'number_of_houses'):
+            return
+        side = (property_index // 10) % 4
+        (x1, y1), (x2, y2) = property.coordinates
+        num_houses = property.number_of_houses
+        has_hotel = property.number_of_hotels == 1
+
+        width = abs(x2 - x1)
+        height = abs(y2 - y1)
+
+        if side == 0:
+            house_area = (
+                (x1, y1),
+                (x2, y1 + height/5)
+            )
+        elif side == 1:
+            house_area = (
+                (x2 - width / 5, y1),
+                (x2, y2)
+            )
+        elif side == 2:
+            house_area = (
+                (x1, y2 - height / 5),
+                (x2, y2)
+            )
+        else:
+            house_area = (
+                (x1, y1),
+                (x1 + width / 5, y2)
+            )
+        house_size = max(width, height) / 12
+        house_gap = house_size / 2
+        hotel_width = house_size * 3
+        hotel_height = house_size * 2
+        if has_hotel:
+            hotel_x = (house_area[0][0] + house_area[1][0]) / 2 - hotel_width / 2
+            hotel_y = (house_area[0][1] + house_area[1][1]) / 2 - hotel_height / 2
+            if side in (0, 2): 
+                draw.rectangle([
+                    (hotel_x, hotel_y),
+                    (hotel_x + hotel_width, hotel_y + hotel_height)
+                ], fill="red")
+            else:
+                draw.rectangle([
+                    (hotel_x, hotel_y),
+                    (hotel_x + hotel_height, hotel_y + hotel_width)
+                ], fill="red")                
+        else:
+            if side in (1, 3):
+                start_y = (house_area[0][1] + house_area[1][1]) / 2 - ((num_houses) * (house_size + house_gap) - house_gap) / 2
+                start_x = (house_area[0][0] + house_area[1][0]) / 2 - house_size / 2
+
+                for i in range(num_houses):
+                    house_y = start_y + i * (house_size + house_gap)
+                    draw.rectangle([
+                        (start_x, house_y),
+                        (start_x + house_size, house_y + house_size)
+                    ], fill="green")
+            else:
+                start_x = (house_area[0][0] + house_area[1][0]) / 2 - ((num_houses) * (house_size + house_gap) - house_gap) / 2
+                start_y = (house_area[0][1] + house_area[1][1]) / 2 - house_size / 2
+                
+                for i in range(num_houses):
+                    house_x = start_x + i * (house_size + house_gap)
+                    draw.rectangle([
+                        (house_x, start_y),
+                        (house_x + house_size, start_y + house_size)
+                    ], fill="green")
 
     def save_board_image(self, turn_number):
         img = Image.open("assets/board.png").convert("RGBA")
@@ -1077,6 +1147,7 @@ class MonopolyGame:
             color = "blue" if player["id"] == self.llm_player_id else "purple"
             for property in player["properties"]:
                 self.draw_property_owners(property, self.board.index(property), draw, color)
+                self.draw_construction(property, self.board.index(property), draw, color)
 
         for position, players in positions.items():
             space = self.board[position]

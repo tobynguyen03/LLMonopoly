@@ -1200,6 +1200,17 @@ class MonopolyGame:
                         (house_x + house_size, start_y + house_size)
                     ], fill="green")
 
+    def draw_stats(self, draw):
+        font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", 50)
+        x = 1100
+        y = 300
+        spacing = 50
+        for player in self.players:
+            id = player['id']
+            draw.text((x, y), f"Player {id} Balance: {player['money']}", fill='black', font=font)
+            y += spacing
+            draw.text((x, y), f"Player {id} Net Worth: {self.get_net_worth(id)}", fill='black', font=font)
+            y += spacing
     def save_board_image(self, turn_number):
         img = Image.open("assets/board.png").convert("RGBA")
         draw = ImageDraw.Draw(img)
@@ -1208,6 +1219,7 @@ class MonopolyGame:
         overlay_draw = ImageDraw.Draw(overlay)
 
         self.draw_dice(draw)
+        self.draw_stats(draw)
 
         for player in self.players:
             positions[player["position"]].append(player)
@@ -1259,7 +1271,7 @@ class MonopolyGame:
         
 
 def main():
-    llm = "qwen"
+    llm = "human"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side

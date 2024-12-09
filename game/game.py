@@ -16,7 +16,7 @@ import json
 import os
 import logging
 import time
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 import math
 
 @dataclass
@@ -123,7 +123,8 @@ class MonopolyGame:
         self.llm_player_id = llm_player_id
         self.current_player = 0
         self.num_rounds = 0
-        self.dice_rolls = 0
+        self.actions_taken = 0
+        self.last_dice_roll = (0, 0)
         self.chance_cards = self._initialize_cards()
         self.community_chest_cards = self._initialize_cards()
         self.remaining_houses = 32
@@ -214,7 +215,7 @@ class MonopolyGame:
         dice_1 = 3
         dice_2 = 3
         double_rolled = True if dice_1 == dice_2 else False
-        self.dice_rolls += 1
+        self.last_dice_roll = (dice_1, dice_2)
 
         return (dice_1, dice_2, double_rolled)
     
@@ -234,8 +235,9 @@ class MonopolyGame:
         
         if current_position > new_position and not go_back_3_spaces:
             self.pass_go(player_id)
-
-        self.save_board_image(self.dice_rolls)
+        
+        self.actions_taken += 1
+        self.save_board_image(self.actions_taken)
 
     def pass_go(self, player_id: int):
         self.players[player_id]["money"] += 200
@@ -557,8 +559,10 @@ class MonopolyGame:
     def baseline_strategy(self, player_id: int, space):
         player = self.players[player_id]
         if isinstance(space, PurchaseableProperty) and space.owned_by is None and space.price < player["money"]:
+            self.actions_taken += 1
             self.stats[player_id]["actions_taken"] += 1
             self.purchase_property(player_id, space)
+            self.save_board_image(self.actions_taken)
         
         actions = self.get_valid_actions(player_id, space)
         
@@ -683,6 +687,7 @@ class MonopolyGame:
     def select_action(self, player_id: int, actions: List[str], selected_index: int, space):
         action = actions[selected_index]
         action_type = action.split(" ")[0]
+        self.actions_taken += 1
         self.stats[player_id]["actions_taken"] += 1
 
         if player_id == self.llm_player_id:
@@ -716,7 +721,10 @@ class MonopolyGame:
             property_name = match.group(2)
             self.sell_house(player_id, property_name)
         else:
+            self.save_board_image(self.actions_taken)
             return
+        
+        self.save_board_image(self.actions_taken)
 
         if player_id == self.llm_player_id:
             self.llm_memory[-1]["new_net_worth"] = self.get_net_worth(player_id)
@@ -1036,6 +1044,57 @@ class MonopolyGame:
         center_x = ((space.coordinates[0][0] + space.coordinates[1][0]) // 2)
         center_y = ((space.coordinates[0][1] + space.coordinates[1][1]) // 2)
         return (center_x, center_y)
+
+    def draw_dice(self, draw):
+        dice_1, dice_2 = self.last_dice_roll
+        size = 100
+        padding = size // 4
+        font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", 50)
+        
+        def draw_die(x, y, number):
+            dot_radius = size // 10
+            
+            draw.rectangle([(x, y), (x + size, y + size)], 
+                        fill='white', outline='black', width=2)
+
+            dot_positions = {
+                'top_left': (0.25, 0.25),
+                'top_middle': (0.5, 0.25),
+                'top_right': (0.75, 0.25),
+                'middle_left': (0.25, 0.5),
+                'center': (0.5, 0.5),
+                'middle_right': (0.75, 0.5),
+                'bottom_left': (0.25, 0.75),
+                'bottom_middle': (0.5, 0.75),
+                'bottom_right': (0.75, 0.75)
+            }
+
+            dot_patterns = {
+                1: ['center'],
+                2: ['top_right', 'bottom_left'],
+                3: ['top_right', 'center', 'bottom_left'],
+                4: ['top_left', 'top_right', 'bottom_left', 'bottom_right'],
+                5: ['top_left', 'top_right', 'center', 'bottom_left', 'bottom_right'],
+                6: ['top_left', 'top_right', 'middle_left', 'middle_right', 
+                    'bottom_left', 'bottom_right']
+            }
+
+            for position in dot_patterns[number]:
+                dot_x, dot_y = dot_positions[position]
+                center_x = x + (dot_x * size)
+                center_y = y + (dot_y * size)
+                draw.ellipse([(center_x - dot_radius, center_y - dot_radius),
+                            (center_x + dot_radius, center_y + dot_radius)],
+                            fill='black')
+        
+        dice_1_x = 300 + padding
+        dice_2_x = 300 + padding * 2 + size
+        dice_y = 1550 + padding
+
+        draw.text((dice_1_x, dice_y - 100), f"Player {self.current_player} Turn", fill='black', font=font)
+
+        draw_die(dice_1_x, dice_y, dice_1)
+        draw_die(dice_2_x, dice_y, dice_2)
     
     def draw_property_owners(self, property: PurchaseableProperty, property_index: int, draw, color):
         side = (property_index // 10) % 4
@@ -1046,26 +1105,30 @@ class MonopolyGame:
         
         if side == 0:
             fill_coords = (
-                (x1, y2 - height/5),
+                (x1, y2 - height/6),
                 (x2, y2)
             )
         elif side == 1:
             fill_coords = (
-                (x1 + width/5, y1),
-                (x1, y2)
+                (x1, y1),
+                (x1 + width/6, y2)
             )
         elif side == 2:
             fill_coords = (
                 (x1, y1),
-                (x2, y1 + height/5)
+                (x2, y1 + height/6)
             )
         else:
             fill_coords = (
-                (x2, y1),
-                (x2 - width/5, y2)
+                (x2 - width/6, y1),
+                (x2, y2)
             )
 
         draw.rectangle([fill_coords[0], fill_coords[1]], fill=color)
+    
+    def draw_mortgages(self, property: PurchaseableProperty, overlay_draw):
+        overlay_color = (255, 0, 0, 100)
+        overlay_draw.rectangle([property.coordinates[0], property.coordinates[1]], fill=overlay_color)
 
     def draw_construction(self, property: PurchaseableProperty, property_index: int, draw, color):
         if not hasattr(property, 'number_of_houses'):
@@ -1141,6 +1204,10 @@ class MonopolyGame:
         img = Image.open("assets/board.png").convert("RGBA")
         draw = ImageDraw.Draw(img)
         positions = defaultdict(list)
+        overlay = Image.new('RGBA', img.size, (0, 0, 0, 0))
+        overlay_draw = ImageDraw.Draw(overlay)
+
+        self.draw_dice(draw)
 
         for player in self.players:
             positions[player["position"]].append(player)
@@ -1148,6 +1215,8 @@ class MonopolyGame:
             for property in player["properties"]:
                 self.draw_property_owners(property, self.board.index(property), draw, color)
                 self.draw_construction(property, self.board.index(property), draw, color)
+                if property.is_mortgaged:
+                    self.draw_mortgages(property, overlay_draw)
 
         for position, players in positions.items():
             space = self.board[position]
@@ -1184,6 +1253,7 @@ class MonopolyGame:
                         outline="black",
                     )
         
+        img = Image.alpha_composite(img, overlay)
         os.makedirs("game_frames", exist_ok=True)
         img.save(f"game_frames/frame_{turn_number}.png")
         

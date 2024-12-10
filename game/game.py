@@ -212,8 +212,8 @@ class MonopolyGame:
         return sell_worth
     
     def roll_dice(self):
-        dice_1 = 3
-        dice_2 = 3
+        dice_1 = random.randint(1, 6)
+        dice_2 = random.randint(1, 6)
         double_rolled = True if dice_1 == dice_2 else False
         self.last_dice_roll = (dice_1, dice_2)
 
@@ -1211,6 +1211,7 @@ class MonopolyGame:
             y += spacing
             draw.text((x, y), f"Player {id} Net Worth: {self.get_net_worth(id)}", fill='black', font=font)
             y += spacing
+
     def save_board_image(self, turn_number):
         img = Image.open("assets/board.png").convert("RGBA")
         draw = ImageDraw.Draw(img)
@@ -1235,35 +1236,118 @@ class MonopolyGame:
             center_x, center_y = self.get_space_center(space)
             num_players = len(players)
             radius = 30
-            if len(players) == 1:
-                color = "blue" if players[0]["id"] == self.llm_player_id else "purple"
-                draw.ellipse(
-                    (
-                        center_x - radius,
-                        center_y - radius,
-                        center_x + radius,
-                        center_y + radius,
-                    ),
-                    fill=color,
-                    outline="black",
-                )
-            else:
-                for i, player in enumerate(players):
-                    angle = (2 * math.pi / num_players) * i
-                    offset_x = int(38 * math.cos(angle))
-                    offset_y = int(38 * math.sin(angle))
+            buffer = 10
 
-                    color = "blue" if player["id"] == self.llm_player_id else "purple"
+            if position == 10:
+                jail = [(76, 1729), (271, 1729), (76, 1926), (271, 1926)]
+                visiting = [(0, 1729), (76, 1729), (0, 2000), (76, 2000)]
+                if len(players) == 1:
+                    color = "blue" if players[0]["id"] == self.llm_player_id else "purple"
+                    if players[0]["in_jail"]:
+                        jail_center_x = (jail[1][0] - jail[0][0]) // 2 + jail[0][0]
+                        jail_center_y = (jail[2][1] - jail[1][1]) // 2 + jail[1][1]
+                        draw.ellipse(
+                            (
+                                jail_center_x - radius,
+                                jail_center_y - radius,
+                                jail_center_x + radius,
+                                jail_center_y + radius,
+                            ),
+                            fill=color,
+                            outline="black",
+                        )
+                    else:
+                        visiting_center_x = (visiting[1][0] - visiting[0][0]) // 2 + visiting[0][0]
+                        visiting_center_y = (visiting[2][1] - visiting[1][1]) // 2 + visiting[1][1]
+                        draw.ellipse(
+                            (
+                                visiting_center_x - radius,
+                                visiting_center_y - radius,
+                                visiting_center_x + radius,
+                                visiting_center_y + radius,
+                            ),
+                            fill=color,
+                            outline="black",
+                        )
+                elif len(players) == 2:
+                    player_1, player_2 = players
+                    color_1 = "blue" if player_1["id"] == self.llm_player_id else "purple"
+                    color_2 = "blue" if player_2["id"] == self.llm_player_id else "purple"
+                    
+                    if player_1["in_jail"]:
+                        draw.ellipse(
+                                (
+                                jail[0][0] + radius + 10 - radius,
+                                jail[0][1] + radius + 10 - radius,
+                                jail[0][0] + radius + 10 + radius,
+                                jail[0][1] + radius + 10 + radius,
+                            ),
+                            fill=color_1,
+                            outline="black",
+                        )
+                    else:
+                        draw.ellipse(
+                            (
+                                visiting[0][0] + radius + 10 - radius,
+                                visiting[0][1] + radius + 10 - radius,
+                                visiting[0][0] + radius + 10 + radius,
+                                visiting[0][1] + radius + 10 + radius,
+                            ),
+                            fill=color_1,
+                            outline="black",
+                        )
+                    if player_2["in_jail"]:
+                        draw.ellipse(
+                            (
+                                jail[3][0] - radius - 10 - radius,
+                                jail[3][1] - radius - 10 - radius,
+                                jail[3][0] - radius - 10 + radius,
+                                jail[3][1] - radius - 10 + radius,
+                            ),
+                            fill=color_2,
+                            outline="black",
+                        )
+                    else:
+                        draw.ellipse(
+                            (
+                                visiting[3][0] - radius - 10 - radius,
+                                visiting[3][1] - radius - 10 - radius,
+                                visiting[3][0] - radius - 10 + radius,
+                                visiting[3][1] - radius - 10 + radius,
+                            ),
+                            fill=color_2,
+                            outline="black",
+                        )
+            else:
+                if len(players) == 1:
+                    color = "blue" if players[0]["id"] == self.llm_player_id else "purple"
                     draw.ellipse(
                         (
-                            center_x + offset_x - radius,
-                            center_y + offset_y - radius,
-                            center_x + offset_x + radius,
-                            center_y + offset_y + radius,
+                            center_x - radius,
+                            center_y - radius,
+                            center_x + radius,
+                            center_y + radius,
                         ),
                         fill=color,
                         outline="black",
                     )
+                else:
+                    for i, player in enumerate(players):
+                        angle = (2 * math.pi / num_players) * i
+                        offset_x = int(38 * math.cos(angle))
+                        offset_y = int(38 * math.sin(angle))
+
+                        color = "blue" if player["id"] == self.llm_player_id else "purple"
+                        draw.ellipse(
+                            (
+                                center_x + offset_x - radius,
+                                center_y + offset_y - radius,
+                                center_x + offset_x + radius,
+                                center_y + offset_y + radius,
+                            ),
+                            fill=color,
+                            outline="black",
+                        )
         
         img = Image.alpha_composite(img, overlay)
         os.makedirs("game_frames", exist_ok=True)
@@ -1271,7 +1355,7 @@ class MonopolyGame:
         
 
 def main():
-    llm = "human"
+    llm = "qwen"
     num_players = 2
     max_rounds = 100
     total_games = 10 #total games ran is actually 2x this since it runs total_games for each side

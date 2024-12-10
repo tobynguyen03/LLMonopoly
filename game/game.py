@@ -82,9 +82,9 @@ MONOPOLY_BOARD = [
     Property("Vermont Avenue", 100, [6, 30, 90, 270, 400, 550], 50, "light_blue", 3, 50, 55, [(434, 1729), (597, 2000)], False, 0, 0, None),
     Property("Connecticut Avenue", 120, [8, 40, 100, 300, 450, 600], 50, "light_blue", 3, 60, 66, [(271, 1729), (434, 2000)], False, 0, 0, None),
     SpecialSpace("Jail/Just Visiting", [(0, 1729), (271, 2000)]),
-    Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, [(0, 1562), (271, 1729)], False, 0, 0, None),
-    Utility("Electric Company", 150, 75, 83, [(0, 1400), (271, 1562)], False, None),
-    Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, [(0, 1249), (271, 1400)], False, 0, 0, None),
+    Property("St. Charles Place", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, [(0, 1568), (271, 1729)], False, 0, 0, None),
+    Utility("Electric Company", 150, 75, 83, [(0, 1410), (271, 1568)], False, None),
+    Property("States Avenue", 140, [10, 50, 150, 450, 625, 750], 100, "pink", 3, 70, 77, [(0, 1249), (271, 1410)], False, 0, 0, None),
     Property("Virginia Avenue", 160, [12, 60, 180, 500, 700, 900], 100, "pink", 3, 80, 88, [(0, 1086), (271, 1249)], False, 0, 0, None),
     Railroad("Pennsylvania Railroad", 200, [25, 50, 100, 200], 100, 110, [(0, 923), (271, 1086)], False, None),
     Property("St. James Place", 180, [14, 70, 200, 550, 750, 950], 100, "orange", 3, 90, 99, [(0, 760), (271, 923)], False, 0, 0, None),
@@ -108,14 +108,14 @@ MONOPOLY_BOARD = [
     Property("Pennsylvania Avenue", 320, [28, 150, 450, 1000, 1200, 1400], 200, "green", 3, 160, 176, [(1729, 760), (2000, 923)], False, 0, 0, None),
     Railroad("Short Line", 200, [25, 50, 100, 200], 100, 110, [(1729, 923), (2000, 1086)], False, None),
     SpecialSpace("Chance", [(1729, 1086), (2000, 1249)]),
-    Property("Park Place", 350, [35, 175, 500, 1100, 1300, 1500], 200, "dark_blue", 2, 175, 193, [(1729, 1249), (2000, 1400)], False, 0, 0, None),
-    Tax("Luxury Tax", "tax", 100, [(1729, 1400), (2000, 1562)]),
-    Property("Boardwalk", 400, [50, 200, 600, 1400, 1700, 2000], 200, "dark_blue", 2, 200, 220, [(1729, 1562), (2000, 1729)], False, 0, 0, None),
+    Property("Park Place", 350, [35, 175, 500, 1100, 1300, 1500], 200, "dark_blue", 2, 175, 193, [(1729, 1249), (2000, 1410)], False, 0, 0, None),
+    Tax("Luxury Tax", "tax", 100, [(1729, 1410), (2000, 1568)]),
+    Property("Boardwalk", 400, [50, 200, 600, 1400, 1700, 2000], 200, "dark_blue", 2, 200, 220, [(1729, 1568), (2000, 1729)], False, 0, 0, None),
 ]
 
 
 class MonopolyGame:
-    def __init__(self, num_players: int, llm_player_id: int, llm = 'manual'):
+    def __init__(self, num_players: int, llm_player_id: int, llm = 'human'):
         self.num_players = num_players
         self.game_ended = False
         self.board = self._initialize_board()
@@ -1351,18 +1351,18 @@ class MonopolyGame:
         
         img = Image.alpha_composite(img, overlay)
         os.makedirs("game_frames", exist_ok=True)
-        img.save(f"game_frames/frame_{turn_number}.png")
+        img.save(f"game_frames/{self.llm}_frame_{turn_number}.png")
         
 
 def main():
     llm = "qwen"
     num_players = 2
     max_rounds = 100
-    total_games = 10 #total games ran is actually 2x this since it runs total_games for each side
+    total_games = 1 #total games ran is actually 2x this since it runs total_games for each side
 
     game = MonopolyGame(num_players, llm_player_id=0, llm=llm)
 
-    game.display_board_state()
+    #game.display_board_state()
 
     os.makedirs('game_results', exist_ok=True)
     results_file = os.path.join('game_results', f'{llm}_results_trials.txt')
@@ -1390,17 +1390,17 @@ def main():
             else:
                 logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
         
-        player_wins = [0 for i in range(num_players)]
-        for i in range(4, total_games + 1):  # LLM going second
-            game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
-            winner_id = game.play_game(max_rounds, i)
-            player_wins[winner_id] += 1
+        # player_wins = [0 for i in range(num_players)]
+        # for i in range(1, total_games + 1):  # LLM going second
+        #     game = MonopolyGame(num_players, llm_player_id=1, llm=llm)
+        #     winner_id = game.play_game(max_rounds, i)
+        #     player_wins[winner_id] += 1
         
-        for i in range(len(player_wins)):
-            if i == 1:
-                logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
-            else:
-                logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
+        # for i in range(len(player_wins)):
+        #     if i == 1:
+        #         logging.info(f"LLM won {player_wins[i]}/{total_games} games \n")
+        #     else:
+        #         logging.info(f"Bot won {player_wins[i]}/{total_games} games \n")
 
 if __name__=="__main__":
     main()

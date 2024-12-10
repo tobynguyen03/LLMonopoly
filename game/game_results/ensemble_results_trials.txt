@@ -1,0 +1,79 @@
+2024-12-09 19:40:47,124 - unhashable type: 'list'
+Traceback (most recent call last):
+  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 824, in play_game
+    self.play_turn()
+  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 811, in play_turn
+    self.request_action(player_id, space)
+  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 868, in request_action
+    selected_index = self.request_llm_action(actions)
+  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/game.py", line 984, in request_llm_action
+    res = self.agent.query(context)
+  File "/storage/ice1/4/5/bzhou91/LLMonopoly/game/agents/ensemble_agent.py", line 62, in query
+    selection_counts = Counter(selections)
+  File "/usr/local/pace-apps/manual/packages/anaconda3/2023.03/lib/python3.10/collections/__init__.py", line 577, in __init__
+    self.update(iterable, **kwds)
+  File "/usr/local/pace-apps/manual/packages/anaconda3/2023.03/lib/python3.10/collections/__init__.py", line 670, in update
+    _count_elements(self, iterable)
+TypeError: unhashable type: 'list'
+2024-12-09 19:48:26,907 - 
+Game 1 Results
+
+2024-12-09 19:48:26,907 - Game over after 100 round(s)
+
+2024-12-09 19:48:26,907 - Game duration: 976.02 seconds
+
+2024-12-09 19:48:26,907 - Player 0 (LLM) won with a net worth of $3932
+
+2024-12-09 19:48:26,907 - 
+Player 0 (LLM) Stats:
+
+2024-12-09 19:48:26,907 -   Properties bought: 14
+
+2024-12-09 19:48:26,907 -   Mortgages: 3
+
+2024-12-09 19:48:26,907 -   Unmortgages: 3
+
+2024-12-09 19:48:26,907 -   Houses built: 18
+
+2024-12-09 19:48:26,907 -   Houses sold: 3
+
+2024-12-09 19:48:26,907 -   Rent paid: 1664
+
+2024-12-09 19:48:26,907 -   Rent received: 2949
+
+2024-12-09 19:48:26,907 -   Actions taken: 162
+
+2024-12-09 19:48:26,907 -   Invalid json: 0
+
+2024-12-09 19:48:26,907 -   Invalid move: 0
+
+2024-12-09 19:48:26,907 -   Defaulted move: 0
+
+2024-12-09 19:48:26,907 - 
+Player 1 (Bot) Stats:
+
+2024-12-09 19:48:26,907 -   Properties bought: 13
+
+2024-12-09 19:48:26,907 -   Mortgages: 1
+
+2024-12-09 19:48:26,907 -   Unmortgages: 1
+
+2024-12-09 19:48:26,907 -   Houses built: 33
+
+2024-12-09 19:48:26,907 -   Houses sold: 19
+
+2024-12-09 19:48:26,907 -   Rent paid: 2949
+
+2024-12-09 19:48:26,907 -   Rent received: 1664
+
+2024-12-09 19:48:26,907 -   Actions taken: 79
+
+2024-12-09 19:48:26,907 - Ensemble selection stats {'Mistral': 120, 'Llama3.1': 141, 'Qwen': 130}
+2024-12-09 19:48:26,907 - Player 0 has a total net worth of $3932, can sell/mortgage everything for $1810, has $312 in cash, and owns the following properties: St. James Place (orange, 0 houses, 0 hotels), Indiana Avenue (red, 0 houses, 0 hotels), Mediterranean Avenue (brown, 0 houses, 0 hotels), Electric Company, Marvin Gardens (yellow, 0 houses, 1 hotels), Pennsylvania Railroad, St. Charles Place (pink, 0 houses, 0 hotels), Ventnor Avenue (yellow, 0 houses, 1 hotels), Pennsylvania Avenue (green, 0 houses, 0 hotels), Short Line, Reading Railroad, Boardwalk (dark_blue, 0 houses, 0 hotels), Atlantic Avenue (yellow, 0 houses, 1 hotels), Pacific Avenue (green, 0 houses, 0 hotels)
+
+2024-12-09 19:48:26,907 - Player 1 has a total net worth of $2543, can sell/mortgage everything for $1260, has $23 in cash, and owns the following properties: States Avenue (pink, 0 houses, 0 hotels), Tennessee Avenue (orange, 0 houses, 0 hotels), Kentucky Avenue (red, 0 houses, 0 hotels), Water Works, Park Place (dark_blue, 0 houses, 0 hotels), Baltic Avenue (brown, 0 houses, 0 hotels), B. & O. Railroad, Oriental Avenue (light_blue, 0 houses, 1 hotels), Virginia Avenue (pink, 0 houses, 0 hotels), New York Avenue (orange, 0 houses, 0 hotels), Illinois Avenue (red, 0 houses, 0 hotels), Vermont Avenue (light_blue, 0 houses, 1 hotels), Connecticut Avenue (light_blue, 4 houses, 0 hotels)
+
+2024-12-09 19:48:26,907 - LLM won 1/1 games 
+
+2024-12-09 19:48:26,907 - Bot won 0/1 games 
+
